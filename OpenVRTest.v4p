@@ -1,0 +1,11 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.2.dtd" >
+   <PATCH nodename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\OpenVRTest.v4p" scrollx="0" scrolly="360" systemname="OpenVRTest" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\OpenVRTest.v4p">
+   <BOUNDS type="Window" left="2370" top="6300" width="9000" height="6000">
+   </BOUNDS>
+   <PACK Name="addonpack" Version="34.1.0">
+   </PACK>
+   <NODE systemname="OpenVR" filename="plugins\OpenVR\VVVV.OpenVR.dll" nodename="OpenVR" componentmode="Hidden" id="0">
+   <BOUNDS type="Node" left="1230" top="810" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   </PATCH>

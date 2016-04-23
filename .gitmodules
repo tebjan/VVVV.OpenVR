@@ -1,0 +1,3 @@
+[submodule "src/openvr"]
+	path = src/openvr
+	url = https://github.com/tebjan/openvr.git

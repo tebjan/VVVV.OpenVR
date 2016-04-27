@@ -10,7 +10,7 @@ using Valve.VR;
 namespace VVVV.Nodes.ValveOpenVR
 {
     [PluginInfo(Name = "OpenVR")]
-    public class ValveOpenVRNode : IPluginEvaluate
+    public class ValveOpenVRNode : IPluginEvaluate, IDisposable
     {
 
         [Output("Status", IsSingle = true)]
@@ -53,6 +53,11 @@ namespace VVVV.Nodes.ValveOpenVR
             {
                 var dist = FOpenVRSystem.ComputeDistortion(EVREye.Eye_Left, 0, 0);
             }
+        }
+
+        public void Dispose()
+        {
+            ShutDownOpenVR();
         }
     }
 }

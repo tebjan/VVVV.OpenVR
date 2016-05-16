@@ -74,7 +74,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OpenVRNode.cs" />
+    <Compile Include="OpenVRControllercs.cs" />
+    <Compile Include="OpenVRControllerNode.cs" />
+    <Compile Include="OpenVRModelsNode.cs" />
+    <Compile Include="OpenVROverlayNode.cs" />
+    <Compile Include="OpenVRExtensions.cs" />
+    <Compile Include="OpenVRCompositorNode.cs" />
+    <Compile Include="OpenVRPoserNode.cs" />
     <Compile Include="openvr_api.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

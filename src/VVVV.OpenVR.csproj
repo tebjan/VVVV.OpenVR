@@ -74,14 +74,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OpenVRControllercs.cs" />
-    <Compile Include="OpenVRControllerNode.cs" />
-    <Compile Include="OpenVRModelsNode.cs" />
-    <Compile Include="OpenVROverlayNode.cs" />
-    <Compile Include="OpenVRExtensions.cs" />
-    <Compile Include="OpenVRCompositorNode.cs" />
-    <Compile Include="OpenVRPoserNode.cs" />
-    <Compile Include="openvr_api.cs" />
+    <Compile Include="Core\OpenVRController.cs" />
+    <Compile Include="Nodes\OpenVRControllerNode.cs" />
+    <Compile Include="Nodes\OpenVRModelsNode.cs" />
+    <Compile Include="Nodes\OpenVROverlayNode.cs" />
+    <Compile Include="Core\OpenVRExtensions.cs" />
+    <Compile Include="Nodes\OpenVRCompositorNode.cs" />
+    <Compile Include="Nodes\OpenVRPoserNode.cs" />
+    <Compile Include="Core\openvr_api.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

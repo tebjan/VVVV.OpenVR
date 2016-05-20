@@ -136,8 +136,16 @@ namespace VVVV.Nodes.ValveOpenVR
                 //hidden pixels mesh
                 var meshLeft = FOpenVRSystem.GetHiddenAreaMesh(EVREye.Eye_Left);
                 var meshRight = FOpenVRSystem.GetHiddenAreaMesh(EVREye.Eye_Right);
-                GetMeshData(meshLeft, FVerticesLeftOut);
-                GetMeshData(meshRight, FVerticesRightOut);
+                if (meshLeft.unTriangleCount > 0 && meshRight.unTriangleCount > 0)
+                {
+                    GetMeshData(meshLeft, FVerticesLeftOut);
+                    GetMeshData(meshRight, FVerticesRightOut);
+                }
+                else
+                {
+                    FVerticesLeftOut.SliceCount = 0;
+                    FVerticesRightOut.SliceCount = 0;
+                }
 
                 FSystemOut[0] = FOpenVRSystem;
             }

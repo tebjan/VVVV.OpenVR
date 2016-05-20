@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.2.dtd" >
    <PATCH nodename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\OpenVRSystem.v4p" scrollx="0" scrolly="0" systemname="OpenVRSystem" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\OpenVRSystem.v4p">
-   <BOUNDS type="Window" left="4365" top="8235" width="20835" height="12105">
+   <BOUNDS type="Window" left="5970" top="3330" width="20835" height="12105">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.1.0">
    </PACK>
@@ -169,7 +169,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="5025" top="0" width="7455" height="6400">
    </BOUNDS>
-   <BOUNDS type="Window" left="8535" top="4695" width="12720" height="11625">
+   <BOUNDS type="Window" left="9090" top="5475" width="12720" height="11625">
    </BOUNDS>
    <PIN pinname="Layer" visible="1">
    </PIN>

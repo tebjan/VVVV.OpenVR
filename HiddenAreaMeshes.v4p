@@ -15,7 +15,7 @@
    </PIN>
    <BOUNDS type="Box" left="2415" top="3615">
    </BOUNDS>
-   <PIN pinname="Apply" slicecount="1" visible="1" values="0">
+   <PIN pinname="Apply" slicecount="1" visible="1" values="1">
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="1" systemname="IOBox (Enumerations)">
@@ -88,24 +88,6 @@
    <PIN pinname="String Type" slicecount="1" values="MultiLine">
    </PIN>
    </NODE>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="7" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="3525" top="2880" width="480" height="480">
-   </BOUNDS>
-   <BOUNDS type="Node" left="3525" top="2880" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Boolean">
-   </PIN>
-   <PIN pinname="Behavior" slicecount="1" values="Toggle">
-   </PIN>
-   <PIN pinname="X Input Value" slicecount="1" values="1">
-   </PIN>
-   </NODE>
    <NODE systemname="Rasterizer (DX11.RenderState)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Rasterizer (DX11.RenderState)" componentmode="Hidden" id="8">
    <BOUNDS type="Node" left="405" top="3600" width="100" height="100">
    </BOUNDS>
@@ -153,6 +135,8 @@
    </BOUNDS>
    <BOUNDS type="Node" left="2415" top="495" width="750" height="240">
    </BOUNDS>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="11" srcpinname="Y Output Value" dstnodeid="0" dstpinname="Vertices">
    </LINK>
@@ -160,13 +144,11 @@
    </LINK>
    <LINK srcnodeid="3" srcpinname="Output" dstnodeid="0" dstpinname="Input Layout">
    </LINK>
-   <LINK srcnodeid="7" srcpinname="Y Output Value" dstnodeid="0" dstpinname="Apply">
-   </LINK>
    <LINK srcnodeid="1" srcpinname="Output Enum" dstnodeid="3" dstpinname="Element Type">
    </LINK>
    <LINK srcnodeid="2" srcpinname="Output Enum" dstnodeid="3" dstpinname="Format">
    </LINK>
-   <BOUNDS type="Window" left="8535" top="4695" width="12720" height="11625">
+   <BOUNDS type="Window" left="9090" top="5475" width="12720" height="11625">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.1.0">
    </PACK>
@@ -229,25 +211,7 @@
    </PIN>
    <BOUNDS type="Box" left="6585" top="3990">
    </BOUNDS>
-   <PIN pinname="Apply" slicecount="1" visible="1" values="0">
-   </PIN>
-   </NODE>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="40" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="8010" top="3555" width="480" height="480">
-   </BOUNDS>
-   <BOUNDS type="Node" left="8010" top="3555" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Boolean">
-   </PIN>
-   <PIN pinname="Behavior" slicecount="1" values="Toggle">
-   </PIN>
-   <PIN pinname="X Input Value" slicecount="1" values="1">
+   <PIN pinname="Apply" slicecount="1" visible="1" values="1">
    </PIN>
    </NODE>
    <NODE systemname="HiddenArea (DX11.Effect)" filename="dx11\HiddenArea.fx" nodename="HiddenArea (DX11.Effect)" componentmode="Hidden" id="39">
@@ -274,8 +238,6 @@
    </LINK>
    <LINK srcnodeid="3" srcpinname="Output" dstnodeid="43" dstpinname="Input Layout">
    </LINK>
-   <LINK srcnodeid="40" srcpinname="Y Output Value" dstnodeid="43" dstpinname="Apply">
-   </LINK>
    <NODE systemname="SelectViewport (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="SelectViewport (DX11.Layer)" componentmode="Hidden" id="37">
    <BOUNDS type="Node" left="6255" top="7200" width="100" height="100">
    </BOUNDS>
@@ -300,6 +262,8 @@
    <PIN pinname="Layer Out" visible="1">
    </PIN>
    <PIN pinname="Render State" visible="1">
+   </PIN>
+   <PIN pinname="Enabled" visible="1" slicecount="1" values="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="20" srcpinname="Layer Out" dstnodeid="44" dstpinname="Layer 1">
@@ -359,5 +323,65 @@
    <LINK srcnodeid="47" srcpinname="Y Output Value" dstnodeid="43" dstpinname="Vertices">
    </LINK>
    <LINK srcnodeid="4" srcpinname="Output Enum" dstnodeid="43" dstpinname="Topology">
+   </LINK>
+   <NODE systemname="Count (Value)" nodename="Count (Value)" componentmode="Hidden" id="48">
+   <BOUNDS type="Node" left="4080" top="960" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Count" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="11" srcpinname="Y Output Value" dstnodeid="48" dstpinname="Input">
+   </LINK>
+   <NODE systemname="GT (Value)" nodename="GT (Value)" componentmode="Hidden" id="49">
+   <BOUNDS type="Node" left="4080" top="1365" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="48" srcpinname="Count" dstnodeid="49" dstpinname="Input 1">
+   </LINK>
+   <NODE systemname="Count (Value)" nodename="Count (Value)" componentmode="Hidden" id="51">
+   <BOUNDS type="Node" left="4995" top="975" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Count" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="GT (Value)" nodename="GT (Value)" componentmode="Hidden" id="50">
+   <BOUNDS type="Node" left="4995" top="1380" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="51" srcpinname="Count" dstnodeid="50" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="47" srcpinname="Y Output Value" dstnodeid="51" dstpinname="Input">
+   </LINK>
+   <NODE systemname="AND (Boolean)" nodename="AND (Boolean)" componentmode="Hidden" id="52">
+   <BOUNDS type="Node" left="4590" top="1860" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="49" srcpinname="Output" dstnodeid="52" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="50" srcpinname="Output" dstnodeid="52" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="52" srcpinname="Output" dstnodeid="44" dstpinname="Enabled">
+   </LINK>
+   <LINK srcnodeid="52" srcpinname="Output" dstnodeid="43" dstpinname="Apply">
+   </LINK>
+   <LINK srcnodeid="52" srcpinname="Output" dstnodeid="0" dstpinname="Apply">
    </LINK>
    </PATCH>

@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.2.dtd" >
    <PATCH nodename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\OpenVRSystem.v4p" scrollx="0" scrolly="0" systemname="OpenVRSystem" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\OpenVRSystem.v4p">
-   <BOUNDS type="Window" left="4095" top="3255" width="21240" height="12690">
+   <BOUNDS type="Window" left="4365" top="8235" width="20835" height="12105">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.1.0">
    </PACK>
@@ -95,9 +95,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="59" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="12345" top="10845" width="2445" height="240">
+   <BOUNDS type="Box" left="4035" top="11055" width="2445" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="12345" top="10845" width="0" height="0">
+   <BOUNDS type="Node" left="4035" top="11055" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -183,9 +183,9 @@
    <LINK srcnodeid="0" srcpinname="Vertices Left" dstnodeid="144" dstpinname="Vertices Left">
    </LINK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="148" systemname="IOBox (Node)">
-   <BOUNDS type="Box" left="5775" top="7620" width="795" height="240">
+   <BOUNDS type="Box" left="6000" top="7620" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="5775" top="7620" width="0" height="0">
+   <BOUNDS type="Node" left="6000" top="7620" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Descriptive Name" slicecount="1" values="Texture">
    </PIN>
@@ -269,24 +269,6 @@
    <LINK srcnodeid="157" srcpinname="Transform Out" dstnodeid="15" dstpinname="View">
    </LINK>
    <LINK srcnodeid="0" srcpinname="Vertices Right" dstnodeid="144" dstpinname="Vertices Right">
-   </LINK>
-   <NODE id="58" systemname="Compositor (OpenVR)" filename="plugins\OpenVR\VVVV.OpenVR.dll" nodename="Compositor (OpenVR)" componentmode="Hidden">
-   <BOUNDS type="Node" left="4035" top="10125" width="2940" height="270">
-   </BOUNDS>
-   <PIN pinname="Texture Handle" visible="1">
-   </PIN>
-   <PIN pinname="Is OU" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="153" srcpinname="Y Output Value" dstnodeid="58" dstpinname="Is OU">
-   <LINKPOINT x="10965" y="7965">
-   </LINKPOINT>
-   </LINK>
-   <LINK srcnodeid="16" srcpinname="Resource Pointer" dstnodeid="58" dstpinname="Texture Handle">
-   </LINK>
-   <LINK srcnodeid="0" srcpinname="System" dstnodeid="58" dstpinname="System">
-   </LINK>
-   <LINK srcnodeid="58" srcpinname="Error" dstnodeid="59" dstpinname="Input String">
    </LINK>
    <LINK srcnodeid="0" srcpinname="View" dstnodeid="157" dstpinname="Transform In 2">
    </LINK>
@@ -391,5 +373,23 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="174" srcpinname="ViewPort" dstnodeid="155" dstpinname="Input 1">
+   </LINK>
+   <NODE id="58" systemname="Compositor (OpenVR)" filename="plugins\OpenVR\VVVV.OpenVR.dll" nodename="Compositor (OpenVR)" componentmode="Hidden">
+   <BOUNDS type="Node" left="4035" top="10125" width="2940" height="270">
+   </BOUNDS>
+   <PIN pinname="Texture Handle" visible="1">
+   </PIN>
+   <PIN pinname="Is OU" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="58" srcpinname="Error" dstnodeid="59" dstpinname="Input String">
+   </LINK>
+   <LINK srcnodeid="0" srcpinname="System" dstnodeid="58" dstpinname="System">
+   </LINK>
+   <LINK srcnodeid="16" srcpinname="Resource Pointer" dstnodeid="58" dstpinname="Texture Handle">
+   </LINK>
+   <LINK srcnodeid="153" srcpinname="Y Output Value" dstnodeid="58" dstpinname="Is OU">
+   <LINKPOINT x="10965" y="7965">
+   </LINKPOINT>
    </LINK>
    </PATCH>

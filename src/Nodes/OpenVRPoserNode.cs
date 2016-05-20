@@ -106,8 +106,7 @@ namespace VVVV.Nodes.ValveOpenVR
                 FRenderPosesOut.SliceCount = poseCount;
                 FGamePosesOut.SliceCount = poseCount;
                 FDeviceClassOut.SliceCount = poseCount;
-                var indexLeft = FOpenVRSystem.GetTrackedDeviceIndexForControllerRole(ETrackedControllerRole.LeftHand);
-                var indexRight = FOpenVRSystem.GetTrackedDeviceIndexForControllerRole(ETrackedControllerRole.RightHand);
+                
                 for (int i = 0; i < poseCount; i++)
                 {
                     FRenderPosesOut[i] = renderPoses[i].mDeviceToAbsoluteTracking.ToMatrix();

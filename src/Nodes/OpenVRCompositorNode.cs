@@ -56,7 +56,7 @@ namespace VVVV.Nodes.ValveOpenVR
                 FTexture = new Texture_t() {
                     handle = new IntPtr(FHandleIn[0]),
                     eType = EGraphicsAPIConvention.API_DirectX,
-                    eColorSpace = EColorSpace.Linear };
+                    eColorSpace = EColorSpace.Gamma };
             }
 
             if(FOpenVRSystem != null)

@@ -38,30 +38,37 @@ namespace VVVV.Nodes.ValveOpenVR
             public uint index { get; private set; }
 
             public bool valid { get; private set; }
-            public bool connected { get { Update(); return pose.bDeviceIsConnected; } }
-            public bool hasTracking { get { Update(); return pose.bPoseIsValid; } }
+            public bool connected { get { UpdateInternal(); return pose.bDeviceIsConnected; } }
+            public bool hasTracking { get { UpdateInternal(); return pose.bPoseIsValid; } }
 
-            public bool outOfRange { get { Update(); return pose.eTrackingResult == ETrackingResult.Running_OutOfRange || pose.eTrackingResult == ETrackingResult.Calibrating_OutOfRange; } }
-            public bool calibrating { get { Update(); return pose.eTrackingResult == ETrackingResult.Calibrating_InProgress || pose.eTrackingResult == ETrackingResult.Calibrating_OutOfRange; } }
-            public bool uninitialized { get { Update(); return pose.eTrackingResult == ETrackingResult.Uninitialized; } }
+            public bool outOfRange { get { UpdateInternal(); return pose.eTrackingResult == ETrackingResult.Running_OutOfRange || pose.eTrackingResult == ETrackingResult.Calibrating_OutOfRange; } }
+            public bool calibrating { get { UpdateInternal(); return pose.eTrackingResult == ETrackingResult.Calibrating_InProgress || pose.eTrackingResult == ETrackingResult.Calibrating_OutOfRange; } }
+            public bool uninitialized { get { UpdateInternal(); return pose.eTrackingResult == ETrackingResult.Uninitialized; } }
 
             // These values are only accurate for the last controller state change (e.g. trigger release), and by definition, will always lag behind
             // the predicted visual poses that drive SteamVR_TrackedObjects since they are sync'd to the input timestamp that caused them to update.
-            public Matrix transform { get { Update(); return pose.mDeviceToAbsoluteTracking.ToMatrix(); } }
-            public Vector3D velocity { get { Update(); return new Vector3D(pose.vVelocity.v0, pose.vVelocity.v1, -pose.vVelocity.v2); } }
-            public Vector3D angularVelocity { get { Update(); return new Vector3D(-pose.vAngularVelocity.v0, -pose.vAngularVelocity.v1, pose.vAngularVelocity.v2); } }
+            public Matrix transform { get { UpdateInternal(); return pose.mDeviceToAbsoluteTracking.ToMatrix(); } }
+            public Vector3D velocity { get { UpdateInternal(); return new Vector3D(pose.vVelocity.v0, pose.vVelocity.v1, -pose.vVelocity.v2); } }
+            public Vector3D angularVelocity { get { UpdateInternal(); return new Vector3D(-pose.vAngularVelocity.v0, -pose.vAngularVelocity.v1, pose.vAngularVelocity.v2); } }
 
-            public VRControllerState_t GetState() { Update(); return state; }
-            public VRControllerState_t GetPrevState() { Update(); return prevState; }
-            public TrackedDevicePose_t GetPose() { Update(); return pose; }
+            public VRControllerState_t GetState() { UpdateInternal(); return state; }
+            public VRControllerState_t GetPrevState() { UpdateInternal(); return prevState; }
+            public TrackedDevicePose_t GetPose() { UpdateInternal(); return pose; }
 
             VRControllerState_t state, prevState;
             TrackedDevicePose_t pose;
+            int frameCount = 0;
             int prevFrameCount = -1;
 
-            public void Update()
+            public void Update(int frame)
             {
-                var frameCount = 0;
+                frameCount = frame;
+                UpdateInternal();
+            }
+
+            public void UpdateInternal()
+            {
+                
                 if (frameCount != prevFrameCount)
                 {
                     prevFrameCount = frameCount;
@@ -70,23 +77,23 @@ namespace VVVV.Nodes.ValveOpenVR
                     var system = OpenVR.System;
                     if (system != null)
                     {
-                        valid = system.GetControllerStateWithPose( ETrackingUniverseOrigin.TrackingUniverseSeated, index, ref state, ref pose);
+                        valid = system.GetControllerStateWithPose(ETrackingUniverseOrigin.TrackingUniverseSeated, index, ref state, ref pose);
                         UpdateHairTrigger();
                     }
                 }
             }
 
-            public bool GetPress(ulong buttonMask) { Update(); return (state.ulButtonPressed & buttonMask) != 0; }
-            public bool GetPressDown(ulong buttonMask) { Update(); return (state.ulButtonPressed & buttonMask) != 0 && (prevState.ulButtonPressed & buttonMask) == 0; }
-            public bool GetPressUp(ulong buttonMask) { Update(); return (state.ulButtonPressed & buttonMask) == 0 && (prevState.ulButtonPressed & buttonMask) != 0; }
+            public bool GetPress(ulong buttonMask) { UpdateInternal(); return (state.ulButtonPressed & buttonMask) != 0; }
+            public bool GetPressDown(ulong buttonMask) { UpdateInternal(); return (state.ulButtonPressed & buttonMask) != 0 && (prevState.ulButtonPressed & buttonMask) == 0; }
+            public bool GetPressUp(ulong buttonMask) { UpdateInternal(); return (state.ulButtonPressed & buttonMask) == 0 && (prevState.ulButtonPressed & buttonMask) != 0; }
 
             public bool GetPress(EVRButtonId buttonId) { return GetPress(1ul << (int)buttonId); }
             public bool GetPressDown(EVRButtonId buttonId) { return GetPressDown(1ul << (int)buttonId); }
             public bool GetPressUp(EVRButtonId buttonId) { return GetPressUp(1ul << (int)buttonId); }
 
-            public bool GetTouch(ulong buttonMask) { Update(); return (state.ulButtonTouched & buttonMask) != 0; }
-            public bool GetTouchDown(ulong buttonMask) { Update(); return (state.ulButtonTouched & buttonMask) != 0 && (prevState.ulButtonTouched & buttonMask) == 0; }
-            public bool GetTouchUp(ulong buttonMask) { Update(); return (state.ulButtonTouched & buttonMask) == 0 && (prevState.ulButtonTouched & buttonMask) != 0; }
+            public bool GetTouch(ulong buttonMask) { UpdateInternal(); return (state.ulButtonTouched & buttonMask) != 0; }
+            public bool GetTouchDown(ulong buttonMask) { UpdateInternal(); return (state.ulButtonTouched & buttonMask) != 0 && (prevState.ulButtonTouched & buttonMask) == 0; }
+            public bool GetTouchUp(ulong buttonMask) { UpdateInternal(); return (state.ulButtonTouched & buttonMask) == 0 && (prevState.ulButtonTouched & buttonMask) != 0; }
 
             public bool GetTouch(EVRButtonId buttonId) { return GetTouch(1ul << (int)buttonId); }
             public bool GetTouchDown(EVRButtonId buttonId) { return GetTouchDown(1ul << (int)buttonId); }
@@ -94,7 +101,7 @@ namespace VVVV.Nodes.ValveOpenVR
 
             public Vector2D GetAxis(EVRButtonId buttonId = EVRButtonId.k_EButton_SteamVR_Touchpad)
             {
-                Update();
+                UpdateInternal();
                 var axisId = (uint)buttonId - (uint)EVRButtonId.k_EButton_Axis0;
                 switch (axisId)
                 {
@@ -118,12 +125,14 @@ namespace VVVV.Nodes.ValveOpenVR
             }
 
             public float hairTriggerDelta = 0.1f; // amount trigger must be pulled or released to change state
+            public float hairTriggerValue = 0;
             float hairTriggerLimit;
             bool hairTriggerState, hairTriggerPrevState;
             void UpdateHairTrigger()
             {
                 hairTriggerPrevState = hairTriggerState;
                 var value = state.rAxis1.x; // trigger
+                hairTriggerValue = value;
                 if (hairTriggerState)
                 {
                     if (value < hairTriggerLimit - hairTriggerDelta || value <= 0.0f)
@@ -137,9 +146,9 @@ namespace VVVV.Nodes.ValveOpenVR
                 hairTriggerLimit = hairTriggerState ? (float)VMath.Max(hairTriggerLimit, value) : (float)VMath.Min(hairTriggerLimit, value);
             }
 
-            public bool GetHairTrigger() { Update(); return hairTriggerState; }
-            public bool GetHairTriggerDown() { Update(); return hairTriggerState && !hairTriggerPrevState; }
-            public bool GetHairTriggerUp() { Update(); return !hairTriggerState && hairTriggerPrevState; }
+            public bool GetHairTrigger() { UpdateInternal(); return hairTriggerState; }
+            public bool GetHairTriggerDown() { UpdateInternal(); return hairTriggerState && !hairTriggerPrevState; }
+            public bool GetHairTriggerUp() { UpdateInternal(); return !hairTriggerState && hairTriggerPrevState; }
         }
 
         private static Device[] devices;
@@ -156,10 +165,10 @@ namespace VVVV.Nodes.ValveOpenVR
             return devices[deviceIndex];
         }
 
-        public static void Update()
+        public static void Update(int frame)
         {
             for (int i = 0; i < OpenVR.k_unMaxTrackedDeviceCount; i++)
-                Input(i).Update();
+                Input(i).Update(frame);
         }
 
         // This helper can be used in a variety of ways.  Beware that indices may change

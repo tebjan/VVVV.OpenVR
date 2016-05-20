@@ -22,6 +22,27 @@ namespace VVVV.Nodes.ValveOpenVR
         [Output("Events")]
         ISpread<String> FEventsOut;
 
+        [Output("Device Index")]
+        ISpread<int> FDeviceIndexOut;
+
+        [Output("Trigger Touch")]
+        ISpread<bool> FTriggerTouchOut;
+
+        [Output("Trigger Press")]
+        ISpread<bool> FTriggerPressOut;
+
+        [Output("Trigger Axis")]
+        ISpread<double> FTriggerAxisOut;
+
+        [Output("Touchpad Touch")]
+        ISpread<bool> FTouchpadTouchOut;
+
+        [Output("Touchpad Press")]
+        ISpread<bool> FTouchpadPressOut;
+
+        [Output("Touchpad Axis")]
+        ISpread<Vector2D> FTouchpadAxisOut;
+
         [Output("Error", IsSingle = true)]
         ISpread<String> FErrorOut;
 
@@ -46,6 +67,7 @@ namespace VVVV.Nodes.ValveOpenVR
             {
                 VREvent_t evt = default(VREvent_t);
                 FEventsOut.SliceCount = 0;
+                FDeviceIndexOut.SliceCount = 0;
 
                 while (FOpenVRSystem.PollNextEvent(ref evt, FEvtSize))
                 {
@@ -53,11 +75,59 @@ namespace VVVV.Nodes.ValveOpenVR
                     FEventsOut.Add(evtType.ToString());
                     ProcessEvent(evtType, evt);
                 }
+
+                //controller states
+                OpenVRController.Update(FFrame++);
+
+                FDeviceIndexOut.SliceCount = 0;
+
+                FTriggerTouchOut.SliceCount = 0;
+                FTriggerPressOut.SliceCount = 0;
+                FTriggerAxisOut.SliceCount = 0;
+
+                FTouchpadTouchOut.SliceCount = 0;
+                FTouchpadPressOut.SliceCount = 0;
+                FTouchpadAxisOut.SliceCount = 0;
+
+                var indexLeft = (int)FOpenVRSystem.GetTrackedDeviceIndexForControllerRole(ETrackedControllerRole.LeftHand);
+                var indexRight = (int)FOpenVRSystem.GetTrackedDeviceIndexForControllerRole(ETrackedControllerRole.RightHand);
+                if (indexLeft > 0)
+                {
+                    OutputController(indexLeft);
+                }
+
+                if (indexRight > 0)
+                {
+                    OutputController(indexRight); 
+                }
             }
         }
 
-        private static void ProcessEvent(EVREventType evtType, VREvent_t evt)
+        void OutputController(int index)
         {
+            var controller = OpenVRController.Input(index);
+            FDeviceIndexOut.Add(index);
+
+            FTriggerTouchOut.Add(controller.GetTouch(OpenVRController.ButtonMask.Trigger));
+            FTriggerPressOut.Add(controller.GetPress(OpenVRController.ButtonMask.Trigger));
+            FTriggerAxisOut.Add(controller.hairTriggerValue);
+
+
+            FTouchpadTouchOut.Add(controller.GetTouch(OpenVRController.ButtonMask.Touchpad));
+            FTouchpadPressOut.Add(controller.GetPress(OpenVRController.ButtonMask.Touchpad));
+            FTouchpadAxisOut.Add(controller.GetAxis(EVRButtonId.k_EButton_SteamVR_Touchpad));
+
+            var contState = default(VRControllerState_t);
+            var modelState = default(RenderModel_ControllerMode_State_t);
+            var compState = default(RenderModel_ComponentState_t);
+
+        }
+
+        int FFrame = 0;
+
+        private void ProcessEvent(EVREventType evtType, VREvent_t evt)
+        {
+            FDeviceIndexOut.Add((int)evt.trackedDeviceIndex);
             switch (evtType)
             {
                 case EVREventType.VREvent_None:
@@ -80,7 +150,7 @@ namespace VVVV.Nodes.ValveOpenVR
                     break;
                 case EVREventType.VREvent_TrackedDeviceRoleChanged:
                     break;
-                case EVREventType.VREvent_ButtonPress:
+                case EVREventType.VREvent_ButtonPress:    
                     break;
                 case EVREventType.VREvent_ButtonUnpress:
                     break;

@@ -85,7 +85,7 @@
    </PIN>
    <PIN pinname="Present UpFront" slicecount="1" values="0">
    </PIN>
-   <PIN pinname="Time Mode" slicecount="1" values="Filtered">
+   <PIN pinname="Time Mode" slicecount="1" values="Raw">
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="22" systemname="IOBox (Value Advanced)">
@@ -105,7 +105,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="1200" top="8685" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="90">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="120">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>

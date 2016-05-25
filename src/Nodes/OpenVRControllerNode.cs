@@ -103,11 +103,9 @@ namespace VVVV.Nodes.ValveOpenVR
                 // output all others
                for(int i = 0; i < 16; i++)
                {
-                    OpenVR.System.GetTrackedDeviceClass((uint)i);
-
-                    if (i == indexLeft || i == indexRight) continue;
+                    if(OpenVR.System.GetTrackedDeviceClass((uint)i) != ETrackedDeviceClass.Controller) continue;
                     var c = OpenVRController.Input(i);
-                    if (!c.connected || c.valid) continue;
+                    if (!c.connected || !c.valid) continue;
 
                     FControllerOut.Add(c);
                }

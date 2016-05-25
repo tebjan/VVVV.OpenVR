@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.2.dtd" >
-   <PATCH nodename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\OpenVRTest.v4p" scrollx="0" scrolly="3840" systemname="OpenVRTest" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\OpenVRTest.v4p">
-   <BOUNDS type="Window" left="2580" top="2220" width="21015" height="12480">
+   <PATCH nodename="D:\git\vvvv.openvr\OpenVRTest.v4p" scrollx="0" scrolly="-360" systemname="OpenVRTest" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\OpenVRTest.v4p">
+   <BOUNDS type="Window" left="885" top="3300" width="21015" height="12480">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.1.0">
    </PACK>
@@ -161,6 +161,10 @@
    </PIN>
    <PIN pinname="Touchpad Touch" visible="1">
    </PIN>
+   <PIN pinname="Controller" visible="1">
+   </PIN>
+   <PIN pinname="All Controllers" visible="1">
+   </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="27" systemname="IOBox (String)">
    <BOUNDS type="Box" left="2625" top="4155" width="3525" height="4020">
@@ -236,20 +240,6 @@
    </LINK>
    <LINK srcnodeid="24" srcpinname="Layer Out" dstnodeid="12" dstpinname="Layer">
    </LINK>
-   <NODE systemname="ViveControllerMesh" filename="ViveControllerMesh.v4p" nodename="ViveControllerMesh.v4p" componentmode="Hidden" id="37">
-   <BOUNDS type="Node" left="6045" top="8850" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Layer" visible="1">
-   </PIN>
-   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Show Axis" slicecount="1" values="1">
-   </PIN>
-   <BOUNDS type="Window" left="480" top="6105" width="17145" height="13200">
-   </BOUNDS>
-   <PIN pinname="System" visible="1">
-   </PIN>
-   </NODE>
    <LINK srcnodeid="30" srcpinname="Up Edge" dstnodeid="31" dstpinname="Insert">
    </LINK>
    <NODE systemname="S (Node)" nodename="S (Node)" componentmode="Hidden" id="39">
@@ -288,51 +278,43 @@
    </NODE>
    <LINK srcnodeid="44" srcpinname="Input Value" dstnodeid="26" dstpinname="System">
    </LINK>
-   <LINK srcnodeid="44" srcpinname="Input Value" dstnodeid="37" dstpinname="System">
-   </LINK>
    <LINK srcnodeid="12" srcpinname="Render Poses" dstnodeid="39" dstpinname="Input Value">
    </LINK>
    <NODE systemname="GetSlice (Node)" nodename="GetSlice (Node)" componentmode="Hidden" id="46">
    <BOUNDS type="Node" left="6810" top="4995" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Index" visible="1">
+   <PIN pinname="Index" visible="1" slicecount="3" values="0,1,2">
    </PIN>
    <PIN pinname="Input Node" visible="1">
    </PIN>
    <PIN pinname="Output Node" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="26" srcpinname="Device Index" dstnodeid="46" dstpinname="Index">
-   </LINK>
    <LINK srcnodeid="41" srcpinname="Input Value" dstnodeid="46" dstpinname="Input Node">
    </LINK>
-   <LINK srcnodeid="46" srcpinname="Output Node" dstnodeid="37" dstpinname="Transform In">
-   </LINK>
-   <NODE systemname="Scene" filename="Scene.v4p" nodename="Scene.v4p" componentmode="InAWindow" id="51">
-   <BOUNDS type="Node" left="8940" top="8190" width="3945" height="270">
+   <NODE systemname="Scene" filename="Scene.v4p" nodename="Scene.v4p" componentmode="Hidden" id="51">
+   <BOUNDS type="Node" left="8175" top="8280" width="3945" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="7390" top="6640" width="3100" height="3100">
+   <BOUNDS type="Box" left="6625" top="6730" width="3100" height="3100">
    </BOUNDS>
    <BOUNDS type="Window" left="7770" top="4950" width="19845" height="12105">
    </BOUNDS>
-   <PIN pinname="Set" visible="1" slicecount="2" values="0,0">
+   <PIN pinname="Set" visible="1" slicecount="3" values="0,0,0">
    </PIN>
    <PIN pinname="Transform In" visible="1">
    </PIN>
-   <PIN pinname="Reset" visible="1">
+   <PIN pinname="Reset" visible="1" slicecount="3" values="0,0,0">
    </PIN>
    <PIN pinname="Layer" visible="1">
    </PIN>
-   <PIN pinname="Size" visible="1">
+   <PIN pinname="Size" visible="1" slicecount="3" values="0,0,0">
    </PIN>
-   <PIN pinname="XY" visible="1">
+   <PIN pinname="XY" visible="1" slicecount="6" values="0,0,0,0,0,0">
    </PIN>
-   <PIN pinname="Enable Slice" visible="1">
+   <PIN pinname="Enable Slice" visible="1" slicecount="3" values="0,0,0">
    </PIN>
    </NODE>
    <LINK srcnodeid="46" srcpinname="Output Node" dstnodeid="51" dstpinname="Transform In">
-   </LINK>
-   <LINK srcnodeid="26" srcpinname="Touchpad Press" dstnodeid="51" dstpinname="Reset">
    </LINK>
    <NODE id="32" systemname="Preview (DX11.Texture)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Preview (DX11.Texture)" componentmode="InAWindow">
    <BOUNDS type="Node" left="4350" top="12990" width="100" height="100">
@@ -344,17 +326,7 @@
    <PIN pinname="Texture In" visible="1" slicecount="1" values="||">
    </PIN>
    </NODE>
-   <LINK srcnodeid="37" srcpinname="Layer" dstnodeid="24" dstpinname="Layer 3">
-   </LINK>
    <LINK srcnodeid="51" srcpinname="Layer" dstnodeid="24" dstpinname="Layer 5">
-   </LINK>
-   <LINK srcnodeid="26" srcpinname="Trigger Touch" dstnodeid="51" dstpinname="Set">
-   </LINK>
-   <LINK srcnodeid="26" srcpinname="Trigger Axis" dstnodeid="51" dstpinname="Size">
-   </LINK>
-   <LINK srcnodeid="26" srcpinname="Touchpad AxisXY" dstnodeid="51" dstpinname="XY">
-   </LINK>
-   <LINK srcnodeid="26" srcpinname="Touchpad Touch" dstnodeid="51" dstpinname="Enable Slice">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="52" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="5430" top="11325" width="795" height="480">
@@ -377,5 +349,105 @@
    <LINK srcnodeid="52" srcpinname="Y Output Value" dstnodeid="12" dstpinname="Texture ScaleXY">
    </LINK>
    <LINK srcnodeid="12" srcpinname="Texture" dstnodeid="32" dstpinname="Texture In">
+   </LINK>
+   <NODE systemname="Enum2String (Enumerations)" nodename="Enum2String (Enumerations)" componentmode="Hidden" id="57">
+   <BOUNDS type="Node" left="15375" top="4245" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Enum" visible="1" slicecount="1" values="(nil)">
+   </PIN>
+   <PIN pinname="String Value" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="58" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="15375" top="4740" width="1965" height="1170">
+   </BOUNDS>
+   <BOUNDS type="Node" left="15375" top="4740" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="4">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="57" srcpinname="String Value" dstnodeid="58" dstpinname="Input String">
+   </LINK>
+   <NODE systemname="ViveControllerMesh" filename="ViveControllerMesh.v4p" nodename="ViveControllerMesh.v4p" componentmode="Hidden" id="37">
+   <BOUNDS type="Node" left="6045" top="8850" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Show Axis" slicecount="1" values="1">
+   </PIN>
+   <BOUNDS type="Window" left="480" top="6105" width="17145" height="13200">
+   </BOUNDS>
+   <PIN pinname="System" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="44" srcpinname="Input Value" dstnodeid="37" dstpinname="System">
+   </LINK>
+   <LINK srcnodeid="46" srcpinname="Output Node" dstnodeid="37" dstpinname="Transform In">
+   </LINK>
+   <LINK srcnodeid="37" srcpinname="Layer" dstnodeid="24" dstpinname="Layer 3">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="61" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="6075" top="13095" width="1755" height="3990">
+   </BOUNDS>
+   <BOUNDS type="Node" left="6075" top="13095" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="16">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="12" srcpinname="Device Class" dstnodeid="61" dstpinname="Input String">
+   </LINK>
+   <NODE systemname="Controller (Split) (OpenVR)" filename="plugins\OpenVR\VVVV.OpenVR.dll" nodename="Controller (Split) (OpenVR)" componentmode="Hidden" id="53">
+   <BOUNDS type="Node" left="13935" top="2865" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Controller" visible="1">
+   </PIN>
+   <PIN pinname="Device Role" visible="1">
+   </PIN>
+   <PIN pinname="Device Index" visible="1">
+   </PIN>
+   <PIN pinname="Trigger Touch" visible="1">
+   </PIN>
+   <PIN pinname="Trigger Axis" visible="1">
+   </PIN>
+   <PIN pinname="Touchpad Touch" visible="1">
+   </PIN>
+   <PIN pinname="Touchpad Press" visible="1">
+   </PIN>
+   <PIN pinname="Touchpad AxisXY" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="53" srcpinname="Device Index" dstnodeid="46" dstpinname="Index">
+   </LINK>
+   <LINK srcnodeid="53" srcpinname="Trigger Touch" dstnodeid="51" dstpinname="Set">
+   </LINK>
+   <LINK srcnodeid="53" srcpinname="Trigger Axis" dstnodeid="51" dstpinname="Size">
+   </LINK>
+   <LINK srcnodeid="53" srcpinname="Touchpad Touch" dstnodeid="51" dstpinname="Enable Slice">
+   </LINK>
+   <LINK srcnodeid="53" srcpinname="Touchpad Press" dstnodeid="51" dstpinname="Reset">
+   </LINK>
+   <LINK srcnodeid="53" srcpinname="Touchpad AxisXY" dstnodeid="51" dstpinname="XY">
+   </LINK>
+   <LINK srcnodeid="53" srcpinname="Device Role" dstnodeid="57" dstpinname="Enum">
+   </LINK>
+   <LINK srcnodeid="26" srcpinname="All Controllers" dstnodeid="53" dstpinname="Controller">
    </LINK>
    </PATCH>

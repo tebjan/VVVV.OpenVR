@@ -13,14 +13,11 @@ using System.Runtime.InteropServices;
 
 namespace VVVV.Nodes.ValveOpenVR
 {
-    [PluginInfo(Name = "Controller (Split)", Category = "OpenVR", Tags = "vr, htc, vive, oculus, rift", Author = "tonfilm")]
+    [PluginInfo(Name = "Controller", Version = "Split", Category = "OpenVR", Tags = "vr, htc, vive, oculus, rift", Author = "tonfilm")]
     public class ValveOpenVRControllerSplitNode : IPluginEvaluate
     {
         [Input("Controller")]
         IDiffSpread<OpenVRController.Device> FControllerIn;
-
-        [Output("Events")]
-        ISpread<String> FEventsOut;
 
         [Output("Device Index")]
         ISpread<int> FDeviceIndexOut;

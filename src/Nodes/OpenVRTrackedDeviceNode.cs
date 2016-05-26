@@ -13,8 +13,8 @@ using System.Runtime.InteropServices;
 
 namespace VVVV.Nodes.ValveOpenVR
 {
-    [PluginInfo(Name = "Controller", Category = "OpenVR", Tags = "vr, htc, vive, oculus, rift", Author = "tonfilm")]
-    public class ValveOpenVRControllerNode : IPluginEvaluate
+    [PluginInfo(Name = "TrackedDevices", Category = "OpenVR", Tags = "vr, htc, vive, oculus, rift, controller, gamepad", Author = "tonfilm, herbst")]
+    public class ValveOpenVRTrackedDeviceNode : IPluginEvaluate
     {
         [Input("System")]
         IDiffSpread<CVRSystem> FSystemIn;
@@ -22,14 +22,14 @@ namespace VVVV.Nodes.ValveOpenVR
         [Output("Events")]
         ISpread<String> FEventsOut;
 
-        [Output("Device Index")]
+        [Output("Event Device Index")]
         ISpread<int> FDeviceIndexOut;
+
+        [Output("All Devices")]
+        ISpread<OpenVRController.Device> FDevicesOut;
 
         [Output("Device Role")]
         ISpread<ETrackedControllerRole> FDeviceRoleOut;
-        
-        [Output("Error", IsSingle = true)]
-        ISpread<String> FErrorOut;
         
         [Output("Left Controller")]
         ISpread<OpenVRController.Device> FControllerLeftOut;
@@ -40,8 +40,9 @@ namespace VVVV.Nodes.ValveOpenVR
         [Output("Left and Right Controller")]
         ISpread<OpenVRController.Device> FControllerLeftRightOut;
 
-        [Output("All Controllers")]
-        ISpread<OpenVRController.Device> FControllerOut;
+        [Output("Error", IsSingle = true)]
+        ISpread<String> FErrorOut;
+
 
         //the vr system
         CVRSystem FOpenVRSystem;
@@ -82,7 +83,7 @@ namespace VVVV.Nodes.ValveOpenVR
                 FControllerLeftOut.SliceCount = 0;
                 FControllerRightOut.SliceCount = 0;
                 FControllerLeftRightOut.SliceCount = 0;
-                FControllerOut.SliceCount = 0;
+                FDevicesOut.SliceCount = 0;
                 
                 var indexLeft = (int)FOpenVRSystem.GetTrackedDeviceIndexForControllerRole(ETrackedControllerRole.LeftHand);
                 var indexRight = (int)FOpenVRSystem.GetTrackedDeviceIndexForControllerRole(ETrackedControllerRole.RightHand);
@@ -100,14 +101,14 @@ namespace VVVV.Nodes.ValveOpenVR
                     FControllerLeftRightOut.Add(c);
                 }
 
-                // output all others
-               for(int i = 0; i < 16; i++)
+                //output all in one
+               for(int i = 0; i < OpenVR.k_unMaxTrackedDeviceCount; i++)
                {
-                    if(OpenVR.System.GetTrackedDeviceClass((uint)i) != ETrackedDeviceClass.Controller) continue;
+                    //if(FOpenVRSystem.GetTrackedDeviceClass((uint)i) != ETrackedDeviceClass.Controller) continue;
                     var c = OpenVRController.Input(i);
                     if (!c.connected || !c.valid) continue;
-
-                    FControllerOut.Add(c);
+                    FDevicesOut.Add(c);
+                    FDeviceRoleOut.Add(FOpenVRSystem.GetControllerRoleForTrackedDeviceIndex((uint)i));
                }
             }
         }

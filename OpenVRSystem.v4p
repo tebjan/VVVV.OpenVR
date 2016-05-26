@@ -41,7 +41,7 @@
    </PIN>
    <PIN pinname="ViewPort" visible="1" slicecount="1" values="||">
    </PIN>
-   <PIN pinname="Shared Texture" slicecount="1" values="0">
+   <PIN pinname="Shared Texture" slicecount="1" values="1">
    </PIN>
    <PIN pinname="Enabled" slicecount="1" values="1">
    </PIN>
@@ -377,7 +377,7 @@
    <NODE id="58" systemname="Compositor (OpenVR)" filename="plugins\OpenVR\VVVV.OpenVR.dll" nodename="Compositor (OpenVR)" componentmode="Hidden">
    <BOUNDS type="Node" left="4035" top="10125" width="2940" height="270">
    </BOUNDS>
-   <PIN pinname="Texture Handle" visible="1">
+   <PIN pinname="Texture Handle" visible="1" slicecount="1" values="0">
    </PIN>
    <PIN pinname="Is OU" visible="1">
    </PIN>
@@ -386,10 +386,10 @@
    </LINK>
    <LINK srcnodeid="0" srcpinname="System" dstnodeid="58" dstpinname="System">
    </LINK>
-   <LINK srcnodeid="16" srcpinname="Resource Pointer" dstnodeid="58" dstpinname="Texture Handle">
-   </LINK>
    <LINK srcnodeid="153" srcpinname="Y Output Value" dstnodeid="58" dstpinname="Is OU">
    <LINKPOINT x="10965" y="7965">
    </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="16" srcpinname="Resource Pointer" dstnodeid="58" dstpinname="Texture Handle">
    </LINK>
    </PATCH>

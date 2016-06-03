@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.2.dtd" >
-   <PATCH nodename="D:\git\vvvv.openvr\ViveLighthouseMesh.v4p" systemname="ViveLighthouseMesh" filename="D:\git\vvvv.openvr\ViveLighthouseMesh.v4p" scrollx="0" scrolly="7755">
+   <PATCH nodename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\ViveLighthouseMesh.v4p" systemname="ViveLighthouseMesh" filename="D:\git\vvvv.openvr\ViveLighthouseMesh.v4p" scrollx="0" scrolly="8115">
    <BOUNDS type="Window" left="5400" top="7365" width="17145" height="13200">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.1.0">
@@ -77,7 +77,7 @@
    </PIN>
    <PIN pinname="Diffuse Color" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
    </PIN>
-   <PIN pinname="Ambient Color" slicecount="1" values="|0.78649,0.78649,0.78649,1.00000|">
+   <PIN pinname="Ambient Color" slicecount="1" values="|0.80484,0.80484,0.80484,1.00000|">
    </PIN>
    <PIN pinname="Specular Texture" visible="1" slicecount="1" values="||">
    </PIN>

@@ -41,7 +41,7 @@
    </PIN>
    <PIN pinname="ViewPort" visible="1" slicecount="1" values="||">
    </PIN>
-   <PIN pinname="Shared Texture" slicecount="1" values="1">
+   <PIN pinname="Shared Texture" slicecount="1" values="0">
    </PIN>
    <PIN pinname="Enabled" slicecount="1" values="1">
    </PIN>

@@ -74,7 +74,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\OpenVRBaseNode.cs" />
     <Compile Include="Core\OpenVRController.cs" />
+    <Compile Include="Core\OpenVRWrapper.cs" />
     <Compile Include="Nodes\OpenVRTrackedDeviceNode.cs" />
     <Compile Include="Nodes\OpenVRControllerSplitNode.cs" />
     <Compile Include="Nodes\OpenVRModelsNode.cs" />

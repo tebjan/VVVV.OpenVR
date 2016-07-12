@@ -12,7 +12,7 @@ using SlimDX;
 namespace VVVV.Nodes.ValveOpenVR
 {
     [PluginInfo(Name = "Compositor", Category = "OpenVR", Tags = "vr, htc, vive, oculus, rift", Author = "tonfilm")]
-    public class ValveOpenVROutputNode : IPluginEvaluate
+    public class ValveOpenVROutputNode : OpenVRBaseNode, IPluginEvaluate
     {
         [Input("System")]
         IDiffSpread<CVRSystem> FSystemIn;
@@ -28,25 +28,6 @@ namespace VVVV.Nodes.ValveOpenVR
 
         //the vr system
         CVRSystem FOpenVRSystem;
-
-        void SetStatus(object toString)
-        {
-            if(toString is EVRInitError)
-                FErrorOut[0] = OpenVR.GetStringForHmdError((EVRInitError)toString);
-            else if(toString is EVRCompositorError)
-            {
-                var error = (EVRCompositorError)toString;
-
-                if (error == EVRCompositorError.TextureIsOnWrongDevice)
-                    FErrorOut[0] = "Texture on wrong device. Set your graphics driver to use the same video card for vvvv as the headset is plugged into.";
-                else if (error == EVRCompositorError.TextureUsesUnsupportedFormat)
-                    FErrorOut[0] = "Unsupported texture format. Make sure texture uses RGBA, is not compressed and has no mipmaps.";
-                else
-                    FErrorOut[0] = error.ToString();
-            }
-            else
-                FErrorOut[0] = toString.ToString();
-        }
 
         Texture_t FTexture;
 

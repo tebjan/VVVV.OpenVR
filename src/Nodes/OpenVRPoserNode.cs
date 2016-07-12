@@ -14,7 +14,7 @@ using System.Runtime.InteropServices;
 namespace VVVV.Nodes.ValveOpenVR
 {
     [PluginInfo(Name = "Poser", Category = "OpenVR", Tags = "vr, htc, vive, oculus, rift", Author = "tonfilm")]
-    public class ValveOpenVRInputNode : IPluginEvaluate, IDisposable
+    public class ValveOpenVRInputNode : OpenVRBaseNode, IPluginEvaluate, IDisposable
     {
         [Output("System", Order = -100, IsSingle = true)]
         ISpread<CVRSystem> FSystemOut;
@@ -46,53 +46,25 @@ namespace VVVV.Nodes.ValveOpenVR
         [Output("Recommended Texture Size")]
         ISpread<Vector2D> FTexSizeOut;
 
-        [Output("Error")]
-        ISpread<String> FErrorOut;
-
         //the vr system
         CVRSystem FOpenVRSystem;
 
-        void SetStatus(object toString)
-        {
-            if(toString is EVRInitError)
-                FErrorOut[0] = OpenVR.GetStringForHmdError((EVRInitError)toString);
-            else
-                FErrorOut[0] = toString.ToString();
-        }
-
-        void InitOpenVR()
-        {
-            if (OpenVR.IsHmdPresent())
-            {
-                var initError = EVRInitError.Unknown;
-                FOpenVRSystem = OpenVR.Init(ref initError, EVRApplicationType.VRApplication_Scene);
-                SetStatus(initError);
-                if (initError != EVRInitError.None) return;
-
-                //texture size
-                uint sizeX = 0;
-                uint sizeY = 0;
-                FOpenVRSystem.GetRecommendedRenderTargetSize(ref sizeX, ref sizeY);
-                FTexSizeOut[0] = new Vector2D(sizeX, sizeY);
-                
-            }
-            else
-            {
-                SetStatus(EVRInitError.Init_HmdNotFound);
-            }
-        }
-
-        void ShutDownOpenVR()
-        {
-            OpenVR.Shutdown();
-            FOpenVRSystem = null;
-        }
-
         public void Evaluate(int SpreadMax)
         {
-            
+
             if (FOpenVRSystem == null)
-                InitOpenVR();
+            {
+                FOpenVRSystem = InitOpenVR();
+
+                if (FOpenVRSystem != null)
+                {
+                    //texture size
+                    uint sizeX = 0;
+                    uint sizeY = 0;
+                    FOpenVRSystem.GetRecommendedRenderTargetSize(ref sizeX, ref sizeY);
+                    FTexSizeOut[0] = new Vector2D(sizeX, sizeY);
+                }
+            }
 
             if(FOpenVRSystem != null)
             {

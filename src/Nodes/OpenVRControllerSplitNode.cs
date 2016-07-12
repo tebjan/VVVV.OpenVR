@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 
 namespace VVVV.Nodes.ValveOpenVR
 {
-    [PluginInfo(Name = "Controller", Version = "Split", Category = "OpenVR", Tags = "vr, htc, vive, oculus, rift", Author = "tonfilm")]
+    [PluginInfo(Name = "Controller", Version = "Split", Category = "OpenVR", Tags = "vr, htc, vive, oculus, rift", Author = "tonfilm, herbst")]
     public class ValveOpenVRControllerSplitNode : IPluginEvaluate
     {
         [Input("Controller")]

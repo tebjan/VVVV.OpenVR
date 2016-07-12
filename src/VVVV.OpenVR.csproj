@@ -82,7 +82,7 @@
     <Compile Include="Core\OpenVRExtensions.cs" />
     <Compile Include="Nodes\OpenVRCompositorNode.cs" />
     <Compile Include="Nodes\OpenVRPoserNode.cs" />
-    <Compile Include="Core\openvr_api.cs" />
+    <Compile Include="openvr\headers\openvr_api.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

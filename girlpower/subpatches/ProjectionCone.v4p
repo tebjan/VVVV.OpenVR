@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.2.dtd" >
-   <PATCH nodename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\ProjectionCone.v4p" systemname="ProjectionCone" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\ProjectionCone.v4p" scrollx="2880" scrolly="0">
+   <PATCH nodename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\ProjectionCone.v4p" systemname="ProjectionCone" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\ProjectionCone.v4p" scrollx="0" scrolly="0">
    <BOUNDS type="Window" left="9030" top="3540" width="16605" height="11895">
    </BOUNDS>
    <NODE componentmode="InABox" hiddenwhenlocked="0" id="68" nodename="IOBox (Value Advanced)" systemname="IOBox (Value Advanced)">

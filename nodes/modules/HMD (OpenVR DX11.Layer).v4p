@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.2.dtd" >
-   <PATCH nodename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\ViveLighthouseMesh.v4p" systemname="ViveLighthouseMesh" filename="D:\git\vvvv.openvr\ViveLighthouseMesh.v4p" scrollx="0" scrolly="8115">
-   <BOUNDS type="Window" left="5400" top="7365" width="17145" height="13200">
+   <PATCH nodename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\nodes\modules\HMD (OpenVR DX11.Layer).v4p" systemname="HMD (OpenVR DX11.Layer)" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\nodes\modules\HMD (OpenVR DX11.Layer).v4p" scrollx="0" scrolly="3285">
+   <BOUNDS type="Window" left="345" top="6975" width="17145" height="13200">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.1.0">
    </PACK>
@@ -33,7 +33,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="5835" top="1380" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Input String" slicecount="1" visible="1" values="|C:\Program Files (x86)\Steam\SteamApps\common\SteamVR\resources\rendermodels\lh_basestation_vive|">
+   <PIN pinname="Input String" slicecount="1" visible="1" values="|C:\Program Files (x86)\Steam\SteamApps\common\SteamVR\resources\rendermodels\generic_hmd|">
    </PIN>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -66,38 +66,6 @@
    </NODE>
    <LINK srcnodeid="304" srcpinname="Output Enum" dstnodeid="303" dstpinname="Mode">
    </LINK>
-   <NODE systemname="OpenVRMesh (DX11.Effect)" nodename="OpenVRMesh (DX11.Effect)" componentmode="Hidden" id="295" filename="dx11\OpenVRMesh.fx">
-   <BOUNDS type="Node" left="4485" top="13770" width="7620" height="270">
-   </BOUNDS>
-   <BOUNDS type="Box" left="4485" top="13770">
-   </BOUNDS>
-   <PIN pinname="Render State" slicecount="1" visible="1" values="||">
-   </PIN>
-   <PIN pinname="Texture" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Diffuse Color" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
-   </PIN>
-   <PIN pinname="Ambient Color" slicecount="1" values="|0.80484,0.80484,0.80484,1.00000|">
-   </PIN>
-   <PIN pinname="Specular Texture" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Power" slicecount="1" visible="1" values="25">
-   </PIN>
-   <PIN pinname="Specular Color" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
-   </PIN>
-   <PIN pinname="Diffuse Texture" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Geometry" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Enabled" slicecount="1" values="1">
-   </PIN>
-   <PIN pinname="Layer" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="303" srcpinname="Render State" dstnodeid="295" dstpinname="Render State">
-   </LINK>
    <NODE systemname="GetSlice (Node)" nodename="GetSlice (Node)" componentmode="Hidden" id="305">
    <BOUNDS type="Node" left="10155" top="13155" width="100" height="100">
    </BOUNDS>
@@ -110,8 +78,6 @@
    <PIN pinname="Output Node" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="305" srcpinname="Output Node" dstnodeid="295" dstpinname="Texture">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="307" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="8265" top="13230" width="795" height="240">
    </BOUNDS>
@@ -124,8 +90,6 @@
    <PIN pinname="Precision" slicecount="1" values="4">
    </PIN>
    </NODE>
-   <LINK srcnodeid="307" srcpinname="Y Output Value" dstnodeid="295" dstpinname="Power">
-   </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="310" systemname="IOBox (String)">
    <BOUNDS type="Box" left="6465" top="3390" width="1995" height="2610">
    </BOUNDS>
@@ -218,8 +182,6 @@
    </LINK>
    <LINK srcnodeid="297" srcpinname="Shortname" dstnodeid="310" dstpinname="Input String">
    </LINK>
-   <LINK srcnodeid="314" srcpinname="Output" dstnodeid="295" dstpinname="Geometry">
-   </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="318" systemname="IOBox (String)">
    <BOUNDS type="Box" left="10950" top="10575" width="2070" height="480">
    </BOUNDS>
@@ -275,15 +237,13 @@
    <NODE systemname="Group (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Group (DX11.Layer)" componentmode="Hidden" id="322">
    <BOUNDS type="Node" left="4125" top="15840" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Layer 2" visible="1">
+   <PIN pinname="Layer 2" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Layer 1" visible="1">
    </PIN>
    <PIN pinname="Layer Out" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="295" srcpinname="Layer" dstnodeid="322" dstpinname="Layer 2">
-   </LINK>
    <LINK srcnodeid="321" srcpinname="Layer Out" dstnodeid="322" dstpinname="Layer 1">
    </LINK>
    <LINK srcnodeid="322" srcpinname="Layer Out" dstnodeid="319" dstpinname="Input Node">
@@ -360,8 +320,6 @@
    <PIN pinname="Transform Out" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="335" srcpinname="Transform Out" dstnodeid="295" dstpinname="Transform In">
-   </LINK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="369" systemname="IOBox (Node)">
    <BOUNDS type="Box" left="7320" top="7215" width="795" height="240">
    </BOUNDS>
@@ -391,8 +349,6 @@
    <LINK srcnodeid="369" srcpinname="Output Node" dstnodeid="370" dstpinname="Transform In">
    </LINK>
    <LINK srcnodeid="370" srcpinname="Transform Out" dstnodeid="321" dstpinname="Transform In">
-   </LINK>
-   <LINK srcnodeid="305" srcpinname="Output Node" dstnodeid="295" dstpinname="Diffuse Texture">
    </LINK>
    <NODE systemname="FileTexture (DX11 2d)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="FileTexture (DX11 2d)" componentmode="Hidden" id="276">
    <BOUNDS type="Node" left="10170" top="12315" width="100" height="100">
@@ -449,7 +405,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="10185" top="11745" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Input String" slicecount="1" visible="1" values="plugins\OpenVR\lh_basestation_vive.png">
+   <PIN pinname="Input String" slicecount="1" visible="1" values="plugins\OpenVR\generic_hmd.png">
    </PIN>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -463,5 +419,47 @@
    <LINK srcnodeid="373" srcpinname="Output String" dstnodeid="276" dstpinname="Filename">
    </LINK>
    <LINK srcnodeid="312" srcpinname="Output Node" dstnodeid="335" dstpinname="Transform In">
+   </LINK>
+   <NODE systemname="OpenVRMesh (DX11.Effect)" nodename="OpenVRMesh (DX11.Effect)" componentmode="Hidden" id="295" filename="..\dx11\OpenVRMesh.fx">
+   <BOUNDS type="Node" left="4485" top="13770" width="7620" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4485" top="13770">
+   </BOUNDS>
+   <PIN pinname="Render State" slicecount="1" visible="1" values="||">
+   </PIN>
+   <PIN pinname="Texture" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Diffuse Color" slicecount="1" values="|0.58799,0.58799,0.58799,1.00000|">
+   </PIN>
+   <PIN pinname="Ambient Color" slicecount="1" values="|0.00000,0.00000,0.00000,1.00000|">
+   </PIN>
+   <PIN pinname="Specular Texture" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Power" slicecount="1" visible="1" values="25">
+   </PIN>
+   <PIN pinname="Specular Color" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
+   </PIN>
+   <PIN pinname="Diffuse Texture" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Geometry" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Enabled" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="303" srcpinname="Render State" dstnodeid="295" dstpinname="Render State">
+   </LINK>
+   <LINK srcnodeid="307" srcpinname="Y Output Value" dstnodeid="295" dstpinname="Power">
+   </LINK>
+   <LINK srcnodeid="314" srcpinname="Output" dstnodeid="295" dstpinname="Geometry">
+   </LINK>
+   <LINK srcnodeid="295" srcpinname="Layer" dstnodeid="322" dstpinname="Layer 2">
+   </LINK>
+   <LINK srcnodeid="335" srcpinname="Transform Out" dstnodeid="295" dstpinname="Transform In">
+   </LINK>
+   <LINK srcnodeid="305" srcpinname="Output Node" dstnodeid="295" dstpinname="Diffuse Texture">
    </LINK>
    </PATCH>

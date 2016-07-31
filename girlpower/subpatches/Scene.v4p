@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.2.dtd" >
-   <PATCH nodename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\Scene.v4p" systemname="Scene" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\Scene.v4p" scrollx="0" scrolly="735">
+   <PATCH nodename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\girlpower\subpatches\Scene.v4p" systemname="Scene" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\girlpower\subpatches\Scene.v4p" scrollx="0" scrolly="0">
    <NODE id="1" systemname="IOBox (Node)" componentmode="InABox" nodename="IOBox (Node)">
    <PIN pinname="Descriptive Name" slicecount="1" values="Layer">
    </PIN>
@@ -10,7 +10,7 @@
    <PIN pinname="Input Node" visible="1" slicecount="1" values="||">
    </PIN>
    </NODE>
-   <BOUNDS type="Window" left="10290" top="6435" width="27930" height="16590">
+   <BOUNDS type="Window" left="7110" top="3825" width="18675" height="12375">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.1.0">
    </PACK>
@@ -19,7 +19,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="2400" top="3135" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Input Node" slicecount="1" visible="1" values="||">
+   <PIN pinname="Input Node" slicecount="3" visible="1" values=",,">
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Transform In|">
    </PIN>
@@ -93,7 +93,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="5683" top="5718" width="7275" height="8545">
    </BOUNDS>
-   <BOUNDS type="Window" left="20070" top="16170" width="7275" height="8535">
+   <BOUNDS type="Window" left="11175" top="7455" width="7275" height="8535">
    </BOUNDS>
    <PIN pinname="Layer Out" visible="1">
    </PIN>
@@ -118,7 +118,7 @@
    </NODE>
    <LINK srcnodeid="22" srcpinname="Light Direction Out" dstnodeid="120" dstpinname="Light DirectionXYZ">
    </LINK>
-   <NODE systemname="PaintSpray" filename="PaintSpray.v4p" nodename="PaintSpray.v4p" componentmode="Hidden" id="123">
+   <NODE systemname="Paint" filename="Paint.v4p" nodename="Paint.v4p" componentmode="Hidden" id="123">
    <BOUNDS type="Node" left="2511" top="9898" width="5145" height="270">
    </BOUNDS>
    <BOUNDS type="Box" left="0" top="2946" width="13135" height="13905">
@@ -160,7 +160,19 @@
    </NODE>
    <LINK srcnodeid="124" srcpinname="Y Output Value" dstnodeid="115" dstpinname="Enablede Boxes">
    </LINK>
-   <NODE systemname="Controller (OpenVR Split)" filename="plugins\OpenVR\VVVV.OpenVR.dll" nodename="Controller (OpenVR Split)" componentmode="Hidden" id="125">
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="126" systemname="IOBox (Node)">
+   <BOUNDS type="Box" left="4815" top="2025" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4815" top="2025" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Node" slicecount="1" visible="1" values="||">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Controller">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="22" srcpinname="Light Direction Out" dstnodeid="115" dstpinname="Light DirectionXYZ">
+   </LINK>
+   <NODE systemname="Controller (OpenVR Split)" filename="..\..\nodes\plugins\VVVV.OpenVR.dll" nodename="Controller (OpenVR Split)" componentmode="Hidden" id="125">
    <BOUNDS type="Node" left="4815" top="2955" width="10155" height="270">
    </BOUNDS>
    <PIN pinname="Controller" visible="1" slicecount="1" values="||">
@@ -180,16 +192,6 @@
    <PIN pinname="Touchpad AxisXY" visible="1">
    </PIN>
    </NODE>
-   <NODE nodename="IOBox (Node)" componentmode="InABox" id="126" systemname="IOBox (Node)">
-   <BOUNDS type="Box" left="4815" top="2025" width="795" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="4815" top="2025" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Input Node" slicecount="1" visible="1" values="||">
-   </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="Controller">
-   </PIN>
-   </NODE>
    <LINK srcnodeid="126" srcpinname="Output Node" dstnodeid="125" dstpinname="Controller">
    </LINK>
    <LINK srcnodeid="125" srcpinname="Trigger Axis" dstnodeid="123" dstpinname="Pressure">
@@ -201,7 +203,5 @@
    <LINK srcnodeid="125" srcpinname="Touchpad Touch" dstnodeid="116" dstpinname="Scaling">
    </LINK>
    <LINK srcnodeid="125" srcpinname="Trigger Touch" dstnodeid="123" dstpinname="Paint">
-   </LINK>
-   <LINK srcnodeid="22" srcpinname="Light Direction Out" dstnodeid="115" dstpinname="Light DirectionXYZ">
    </LINK>
    </PATCH>

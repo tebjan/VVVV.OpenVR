@@ -34,6 +34,9 @@ namespace VVVV.Nodes.ValveOpenVR
         [Output("Recommended Texture Size")]
         ISpread<Vector2D> FTexSizeOut;
 
+        [Output("HMD Pose", IsSingle = true)]
+        ISpread<Matrix> FHMDPoseOut;
+
         public override void Evaluate(int SpreadMax, CVRSystem system)
         {
             FTexSizeOut[0] = OpenVRManager.RecommendedRenderTargetSize;
@@ -69,6 +72,8 @@ namespace VVVV.Nodes.ValveOpenVR
                 FVerticesLeftOut.SliceCount = 0;
                 FVerticesRightOut.SliceCount = 0;
             }
+
+            FHMDPoseOut[0] = OpenVRManager.GamePoses[0].mDeviceToAbsoluteTracking.ToMatrix();
         }
 
         void GetMeshData(HiddenAreaMesh_t meshData, ISpread<float> ret)

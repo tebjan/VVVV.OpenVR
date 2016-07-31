@@ -1,25 +1,9 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.2.dtd" >
-   <PATCH nodename="C:\vvvv\vvvv_45beta34.2_x64\packs\VVVV.OpenVR\nodes\modules\Renderer (OpenVR DX11).v4p" scrollx="0" scrolly="0" systemname="Renderer (OpenVR DX11)" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\nodes\modules\Renderer (OpenVR DX11).v4p">
+   <PATCH nodename="C:\vvvv\vvvv_45beta34.2_x64\packs\VVVV.OpenVR\nodes\modules\Renderer (OpenVR DX11).v4p" scrollx="0" scrolly="-360" systemname="Renderer (OpenVR DX11)" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\nodes\modules\Renderer (OpenVR DX11).v4p">
    <BOUNDS type="Window" left="5970" top="3330" width="20835" height="12675">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.1.0">
    </PACK>
-   <NODE nodename="IOBox (String)" componentmode="InABox" id="1" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="11925" top="915" width="1185" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="11925" top="915" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Default" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="File Mask" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
-   </PIN>
-   <PIN pinname="Input String" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="|HMD Error|">
-   </PIN>
-   </NODE>
    <NODE systemname="Renderer (DX11 TempTarget)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11 TempTarget)" componentmode="Hidden" id="15">
    <BOUNDS type="Node" left="4200" top="6810" width="4755" height="270">
    </BOUNDS>
@@ -75,9 +59,9 @@
    <LINK srcnodeid="15" srcpinname="Buffers" dstnodeid="16" dstpinname="Texture In">
    </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="59" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="4035" top="11055" width="2445" height="240">
+   <BOUNDS type="Box" left="10875" top="11085" width="2445" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="4035" top="11055" width="0" height="0">
+   <BOUNDS type="Node" left="10875" top="11085" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -115,9 +99,9 @@
    <LINK srcnodeid="66" srcpinname="Layer Out" dstnodeid="15" dstpinname="Layer">
    </LINK>
    <NODE systemname="HiddenArea (OpenVR DX11.Layer Viewport)" filename="HiddenArea (OpenVR DX11.Layer Viewport).v4p" nodename="HiddenArea (OpenVR DX11.Layer Viewport).v4p" componentmode="Hidden" id="144">
-   <BOUNDS type="Node" left="8857" top="924" width="1635" height="270">
+   <BOUNDS type="Node" left="9157" top="1014" width="1635" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="5130" top="120" width="7455" height="6400">
+   <BOUNDS type="Box" left="5430" top="210" width="7455" height="6400">
    </BOUNDS>
    <BOUNDS type="Window" left="1065" top="5040" width="12720" height="11625">
    </BOUNDS>
@@ -125,9 +109,11 @@
    </PIN>
    <PIN pinname="Is Right" slicecount="1" values="0">
    </PIN>
-   <PIN pinname="Vertices Right" visible="1" slicecount="1" values="0">
+   <PIN pinname="Vertices Right" visible="1" slicecount="120" values="1,0,0.629999995231628,0,0.759999990463257,0.0500000007450581,1,0,0.759999990463257,0.0500000007450581,0.868000030517578,0.123000003397465,1,0,0.868000030517578,0.123000003397465,0.939999997615814,0.200000002980232,1,0,0.939999997615814,0.200000002980232,1,0.294999986886978,0,0,0,0.200000002980232,0.0899999737739563,0.109999999403954,0,0,0.0899999737739563,0.109999999403954,0.189999997615814,0.0450000017881393,0,0,0.189999997615814,0.0450000017881393,0.319999992847443,0,0,0.495000004768372,0,0.800000011920929,0.0870000123977661,0.628000020980835,0,0.495000004768372,0.0870000123977661,0.628000020980835,0.105000019073486,0.495000004768372,0,0.495000004768372,0.105000019073486,0.495000004768372,0.0839999914169311,0.363999992609024,0,0.495000004768372,0.0839999914169311,0.363999992609024,0,0.194999992847443,0,1,0.343999981880188,1,0.259999990463257,0.975000023841858,0,1,0.259999990463257,0.975000023841858,0.186999976634979,0.944999992847443,0,1,0.186999976634979,0.944999992847443,0.0699999928474426,0.867999970912933,0,1,0.0699999928474426,0.867999970912933,0,0.787999987602234,1,1,1,0.699999988079071,0.959999978542328,0.76800000667572,1,1,0.959999978542328,0.76800000667572,0.909999966621399,0.833000004291534,1,1,0.909999966621399,0.833000004291534,0.810000002384186,0.915000021457672,1,1,0.810000002384186,0.915000021457672,0.728999972343445,0.959999978542328,1,1,0.728999972343445,0.959999978542328,0.611999988555908,1">
    </PIN>
    <PIN pinname="Color" slicecount="1" values="|0.00000,0.00000,0.00000,1.00000|">
+   </PIN>
+   <PIN pinname="Vertices Left" slicecount="120" values="0,0,0.370000004768372,0,0.239999994635582,0.0500000007450581,0,0,0.239999994635582,0.0500000007450581,0.131999999284744,0.123000003397465,0,0,0.131999999284744,0.123000003397465,0.0599999986588955,0.200000002980232,0,0,0.0599999986588955,0.200000002980232,0,0.294999986886978,1,0,1,0.200000002980232,0.910000026226044,0.109999999403954,1,0,0.910000026226044,0.109999999403954,0.810000002384186,0.0450000017881393,1,0,0.810000002384186,0.0450000017881393,0.680000007152557,0,1,0.495000004768372,1,0.800000011920929,0.912999987602234,0.628000020980835,1,0.495000004768372,0.912999987602234,0.628000020980835,0.894999980926514,0.495000004768372,1,0.495000004768372,0.894999980926514,0.495000004768372,0.916000008583069,0.363999992609024,1,0.495000004768372,0.916000008583069,0.363999992609024,1,0.194999992847443,1,1,0.656000018119812,1,0.740000009536743,0.975000023841858,1,1,0.740000009536743,0.975000023841858,0.813000023365021,0.944999992847443,1,1,0.813000023365021,0.944999992847443,0.930000007152557,0.867999970912933,1,1,0.930000007152557,0.867999970912933,1,0.787999987602234,0,1,0,0.699999988079071,0.0399999991059303,0.76800000667572,0,1,0.0399999991059303,0.76800000667572,0.0900000035762787,0.833000004291534,0,1,0.0900000035762787,0.833000004291534,0.189999997615814,0.915000021457672,0,1,0.189999997615814,0.915000021457672,0.270999997854233,0.959999978542328,0,1,0.270999997854233,0.959999978542328,0.388000011444092,1">
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="148" systemname="IOBox (Node)">
@@ -143,9 +129,9 @@
    <LINK srcnodeid="144" srcpinname="Layer" dstnodeid="66" dstpinname="Layer 1">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="152" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="9165" top="3750" width="795" height="480">
+   <BOUNDS type="Box" left="7995" top="3915" width="795" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="9165" top="3750" width="0" height="0">
+   <BOUNDS type="Node" left="7995" top="3915" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="2" visible="1" values="1.4,1.4">
    </PIN>
@@ -163,9 +149,9 @@
    <LINK srcnodeid="152" srcpinname="Y Output Value" dstnodeid="15" dstpinname="Texture ScaleXY">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="153" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="10950" top="3600" width="480" height="480">
+   <BOUNDS type="Box" left="10995" top="3075" width="480" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="10950" top="3600" width="0" height="0">
+   <BOUNDS type="Node" left="10995" top="3075" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
@@ -213,9 +199,9 @@
    <LINK srcnodeid="157" srcpinname="Transform Out" dstnodeid="15" dstpinname="View">
    </LINK>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="163" systemname="IOBox (Enumerations)">
-   <BOUNDS type="Box" left="5490" top="5940" width="930" height="255">
+   <BOUNDS type="Box" left="5355" top="5370" width="930" height="255">
    </BOUNDS>
-   <BOUNDS type="Node" left="5490" top="5940" width="0" height="0">
+   <BOUNDS type="Node" left="5355" top="5370" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Input Enum" slicecount="1" visible="1" values="2">
    </PIN>
@@ -225,9 +211,9 @@
    <LINK srcnodeid="163" srcpinname="Output Enum" dstnodeid="15" dstpinname="AA Samples per Pixel">
    </LINK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="164" systemname="IOBox (Node)">
-   <BOUNDS type="Box" left="2310" top="675" width="795" height="240">
+   <BOUNDS type="Box" left="2280" top="435" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="2310" top="675" width="0" height="0">
+   <BOUNDS type="Node" left="2280" top="435" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Input Node" slicecount="1" visible="1" values="||">
    </PIN>
@@ -237,9 +223,9 @@
    <LINK srcnodeid="164" srcpinname="Output Node" dstnodeid="157" dstpinname="Transform In 1">
    </LINK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="165" systemname="IOBox (Node)">
-   <BOUNDS type="Box" left="1170" top="660" width="795" height="240">
+   <BOUNDS type="Box" left="1140" top="420" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="1170" top="660" width="0" height="0">
+   <BOUNDS type="Node" left="1140" top="420" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Input Node" slicecount="1" visible="1" values="||">
    </PIN>
@@ -285,9 +271,9 @@
    <LINK srcnodeid="174" srcpinname="ViewPort" dstnodeid="155" dstpinname="Input 1">
    </LINK>
    <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="176">
-   <BOUNDS type="Node" left="7455" top="5625" width="100" height="100">
+   <BOUNDS type="Node" left="8280" top="5835" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Input 1" visible="1" slicecount="1" values="1">
+   <PIN pinname="Input 1" visible="1" slicecount="2" values="1512,1680">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -295,7 +281,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Switch (Value Input)" nodename="Switch (Value Input)" componentmode="Hidden" id="175">
-   <BOUNDS type="Node" left="8505" top="5295" width="100" height="100">
+   <BOUNDS type="Node" left="8565" top="5370" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 2" visible="1" slicecount="1" values="0">
    </PIN>
@@ -309,9 +295,9 @@
    <LINK srcnodeid="153" srcpinname="Y Output Value" dstnodeid="175" dstpinname="Switch">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="178" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="8970" top="4575" width="795" height="480">
+   <BOUNDS type="Box" left="9165" top="4560" width="285" height="495">
    </BOUNDS>
-   <BOUNDS type="Node" left="8970" top="4575" width="0" height="0">
+   <BOUNDS type="Node" left="9165" top="4560" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="2" visible="1" values="2,1">
    </PIN>
@@ -325,13 +311,15 @@
    </PIN>
    <PIN pinname="Default" slicecount="1" values="|0, 0|">
    </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
    </NODE>
    <LINK srcnodeid="178" srcpinname="Y Output Value" dstnodeid="175" dstpinname="Input 1">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="179" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="9945" top="4575" width="795" height="480">
+   <BOUNDS type="Box" left="9600" top="4545" width="285" height="495">
    </BOUNDS>
-   <BOUNDS type="Node" left="9945" top="4575" width="0" height="0">
+   <BOUNDS type="Node" left="9600" top="4545" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="2" visible="1" values="1,2">
    </PIN>
@@ -344,6 +332,8 @@
    <PIN pinname="Vector Size" slicecount="1" values="2">
    </PIN>
    <PIN pinname="Default" slicecount="1" values="|0, 0|">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
    </PIN>
    </NODE>
    <LINK srcnodeid="179" srcpinname="Y Output Value" dstnodeid="175" dstpinname="Input 2">
@@ -359,57 +349,61 @@
    </PIN>
    <PIN pinname="Is OU" visible="1">
    </PIN>
-   <PIN pinname="System" visible="1">
+   <PIN pinname="System" visible="1" slicecount="1" values="||">
    </PIN>
    </NODE>
    <LINK srcnodeid="58" srcpinname="Error" dstnodeid="59" dstpinname="Input String">
    </LINK>
    <LINK srcnodeid="153" srcpinname="Y Output Value" dstnodeid="58" dstpinname="Is OU">
-   <LINKPOINT x="10965" y="7965">
+   <LINKPOINT x="10988" y="7702">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="16" srcpinname="Resource Pointer" dstnodeid="58" dstpinname="Texture Handle">
    </LINK>
-   <NODE id="0" systemname="Camera (OpenVR)" filename="%VVVV%\packs\VVVV.OpenVR\nodes\plugins\VVVV.OpenVR.dll" nodename="Camera (OpenVR)" componentmode="Hidden">
-   <BOUNDS type="Node" left="4035" top="240" width="7935" height="270">
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="180" systemname="IOBox (Node)">
+   <BOUNDS type="Box" left="6000" top="1140" width="795" height="240">
    </BOUNDS>
-   <PIN pinname="Projection" visible="1">
+   <BOUNDS type="Node" left="6000" top="1140" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|HMD Pose|">
    </PIN>
-   <PIN pinname="Render Poses" visible="1">
-   </PIN>
-   <PIN pinname="Eye to Head" visible="1">
-   </PIN>
-   <PIN pinname="Game Poses" visible="1">
-   </PIN>
-   <PIN pinname="View" visible="1">
-   </PIN>
-   <PIN pinname="Vertices" visible="1">
-   </PIN>
-   <PIN pinname="Vertices Left" visible="1">
-   </PIN>
-   <PIN pinname="Vertices Right" visible="1">
-   </PIN>
-   <PIN pinname="Recommended Texture SizeXY" visible="1">
-   </PIN>
-   <PIN pinname="ViewportXYZW" visible="1">
-   </PIN>
-   <PIN pinname="System" visible="1">
-   </PIN>
-   <PIN pinname="Init" slicecount="1" values="0">
+   <PIN pinname="Input Node" slicecount="1" values="||">
    </PIN>
    </NODE>
-   <LINK srcnodeid="0" srcpinname="Error" dstnodeid="1" dstpinname="Input String">
+   <NODE id="181" systemname="Camera (OpenVR)" filename="%VVVV%\packs\VVVV.OpenVR\nodes\plugins\VVVV.OpenVR.dll" nodename="Camera (OpenVR)" componentmode="Hidden">
+   <BOUNDS type="Node" left="4020" top="225" width="7935" height="270">
+   </BOUNDS>
+   <PIN pinname="Error" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="181" srcpinname="Vertices Left" dstnodeid="144" dstpinname="Vertices Left">
    </LINK>
-   <LINK srcnodeid="0" srcpinname="Vertices Left" dstnodeid="144" dstpinname="Vertices Left">
+   <LINK srcnodeid="181" srcpinname="Projection" dstnodeid="15" dstpinname="Projection">
    </LINK>
-   <LINK srcnodeid="0" srcpinname="Projection" dstnodeid="15" dstpinname="Projection">
+   <LINK srcnodeid="181" srcpinname="Vertices Right" dstnodeid="144" dstpinname="Vertices Right">
    </LINK>
-   <LINK srcnodeid="0" srcpinname="Vertices Right" dstnodeid="144" dstpinname="Vertices Right">
+   <LINK srcnodeid="181" srcpinname="View" dstnodeid="157" dstpinname="Transform In 2">
    </LINK>
-   <LINK srcnodeid="0" srcpinname="View" dstnodeid="157" dstpinname="Transform In 2">
+   <LINK srcnodeid="181" srcpinname="Recommended Texture SizeXY" dstnodeid="176" dstpinname="Input 1">
    </LINK>
-   <LINK srcnodeid="0" srcpinname="Recommended Texture SizeXY" dstnodeid="176" dstpinname="Input 1">
+   <LINK srcnodeid="181" srcpinname="System" dstnodeid="58" dstpinname="System">
    </LINK>
-   <LINK srcnodeid="0" srcpinname="System" dstnodeid="58" dstpinname="System">
+   <LINK srcnodeid="181" srcpinname="HMD Pose" dstnodeid="180" dstpinname="Input Node">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="182" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="11910" top="840" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="11910" top="840" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Error">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="181" srcpinname="Error" dstnodeid="182" dstpinname="Input String">
    </LINK>
    </PATCH>

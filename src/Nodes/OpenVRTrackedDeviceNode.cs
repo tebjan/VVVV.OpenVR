@@ -37,9 +37,6 @@ namespace VVVV.Nodes.ValveOpenVR
         [Output("Left and Right Controller")]
         ISpread<OpenVRController.Device> FControllerLeftRightOut;
 
-        [Output("Error", IsSingle = true)]
-        ISpread<String> FErrorOut;
-
         uint FEvtSize = (uint)Marshal.SizeOf(typeof(VREvent_t));
 
         public override void Evaluate(int SpreadMax, CVRSystem system)

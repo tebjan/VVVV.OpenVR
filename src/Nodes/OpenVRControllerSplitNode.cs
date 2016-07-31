@@ -19,6 +19,9 @@ namespace VVVV.Nodes.ValveOpenVR
         [Input("Controller")]
         IDiffSpread<OpenVRController.Device> FControllerIn;
 
+        [Output("Pose")]
+        ISpread<Matrix> FControllerPoseOut;
+
         [Output("Device Index")]
         ISpread<int> FDeviceIndexOut;
         
@@ -61,8 +64,12 @@ namespace VVVV.Nodes.ValveOpenVR
 
         public void Evaluate(int SpreadMax)
         {
-            if (FControllerIn != null)
+            var system = OpenVRManager.System;
+            if (FControllerIn != null && system != null)
             {
+                //TODO: rework to use SpreadMax and index of loop instad of Add
+                FControllerPoseOut.SliceCount = 0;
+
                 FDeviceIndexOut.SliceCount = 0;
                 FDeviceRoleOut.SliceCount = 0;
 
@@ -84,12 +91,12 @@ namespace VVVV.Nodes.ValveOpenVR
                 FCalibratingOut.SliceCount = 0;
                 FUninitializedOut.SliceCount = 0;
 
-                var system = OpenVR.System;
-
                 for (int i = 0; i < SpreadMax; i++)
                 {
                     var controller = FControllerIn[i];
                     if (controller == null) continue;
+
+                    FControllerPoseOut.Add(OpenVRManager.GamePoses[controller.index].mDeviceToAbsoluteTracking.ToMatrix());
 
                     FDeviceIndexOut.Add((int)controller.index);
 

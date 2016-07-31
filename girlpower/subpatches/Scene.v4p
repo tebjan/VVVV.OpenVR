@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.2.dtd" >
-   <PATCH nodename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\girlpower\subpatches\Scene.v4p" systemname="Scene" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\girlpower\subpatches\Scene.v4p" scrollx="0" scrolly="0">
+   <PATCH nodename="C:\vvvv\vvvv_45beta34.2_x64\packs\VVVV.OpenVR\girlpower\subpatches\Scene.v4p" systemname="Scene" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\girlpower\subpatches\Scene.v4p" scrollx="0" scrolly="0">
    <NODE id="1" systemname="IOBox (Node)" componentmode="InABox" nodename="IOBox (Node)">
    <PIN pinname="Descriptive Name" slicecount="1" values="Layer">
    </PIN>
@@ -10,22 +10,10 @@
    <PIN pinname="Input Node" visible="1" slicecount="1" values="||">
    </PIN>
    </NODE>
-   <BOUNDS type="Window" left="7110" top="3825" width="18675" height="12375">
+   <BOUNDS type="Window" left="825" top="1470" width="21015" height="12480">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.1.0">
    </PACK>
-   <NODE nodename="IOBox (Node)" componentmode="InABox" id="2" systemname="IOBox (Node)">
-   <BOUNDS type="Box" left="2400" top="3135" width="795" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="2400" top="3135" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Input Node" slicecount="3" visible="1" values=",,">
-   </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="|Transform In|">
-   </PIN>
-   <PIN pinname="Output Node" visible="1">
-   </PIN>
-   </NODE>
    <NODE systemname="Group (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Group (DX11.Layer)" componentmode="Hidden" id="7">
    <BOUNDS type="Node" left="1485" top="12075" width="14115" height="270">
    </BOUNDS>
@@ -85,9 +73,9 @@
    </PIN>
    <PIN pinname="Scaling" visible="1" slicecount="2" values="0,0">
    </PIN>
+   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
+   </PIN>
    </NODE>
-   <LINK srcnodeid="2" srcpinname="Output Node" dstnodeid="116" dstpinname="Transform In">
-   </LINK>
    <NODE systemname="MiniSolarSystem" filename="MiniSolarSystem.v4p" nodename="MiniSolarSystem.v4p" componentmode="Hidden" id="120">
    <BOUNDS type="Node" left="9320" top="9990" width="0" height="0">
    </BOUNDS>
@@ -99,9 +87,9 @@
    </PIN>
    <PIN pinname="Light DirectionXYZ" slicecount="3" values="0.807420611381531,-0.587785243988037,0.0507985986769199">
    </PIN>
+   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
+   </PIN>
    </NODE>
-   <LINK srcnodeid="2" srcpinname="Output Node" dstnodeid="120" dstpinname="Transform In">
-   </LINK>
    <LINK srcnodeid="116" srcpinname="Layer" dstnodeid="7" dstpinname="Layer 6">
    </LINK>
    <LINK srcnodeid="120" srcpinname="Layer Out" dstnodeid="7" dstpinname="Layer 5">
@@ -129,10 +117,10 @@
    </PIN>
    <PIN pinname="Input - Input 1" visible="1" slicecount="2" values="0,0">
    </PIN>
+   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
+   </PIN>
    </NODE>
    <LINK srcnodeid="19" srcpinname="Output" dstnodeid="123" dstpinname="Reset">
-   </LINK>
-   <LINK srcnodeid="2" srcpinname="Output Node" dstnodeid="123" dstpinname="Transform In">
    </LINK>
    <LINK srcnodeid="22" srcpinname="Light Direction Out" dstnodeid="123" dstpinname="Light DirectionXYZ">
    </LINK>
@@ -191,6 +179,8 @@
    </PIN>
    <PIN pinname="Touchpad AxisXY" visible="1">
    </PIN>
+   <PIN pinname="Pose" visible="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="126" srcpinname="Output Node" dstnodeid="125" dstpinname="Controller">
    </LINK>
@@ -203,5 +193,11 @@
    <LINK srcnodeid="125" srcpinname="Touchpad Touch" dstnodeid="116" dstpinname="Scaling">
    </LINK>
    <LINK srcnodeid="125" srcpinname="Trigger Touch" dstnodeid="123" dstpinname="Paint">
+   </LINK>
+   <LINK srcnodeid="125" srcpinname="Pose" dstnodeid="123" dstpinname="Transform In">
+   </LINK>
+   <LINK srcnodeid="125" srcpinname="Pose" dstnodeid="120" dstpinname="Transform In">
+   </LINK>
+   <LINK srcnodeid="125" srcpinname="Pose" dstnodeid="116" dstpinname="Transform In">
    </LINK>
    </PATCH>

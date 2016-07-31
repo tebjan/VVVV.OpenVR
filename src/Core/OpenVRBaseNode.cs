@@ -88,7 +88,7 @@ namespace VVVV.Nodes.ValveOpenVR
             }
             else
             {
-                SetStatus("OpenVR is not initialized");
+                SetStatus("OpenVR is not initialized, at least one Poser (OpenVR) or Camera (OpenVR) must exist");
             }
         }
     }

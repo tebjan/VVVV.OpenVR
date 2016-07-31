@@ -10,32 +10,10 @@ namespace VVVV.Nodes.ValveOpenVR
 {
     public abstract class OpenVRBaseNode
     {
-
-        [Output("Error")]
+        [Output("Error", Order = 1000)]
         ISpread<String> FErrorOut;
 
-        protected CVRSystem InitOpenVR()
-        {
-            if (OpenVR.IsHmdPresent())
-            {
-                var initError = EVRInitError.Unknown;
-                var system = OpenVR.Init(ref initError, EVRApplicationType.VRApplication_Scene);
-                SetStatus(initError);
-
-                if (initError != EVRInitError.None) return null;
-                return system;
-            }
-            else
-            {
-                SetStatus(EVRInitError.Init_HmdNotFound);
-                return null;
-            }
-        }
-
-        protected void ShutDownOpenVR()
-        {
-            OpenVR.Shutdown();
-        }
+        public abstract void Evaluate(int SpreadMax, CVRSystem system);
 
         protected void SetStatus(object toString)
         {
@@ -56,4 +34,64 @@ namespace VVVV.Nodes.ValveOpenVR
                 FErrorOut[0] = toString.ToString();
         }
     }
+
+    public abstract class OpenVRProducerNode : OpenVRBaseNode, IPluginEvaluate
+    {
+        [Output("System", IsSingle = true, Order = -100)]
+        ISpread<CVRSystem> FSystemOut;
+
+        [Input("Init", IsBang = true, IsSingle = true)]
+        ISpread<bool> FInitIn;
+
+        bool FFirstFrame = true;
+
+        //the vr system
+        private CVRSystem FOpenVRSystem;
+
+        public void Evaluate(int SpreadMax)
+        {
+            if (FInitIn[0] || FFirstFrame)
+            {
+                FOpenVRSystem = OpenVRManager.InitOpenVR();
+                SetStatus(OpenVRManager.ErrorMessage);
+                FSystemOut[0] = FOpenVRSystem;
+            }
+
+            if (FOpenVRSystem != null)
+            {
+                Evaluate(SpreadMax, FOpenVRSystem);
+            }
+
+            FFirstFrame = false;
+        }
+    }
+
+    public abstract class OpenVRConsumerBaseNode : OpenVRBaseNode, IPluginEvaluate
+    {
+
+        [Input("System", IsSingle = true, Order = -100)]
+        IDiffSpread<CVRSystem> FSystemIn;
+
+        //the vr system
+        private CVRSystem FOpenVRSystem;
+
+        public void Evaluate(int SpreadMax)
+        {
+            if (FSystemIn.IsChanged)
+            {
+                FOpenVRSystem = FSystemIn[0];
+            }
+
+            if (FOpenVRSystem != null)
+            {
+                Evaluate(SpreadMax, FOpenVRSystem);
+            }
+            else
+            {
+                SetStatus("OpenVR is not initialized");
+            }
+        }
+    }
+
+
 }

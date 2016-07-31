@@ -12,6 +12,7 @@ using System.Threading;
 
 namespace VVVV.Nodes.ValveOpenVR
 {
+    //not in use
     //[PluginInfo(Name = "Models", Category = "OpenVR", Tags = "vr, htc, vive, oculus, rift", Author = "tonfilm")]
     public class ValveOpenVModelsNode : IPluginEvaluate
     {

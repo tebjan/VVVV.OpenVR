@@ -11,6 +11,7 @@ using SlimDX;
 
 namespace VVVV.Nodes.ValveOpenVR
 {
+    //not in use
     //[PluginInfo(Name = "Overlay", Category = "OpenVR", Tags = "vr, htc, vive, oculus, rift", Author = "tonfilm")]
     public class ValveOpenVROverlayNode : IPluginEvaluate
     {

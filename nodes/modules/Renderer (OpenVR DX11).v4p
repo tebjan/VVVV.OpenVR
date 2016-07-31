@@ -1,13 +1,13 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.2.dtd" >
-   <PATCH nodename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\nodes\modules\Renderer (OpenVR DX11).v4p" scrollx="0" scrolly="0" systemname="Renderer (OpenVR DX11)" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\nodes\modules\Renderer (OpenVR DX11).v4p">
+   <PATCH nodename="C:\vvvv\vvvv_45beta34.2_x64\packs\VVVV.OpenVR\nodes\modules\Renderer (OpenVR DX11).v4p" scrollx="0" scrolly="0" systemname="Renderer (OpenVR DX11)" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\nodes\modules\Renderer (OpenVR DX11).v4p">
    <BOUNDS type="Window" left="5970" top="3330" width="20835" height="12675">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.1.0">
    </PACK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="1" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="14130" top="1695" width="1185" height="240">
+   <BOUNDS type="Box" left="11925" top="915" width="1185" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="14130" top="1695" width="0" height="0">
+   <BOUNDS type="Node" left="11925" top="915" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -15,7 +15,7 @@
    </PIN>
    <PIN pinname="Maximum Characters" slicecount="1" values="-1">
    </PIN>
-   <PIN pinname="Input String" slicecount="1" values="None">
+   <PIN pinname="Input String" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="|HMD Error|">
    </PIN>
@@ -74,26 +74,6 @@
    </NODE>
    <LINK srcnodeid="15" srcpinname="Buffers" dstnodeid="16" dstpinname="Texture In">
    </LINK>
-   <NODE nodename="IOBox (String)" componentmode="InABox" id="18" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="12300" top="1875" width="1485" height="3510">
-   </BOUNDS>
-   <BOUNDS type="Node" left="12300" top="1875" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Default" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="File Mask" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
-   </PIN>
-   <PIN pinname="Columns" slicecount="1" values="1">
-   </PIN>
-   <PIN pinname="Rows" slicecount="1" values="16">
-   </PIN>
-   <PIN pinname="Input String" slicecount="16" values="HMD,Invalid,Invalid,Invalid,Invalid,Invalid,Invalid,Invalid,Invalid,Invalid,Invalid,Invalid,Invalid,Invalid,Invalid,Invalid">
-   </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="|Device Class|">
-   </PIN>
-   </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="59" systemname="IOBox (String)">
    <BOUNDS type="Box" left="4035" top="11055" width="2445" height="240">
    </BOUNDS>
@@ -134,10 +114,10 @@
    </NODE>
    <LINK srcnodeid="66" srcpinname="Layer Out" dstnodeid="15" dstpinname="Layer">
    </LINK>
-   <NODE systemname="HiddenArea (OpenVR DX11.Layer Viewport)" filename="HiddenArea (OpenVR DX11.Layer Viewport).v4p" nodename="HiddenArea (OpenVR DX11.Layer Viewport).v4p" componentmode="InAWindow" id="144">
-   <BOUNDS type="Node" left="8752" top="804" width="1635" height="270">
+   <NODE systemname="HiddenArea (OpenVR DX11.Layer Viewport)" filename="HiddenArea (OpenVR DX11.Layer Viewport).v4p" nodename="HiddenArea (OpenVR DX11.Layer Viewport).v4p" componentmode="Hidden" id="144">
+   <BOUNDS type="Node" left="8857" top="924" width="1635" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="5025" top="0" width="7455" height="6400">
+   <BOUNDS type="Box" left="5130" top="120" width="7455" height="6400">
    </BOUNDS>
    <BOUNDS type="Window" left="1065" top="5040" width="12720" height="11625">
    </BOUNDS>
@@ -268,30 +248,6 @@
    </NODE>
    <LINK srcnodeid="165" srcpinname="Output Node" dstnodeid="66" dstpinname="Layer 2">
    </LINK>
-   <NODE nodename="IOBox (Node)" componentmode="InABox" id="166" systemname="IOBox (Node)">
-   <BOUNDS type="Box" left="5595" top="1890" width="795" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="5595" top="1890" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Descriptive Name" slicecount="1" values="|Render Poses|">
-   </PIN>
-   </NODE>
-   <NODE nodename="IOBox (Node)" componentmode="InABox" id="167" systemname="IOBox (Node)">
-   <BOUNDS type="Box" left="6375" top="1335" width="795" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="6375" top="1335" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Descriptive Name" slicecount="1" values="|Game Poses|">
-   </PIN>
-   </NODE>
-   <NODE nodename="IOBox (Node)" componentmode="InABox" id="168" systemname="IOBox (Node)">
-   <BOUNDS type="Box" left="4290" top="765" width="915" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="4290" top="765" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Descriptive Name" slicecount="1" values="System">
-   </PIN>
-   </NODE>
    <NODE systemname="ViewPort (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="ViewPort (DX11)" componentmode="Hidden" id="170">
    <BOUNDS type="Node" left="9795" top="6135" width="720" height="270">
    </BOUNDS>
@@ -396,7 +352,25 @@
    </LINK>
    <LINK srcnodeid="176" srcpinname="Output" dstnodeid="15" dstpinname="Texture SizeXY">
    </LINK>
-   <NODE id="0" systemname="Poser (OpenVR)" filename="..\plugins\VVVV.OpenVR.dll" nodename="Poser (OpenVR)" componentmode="Hidden">
+   <NODE id="58" systemname="Compositor (OpenVR)" filename="..\plugins\VVVV.OpenVR.dll" nodename="Compositor (OpenVR)" componentmode="Hidden">
+   <BOUNDS type="Node" left="4035" top="10125" width="2940" height="270">
+   </BOUNDS>
+   <PIN pinname="Texture Handle" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Is OU" visible="1">
+   </PIN>
+   <PIN pinname="System" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="58" srcpinname="Error" dstnodeid="59" dstpinname="Input String">
+   </LINK>
+   <LINK srcnodeid="153" srcpinname="Y Output Value" dstnodeid="58" dstpinname="Is OU">
+   <LINKPOINT x="10965" y="7965">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="16" srcpinname="Resource Pointer" dstnodeid="58" dstpinname="Texture Handle">
+   </LINK>
+   <NODE id="0" systemname="Camera (OpenVR)" filename="%VVVV%\packs\VVVV.OpenVR\nodes\plugins\VVVV.OpenVR.dll" nodename="Camera (OpenVR)" componentmode="Hidden">
    <BOUNDS type="Node" left="4035" top="240" width="7935" height="270">
    </BOUNDS>
    <PIN pinname="Projection" visible="1">
@@ -421,10 +395,10 @@
    </PIN>
    <PIN pinname="System" visible="1">
    </PIN>
+   <PIN pinname="Init" slicecount="1" values="0">
+   </PIN>
    </NODE>
    <LINK srcnodeid="0" srcpinname="Error" dstnodeid="1" dstpinname="Input String">
-   </LINK>
-   <LINK srcnodeid="0" srcpinname="Device Class" dstnodeid="18" dstpinname="Input String">
    </LINK>
    <LINK srcnodeid="0" srcpinname="Vertices Left" dstnodeid="144" dstpinname="Vertices Left">
    </LINK>
@@ -434,29 +408,7 @@
    </LINK>
    <LINK srcnodeid="0" srcpinname="View" dstnodeid="157" dstpinname="Transform In 2">
    </LINK>
-   <LINK srcnodeid="0" srcpinname="Render Poses" dstnodeid="166" dstpinname="Input Node">
-   </LINK>
-   <LINK srcnodeid="0" srcpinname="Game Poses" dstnodeid="167" dstpinname="Input Node">
-   </LINK>
-   <LINK srcnodeid="0" srcpinname="System" dstnodeid="168" dstpinname="Input Node">
-   </LINK>
    <LINK srcnodeid="0" srcpinname="Recommended Texture SizeXY" dstnodeid="176" dstpinname="Input 1">
-   </LINK>
-   <NODE id="58" systemname="Compositor (OpenVR)" filename="..\plugins\VVVV.OpenVR.dll" nodename="Compositor (OpenVR)" componentmode="Hidden">
-   <BOUNDS type="Node" left="4035" top="10125" width="2940" height="270">
-   </BOUNDS>
-   <PIN pinname="Texture Handle" visible="1" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="Is OU" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="58" srcpinname="Error" dstnodeid="59" dstpinname="Input String">
-   </LINK>
-   <LINK srcnodeid="153" srcpinname="Y Output Value" dstnodeid="58" dstpinname="Is OU">
-   <LINKPOINT x="10965" y="7965">
-   </LINKPOINT>
-   </LINK>
-   <LINK srcnodeid="16" srcpinname="Resource Pointer" dstnodeid="58" dstpinname="Texture Handle">
    </LINK>
    <LINK srcnodeid="0" srcpinname="System" dstnodeid="58" dstpinname="System">
    </LINK>

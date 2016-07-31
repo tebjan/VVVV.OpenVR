@@ -1,11 +1,11 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.2.dtd" >
-   <PATCH nodename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\girlpower\01_OpenVRDemo.v4p" scrollx="0" scrolly="0" systemname="OpenVRDemo" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\girlpower\OpenVRDemo.v4p">
-   <BOUNDS type="Window" left="555" top="1845" width="21015" height="12480">
+   <PATCH nodename="C:\vvvv\vvvv_45beta34.2_x64\packs\VVVV.OpenVR\girlpower\01_OpenVRDemo.v4p" scrollx="0" scrolly="0" systemname="OpenVRDemo" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\girlpower\OpenVRDemo.v4p">
+   <BOUNDS type="Window" left="825" top="1470" width="21015" height="12480">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.1.0">
    </PACK>
-   <NODE systemname="Renderer (OpenVR DX11)" filename="..\nodes\modules\Renderer (OpenVR DX11).v4p" nodename="Renderer (OpenVR DX11)" componentmode="InAWindow" id="12">
-   <BOUNDS type="Node" left="2880" top="12135" width="3045" height="270">
+   <NODE systemname="Renderer (OpenVR DX11)" filename="..\nodes\modules\Renderer (OpenVR DX11).v4p" nodename="Renderer (OpenVR DX11)" componentmode="Hidden" id="12">
+   <BOUNDS type="Node" left="2910" top="13800" width="3045" height="270">
    </BOUNDS>
    <BOUNDS type="Window" left="5970" top="3330" width="20835" height="12675">
    </BOUNDS>
@@ -146,58 +146,10 @@
    </LINK>
    <LINK srcnodeid="24" srcpinname="Layer Out" dstnodeid="12" dstpinname="Layer">
    </LINK>
-   <NODE systemname="S (Node)" nodename="S (Node)" componentmode="Hidden" id="39">
-   <BOUNDS type="Node" left="3870" top="13470" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input Value" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Send String" visible="1" slicecount="1" values="Transformations">
-   </PIN>
-   </NODE>
-   <NODE systemname="R (Node)" nodename="R (Node)" componentmode="Hidden" id="41">
-   <BOUNDS type="Node" left="6630" top="4050" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Receive String" slicecount="1" values="Transformations">
-   </PIN>
-   <PIN pinname="Input Value" visible="1">
-   </PIN>
-   </NODE>
-   <NODE systemname="S (Node)" nodename="S (Node)" componentmode="Hidden" id="43">
-   <BOUNDS type="Node" left="2340" top="13455" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input Value" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Send String" slicecount="1" values="OpenVRSystem">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="12" srcpinname="System" dstnodeid="43" dstpinname="Input Value">
-   </LINK>
-   <NODE systemname="R (Node)" nodename="R (Node)" componentmode="Hidden" id="44">
-   <BOUNDS type="Node" left="9495" top="510" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Receive String" slicecount="1" values="OpenVRSystem">
-   </PIN>
-   <PIN pinname="Input Value" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="12" srcpinname="Render Poses" dstnodeid="39" dstpinname="Input Value">
-   </LINK>
-   <NODE systemname="GetSlice (Node)" nodename="GetSlice (Node)" componentmode="Hidden" id="46">
-   <BOUNDS type="Node" left="6615" top="4950" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Index" visible="1" slicecount="3" values="0,1,2">
-   </PIN>
-   <PIN pinname="Input Node" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Output Node" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="41" srcpinname="Input Value" dstnodeid="46" dstpinname="Input Node">
-   </LINK>
    <NODE id="32" systemname="Preview (DX11.Texture)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Preview (DX11.Texture)" componentmode="InAWindow">
-   <BOUNDS type="Node" left="4350" top="12990" width="100" height="100">
+   <BOUNDS type="Node" left="4380" top="14655" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="4350" top="12990" width="6000" height="4500">
+   <BOUNDS type="Box" left="4380" top="14655" width="6000" height="4500">
    </BOUNDS>
    <BOUNDS type="Window" left="13260" top="1950" width="15540" height="9150">
    </BOUNDS>
@@ -205,9 +157,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="52" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="5145" top="11385" width="795" height="480">
+   <BOUNDS type="Box" left="5145" top="13020" width="795" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="5145" top="11385" width="0" height="0">
+   <BOUNDS type="Node" left="5145" top="13020" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="2" visible="1" values="1,1">
    </PIN>
@@ -226,38 +178,12 @@
    </LINK>
    <LINK srcnodeid="12" srcpinname="Texture" dstnodeid="32" dstpinname="Texture In">
    </LINK>
-   <NODE systemname="Enum2String (Enumerations)" nodename="Enum2String (Enumerations)" componentmode="Hidden" id="57">
-   <BOUNDS type="Node" left="8265" top="4980" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Enum" visible="1" slicecount="1" values="(nil)">
-   </PIN>
-   <PIN pinname="String Value" visible="1">
-   </PIN>
-   </NODE>
-   <NODE nodename="IOBox (String)" componentmode="InABox" id="58" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="8265" top="5475" width="1965" height="1170">
-   </BOUNDS>
-   <BOUNDS type="Node" left="8265" top="5475" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Default" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="File Mask" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
-   </PIN>
-   <PIN pinname="String Type" slicecount="1" values="MultiLine">
-   </PIN>
-   <PIN pinname="Rows" slicecount="1" values="4">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="57" srcpinname="String Value" dstnodeid="58" dstpinname="Input String">
-   </LINK>
-   <NODE systemname="ViveController (OpenVR DX11.Layer)" filename="..\nodes\modules\ViveController (OpenVR DX11.Layer).v4p" nodename="nodes\modules\ViveController (OpenVR DX11.Layer).v4p" componentmode="InAWindow" id="37">
+   <NODE systemname="ViveController (OpenVR DX11.Layer)" filename="..\nodes\modules\ViveController (OpenVR DX11.Layer).v4p" nodename="nodes\modules\ViveController (OpenVR DX11.Layer).v4p" componentmode="Hidden" id="37">
    <BOUNDS type="Node" left="6045" top="8850" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Layer" visible="1">
    </PIN>
-   <PIN pinname="Transform In" visible="1" slicecount="3" values=",,">
+   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Show Axis" slicecount="1" values="1">
    </PIN>
@@ -266,60 +192,12 @@
    <PIN pinname="System" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="44" srcpinname="Input Value" dstnodeid="37" dstpinname="System">
-   </LINK>
-   <LINK srcnodeid="46" srcpinname="Output Node" dstnodeid="37" dstpinname="Transform In">
-   </LINK>
    <LINK srcnodeid="37" srcpinname="Layer" dstnodeid="24" dstpinname="Layer 3">
    </LINK>
-   <NODE systemname="EQ (String)" nodename="EQ (String)" componentmode="Hidden" id="62">
-   <BOUNDS type="Node" left="7515" top="14145" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input 1" visible="1">
-   </PIN>
-   <PIN pinname="Input 2" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="12" srcpinname="Device Class" dstnodeid="62" dstpinname="Input 1">
-   </LINK>
-   <NODE nodename="IOBox (String)" componentmode="InABox" id="63" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="7725" top="13635" width="1680" height="270">
-   </BOUNDS>
-   <BOUNDS type="Node" left="7725" top="13635" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Input String" slicecount="1" visible="1" values="TrackingReference">
-   </PIN>
-   <PIN pinname="Default" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="File Mask" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
-   </PIN>
-   <PIN pinname="String Type" slicecount="1" values="MultiLine">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="63" srcpinname="Output String" dstnodeid="62" dstpinname="Input 2">
-   </LINK>
-   <NODE systemname="Select (Transform Bin)" filename="%VVVV%\addonpack\lib\nodes\plugins\Select.dll" nodename="Select (Transform Bin)" componentmode="Hidden" id="64">
-   <BOUNDS type="Node" left="7020" top="14535" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Select" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="12" srcpinname="Render Poses" dstnodeid="64" dstpinname="Input">
-   </LINK>
-   <LINK srcnodeid="62" srcpinname="Output" dstnodeid="64" dstpinname="Select">
-   </LINK>
    <NODE systemname="Renderer (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11)" componentmode="InAWindow" id="66">
-   <BOUNDS type="Node" left="2490" top="17715" width="100" height="100">
+   <BOUNDS type="Node" left="10590" top="15000" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="2490" top="17715" width="6000" height="4500">
+   <BOUNDS type="Box" left="10590" top="15000" width="6000" height="4500">
    </BOUNDS>
    <BOUNDS type="Window" left="7080" top="1980" width="16845" height="13560">
    </BOUNDS>
@@ -339,9 +217,11 @@
    </PIN>
    <PIN pinname="Do Not Wait" slicecount="1" values="1">
    </PIN>
+   <PIN pinname="VSync" slicecount="1" values="0">
+   </PIN>
    </NODE>
    <NODE systemname="AspectRatio (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="AspectRatio (DX11.Layer)" componentmode="Hidden" id="67">
-   <BOUNDS type="Node" left="2655" top="17205" width="100" height="100">
+   <BOUNDS type="Node" left="10755" top="14385" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Layer Out" visible="1">
    </PIN>
@@ -351,7 +231,7 @@
    <LINK srcnodeid="67" srcpinname="Layer Out" dstnodeid="66" dstpinname="Layers">
    </LINK>
    <NODE systemname="Camera (Transform Softimage)" filename="%VVVV%\lib\nodes\modules\Transform\Camera (Transform Softimage).v4p" nodename="Camera (Transform Softimage)" componentmode="Hidden" id="68">
-   <BOUNDS type="Node" left="5175" top="17025" width="100" height="100">
+   <BOUNDS type="Node" left="12555" top="14370" width="100" height="100">
    </BOUNDS>
    <PIN pinname="View" visible="1">
    </PIN>
@@ -375,65 +255,19 @@
    <LINK srcnodeid="68" srcpinname="Projection" dstnodeid="66" dstpinname="Projection">
    </LINK>
    <NODE systemname="HMD (OpenVR DX11.Layer)" filename="..\nodes\modules\HMD (OpenVR DX11.Layer).v4p" nodename="HMD (OpenVR DX11.Layer)" componentmode="Hidden" id="69">
-   <BOUNDS type="Node" left="3660" top="15615" width="100" height="100">
+   <BOUNDS type="Node" left="11745" top="12975" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Transform In" visible="1">
+   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Layer" visible="1">
    </PIN>
    <BOUNDS type="Window" left="345" top="6975" width="17145" height="13200">
    </BOUNDS>
    </NODE>
-   <NODE systemname="EQ (String)" nodename="EQ (String)" componentmode="Hidden" id="72">
-   <BOUNDS type="Node" left="5385" top="14130" width="450" height="270">
-   </BOUNDS>
-   <PIN pinname="Input 1" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Input 2" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   </NODE>
-   <NODE nodename="IOBox (String)" componentmode="InABox" id="71" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="5595" top="13620" width="1680" height="270">
-   </BOUNDS>
-   <BOUNDS type="Node" left="5595" top="13620" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Input String" slicecount="1" visible="1" values="HMD">
-   </PIN>
-   <PIN pinname="Default" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="File Mask" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
-   </PIN>
-   <PIN pinname="String Type" slicecount="1" values="MultiLine">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="71" srcpinname="Output String" dstnodeid="72" dstpinname="Input 2">
-   </LINK>
-   <NODE systemname="Select (Transform Bin)" filename="%VVVV%\addonpack\lib\nodes\plugins\Select.dll" nodename="Select (Transform Bin)" componentmode="Hidden" id="70">
-   <BOUNDS type="Node" left="5040" top="14550" width="540" height="270">
-   </BOUNDS>
-   <PIN pinname="Input" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Select" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="72" srcpinname="Output" dstnodeid="70" dstpinname="Select">
-   </LINK>
-   <LINK srcnodeid="12" srcpinname="Device Class" dstnodeid="72" dstpinname="Input 1">
-   </LINK>
-   <LINK srcnodeid="12" srcpinname="Render Poses" dstnodeid="70" dstpinname="Input">
-   </LINK>
-   <LINK srcnodeid="70" srcpinname="Output" dstnodeid="69" dstpinname="Transform In" linkstyle="PolyLine">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="73" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="5190" top="16155" width="795" height="720">
+   <BOUNDS type="Box" left="12570" top="13500" width="795" height="720">
    </BOUNDS>
-   <BOUNDS type="Node" left="5190" top="16155" width="0" height="0">
+   <BOUNDS type="Node" left="12570" top="13500" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -453,7 +287,7 @@
    <LINK srcnodeid="73" srcpinname="Y Output Value" dstnodeid="68" dstpinname="Initial Interest">
    </LINK>
    <NODE systemname="Group (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Group (DX11.Layer)" componentmode="Hidden" id="74">
-   <BOUNDS type="Node" left="3315" top="16095" width="100" height="100">
+   <BOUNDS type="Node" left="11400" top="13455" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Layer 1" visible="1">
    </PIN>
@@ -469,9 +303,9 @@
    <LINK srcnodeid="74" srcpinname="Layer Out" dstnodeid="67" dstpinname="Layer In">
    </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="75" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="735" top="12660" width="1440" height="360">
+   <BOUNDS type="Box" left="2895" top="15105" width="2385" height="960">
    </BOUNDS>
-   <BOUNDS type="Node" left="735" top="12660" width="0" height="0">
+   <BOUNDS type="Node" left="2895" top="15105" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -485,9 +319,9 @@
    <LINK srcnodeid="12" srcpinname="Compositor Error" dstnodeid="75" dstpinname="Input String">
    </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="76" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="6465" top="12435" width="1275" height="510">
+   <BOUNDS type="Box" left="5895" top="14385" width="1275" height="510">
    </BOUNDS>
-   <BOUNDS type="Node" left="6465" top="12435" width="0" height="0">
+   <BOUNDS type="Node" left="5895" top="14385" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -500,24 +334,6 @@
    </NODE>
    <LINK srcnodeid="12" srcpinname="HMD Error" dstnodeid="76" dstpinname="Input String">
    </LINK>
-   <NODE systemname="S (Node)" nodename="S (Node)" componentmode="Hidden" id="80">
-   <BOUNDS type="Node" left="7005" top="15015" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input Value" visible="1">
-   </PIN>
-   <PIN pinname="Send String" slicecount="1" values="TrackingReference">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="64" srcpinname="Output" dstnodeid="80" dstpinname="Input Value">
-   </LINK>
-   <NODE systemname="R (Node)" nodename="R (Node)" componentmode="Hidden" id="81">
-   <BOUNDS type="Node" left="8730" top="9300" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Receive String" slicecount="1" values="TrackingReference">
-   </PIN>
-   <PIN pinname="Input Value" visible="1">
-   </PIN>
-   </NODE>
    <NODE id="31" systemname="Queue (String)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Queue (String)" componentmode="Hidden">
    <BOUNDS type="Node" left="2610" top="3690" width="100" height="100">
    </BOUNDS>
@@ -589,7 +405,7 @@
    <NODE id="51" componentmode="InAWindow" systemname="Scene" filename="subpatches\Scene.v4p" nodename="subpatches\Scene.v4p">
    <PIN pinname="Enablede Boxes" slicecount="1" visible="1" values="1">
    </PIN>
-   <BOUNDS type="Window" left="7110" top="3825" width="18675" height="12375">
+   <BOUNDS type="Window" left="825" top="1470" width="21015" height="12480">
    </BOUNDS>
    <PIN pinname="Controller" visible="1" slicecount="1" values="||">
    </PIN>
@@ -599,7 +415,7 @@
    </BOUNDS>
    <PIN pinname="Set" visible="1" slicecount="3" values="0,0,0">
    </PIN>
-   <PIN pinname="Transform In" visible="1" slicecount="3" values=",,">
+   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Reset" visible="1" slicecount="3" values="0,0,0">
    </PIN>
@@ -612,8 +428,6 @@
    <PIN pinname="Enable Slice" visible="1" slicecount="3" values="0,0,0">
    </PIN>
    </NODE>
-   <LINK srcnodeid="46" srcpinname="Output Node" dstnodeid="51" dstpinname="Transform In">
-   </LINK>
    <LINK srcnodeid="51" srcpinname="Layer" dstnodeid="24" dstpinname="Layer 5">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="82" systemname="IOBox (Value Advanced)">
@@ -639,9 +453,9 @@
    <LINK srcnodeid="82" srcpinname="Y Output Value" dstnodeid="51" dstpinname="Enablede Boxes">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="83" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="6840" top="11295" width="480" height="480">
+   <BOUNDS type="Box" left="6585" top="12915" width="480" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="6840" top="11295" width="0" height="0">
+   <BOUNDS type="Node" left="6585" top="12915" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
@@ -659,7 +473,7 @@
    <LINK srcnodeid="83" srcpinname="Y Output Value" dstnodeid="12" dstpinname="Is Over/Under">
    </LINK>
    <NODE systemname="Enum2String (Enumerations)" nodename="Enum2String (Enumerations)" componentmode="Hidden" id="86">
-   <BOUNDS type="Node" left="8910" top="2235" width="100" height="100">
+   <BOUNDS type="Node" left="14820" top="2865" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Enum" visible="1" slicecount="1" values="(nil)">
    </PIN>
@@ -667,9 +481,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="85" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="8910" top="2730" width="2250" height="1665">
+   <BOUNDS type="Box" left="14820" top="3360" width="2250" height="1665">
    </BOUNDS>
-   <BOUNDS type="Node" left="8910" top="2730" width="0" height="0">
+   <BOUNDS type="Node" left="14820" top="3360" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -687,65 +501,13 @@
    <NODE systemname="ViveLighthouse (OpenVR DX11.Layer)" filename="..\ViveLighthouse (OpenVR DX11.Layer).v4p" nodename="ViveLighthouse (OpenVR DX11.Layer).v4p" componentmode="Hidden" id="87">
    <BOUNDS type="Node" left="7110" top="9945" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Transform In" visible="1">
+   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Layer" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="81" srcpinname="Input Value" dstnodeid="87" dstpinname="Transform In">
-   </LINK>
    <LINK srcnodeid="87" srcpinname="Layer" dstnodeid="24" dstpinname="Layer 4">
    </LINK>
-   <NODE id="53" systemname="Controller (OpenVR Split)" filename="..\nodes\plugins\VVVV.OpenVR.dll" nodename="Controller (OpenVR Split)" componentmode="Hidden" hiddenwhenlocked="0" managers="">
-   <BOUNDS type="Node" left="13335" top="2145" width="4020" height="270">
-   </BOUNDS>
-   <PIN pinname="Controller" visible="1" slicecount="1" pintype="Input" values="||">
-   </PIN>
-   <PIN pinname="Device Role" visible="1" pintype="Output">
-   </PIN>
-   <PIN pinname="Device Index" visible="1" pintype="Output">
-   </PIN>
-   <PIN pinname="Trigger Touch" visible="1" pintype="Output">
-   </PIN>
-   <PIN pinname="Trigger Axis" visible="1" pintype="Output">
-   </PIN>
-   <PIN pinname="Touchpad Touch" visible="1" pintype="Output">
-   </PIN>
-   <PIN pinname="Touchpad Press" visible="1" pintype="Output">
-   </PIN>
-   <PIN pinname="Touchpad AxisXY" visible="1" pintype="Output">
-   </PIN>
-   <BOUNDS type="Box" left="0" top="0" width="2400" height="1800">
-   </BOUNDS>
-   <BOUNDS type="Window" left="0" top="0" width="6000" height="4500">
-   </BOUNDS>
-   <PIN pinname="Descriptive Name" pintype="Configuration" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Window Handle" pintype="Output">
-   </PIN>
-   <PIN pinname="Trigger Press" pintype="Output" visible="1">
-   </PIN>
-   <PIN pinname="System Press" pintype="Output" visible="1">
-   </PIN>
-   <PIN pinname="ApplicationMenu Press" pintype="Output" visible="1">
-   </PIN>
-   <PIN pinname="Grip Press" pintype="Output" visible="1">
-   </PIN>
-   <PIN pinname="Valid" pintype="Output" visible="1">
-   </PIN>
-   <PIN pinname="Connected" pintype="Output" visible="-1">
-   </PIN>
-   <PIN pinname="Has Tracking" pintype="Output" visible="-1">
-   </PIN>
-   <PIN pinname="Out Of Range" pintype="Output" visible="-1">
-   </PIN>
-   <PIN pinname="Calibrating" pintype="Output" visible="-1">
-   </PIN>
-   <PIN pinname="Uninitialized" pintype="Output" visible="-1">
-   </PIN>
-   <PIN pinname="ID" pintype="Output" visible="-1">
-   </PIN>
-   </NODE>
    <NODE id="26" systemname="TrackedDevices (OpenVR)" filename="..\nodes\plugins\VVVV.OpenVR.dll" nodename="TrackedDevices (OpenVR)" componentmode="Hidden" hiddenwhenlocked="0" managers="">
    <BOUNDS type="Node" left="9495" top="1125" width="4515" height="270">
    </BOUNDS>
@@ -798,8 +560,6 @@
    <PIN pinname="ID" pintype="Output" visible="-1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="26" srcpinname="Left and Right Controller" dstnodeid="53" dstpinname="Controller">
-   </LINK>
    <LINK srcnodeid="26" srcpinname="Device Role" dstnodeid="86" dstpinname="Enum">
    </LINK>
    <LINK srcnodeid="26" srcpinname="Left and Right Controller" dstnodeid="51" dstpinname="Controller">
@@ -810,10 +570,68 @@
    </LINK>
    <LINK srcnodeid="26" srcpinname="Events" dstnodeid="29" dstpinname="Input">
    </LINK>
-   <LINK srcnodeid="44" srcpinname="Input Value" dstnodeid="26" dstpinname="System">
+   <NODE systemname="Poser (OpenVR)" filename="%VVVV%\packs\VVVV.OpenVR\nodes\plugins\VVVV.OpenVR.dll" nodename="Poser (OpenVR)" componentmode="Hidden" id="88">
+   <BOUNDS type="Node" left="6420" top="900" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Init" visible="1">
+   </PIN>
+   <PIN pinname="Game Poses" visible="1">
+   </PIN>
+   <PIN pinname="Device Class" visible="1">
+   </PIN>
+   <PIN pinname="Error" visible="1">
+   </PIN>
+   <PIN pinname="System" visible="1">
+   </PIN>
+   <PIN pinname="HMD Pose" visible="1">
+   </PIN>
+   <PIN pinname="Lighthouse Poses" visible="1">
+   </PIN>
+   <PIN pinname="Controller Poses" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="89" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="6435" top="180" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="6435" top="180" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="89" srcpinname="Y Output Value" dstnodeid="88" dstpinname="Init">
    </LINK>
-   <LINK srcnodeid="53" srcpinname="Device Role" dstnodeid="57" dstpinname="Enum">
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="90" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="7875" top="1440" width="1260" height="315">
+   </BOUNDS>
+   <BOUNDS type="Node" left="7875" top="1440" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="88" srcpinname="Error" dstnodeid="90" dstpinname="Input String">
    </LINK>
-   <LINK srcnodeid="53" srcpinname="Device Index" dstnodeid="46" dstpinname="Index">
+   <LINK srcnodeid="88" srcpinname="System" dstnodeid="26" dstpinname="System">
+   </LINK>
+   <LINK srcnodeid="88" srcpinname="HMD Pose" dstnodeid="69" dstpinname="Transform In" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="88" srcpinname="Lighthouse Poses" dstnodeid="87" dstpinname="Transform In" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="88" srcpinname="Controller Poses" dstnodeid="37" dstpinname="Transform In" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="88" srcpinname="Controller Poses" dstnodeid="51" dstpinname="Transform In" hiddenwhenlocked="1">
    </LINK>
    </PATCH>

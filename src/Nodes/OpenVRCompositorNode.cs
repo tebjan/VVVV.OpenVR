@@ -12,22 +12,13 @@ using SlimDX;
 namespace VVVV.Nodes.ValveOpenVR
 {
     [PluginInfo(Name = "Compositor", Category = "OpenVR", Tags = "vr, htc, vive, oculus, rift", Author = "tonfilm")]
-    public class ValveOpenVROutputNode : OpenVRBaseNode, IPluginEvaluate
+    public class VOpenVRCompositorNode : OpenVRConsumerBaseNode, IPluginEvaluate
     {
-        [Input("System")]
-        IDiffSpread<CVRSystem> FSystemIn;
-
         [Input("Texture Handle")]
         IDiffSpread<int> FHandleIn;
 
         [Input("Is OU")]
         ISpread<bool> FIsOUIn;
-
-        [Output("Error", IsSingle = true)]
-        ISpread<String> FErrorOut;
-
-        //the vr system
-        CVRSystem FOpenVRSystem;
 
         Texture_t FTexture;
 
@@ -38,11 +29,9 @@ namespace VVVV.Nodes.ValveOpenVR
         //over/under
         VRTextureBounds_t FOUTexBoundsL = new VRTextureBounds_t() { uMin = 0, uMax = 1, vMin = 0, vMax = 0.5f };
         VRTextureBounds_t FOUTexBoundsR = new VRTextureBounds_t() { uMin = 0, uMax = 1, vMin = 0.5f, vMax = 1 };
-        public void Evaluate(int SpreadMax)
-        {
-            if (FSystemIn.IsChanged)
-                FOpenVRSystem = FSystemIn[0];
 
+        public override void Evaluate(int SpreadMax, CVRSystem system)
+        {
             if(FHandleIn.IsChanged && FHandleIn[0] > 0)
             {
                 FTexture = new Texture_t() {
@@ -51,30 +40,27 @@ namespace VVVV.Nodes.ValveOpenVR
                     eColorSpace = EColorSpace.Gamma };
             }
 
-            if(FOpenVRSystem != null)
+            //set tex
+            VRTextureBounds_t boundsL;
+            VRTextureBounds_t boundsR;
+            if (FIsOUIn[0])
             {
-                //set tex
-                VRTextureBounds_t boundsL;
-                VRTextureBounds_t boundsR;
-                if (FIsOUIn[0])
-                {
-                    boundsL = FOUTexBoundsL;
-                    boundsR = FOUTexBoundsR;
-                }
-                else
-                {
-                    boundsL = FSBSTexBoundsL;
-                    boundsR = FSBSTexBoundsR;
-                }
-
-                var compositor = OpenVR.Compositor;
-                var error = compositor.Submit(EVREye.Eye_Left, ref FTexture, ref boundsL, EVRSubmitFlags.Submit_Default);
-                SetStatus(error);
-                if (error != EVRCompositorError.None) return;
-                error = compositor.Submit(EVREye.Eye_Right, ref FTexture, ref boundsR, EVRSubmitFlags.Submit_Default);
-                SetStatus(error);
-                if (error != EVRCompositorError.None) return;
+                boundsL = FOUTexBoundsL;
+                boundsR = FOUTexBoundsR;
             }
+            else
+            {
+                boundsL = FSBSTexBoundsL;
+                boundsR = FSBSTexBoundsR;
+            }
+
+            var compositor = OpenVR.Compositor;
+            var error = compositor.Submit(EVREye.Eye_Left, ref FTexture, ref boundsL, EVRSubmitFlags.Submit_Default);
+            SetStatus(error);
+            if (error != EVRCompositorError.None) return;
+            error = compositor.Submit(EVREye.Eye_Right, ref FTexture, ref boundsR, EVRSubmitFlags.Submit_Default);
+            SetStatus(error);
+            if (error != EVRCompositorError.None) return;
         }
     }
 

@@ -14,11 +14,8 @@ using System.Runtime.InteropServices;
 namespace VVVV.Nodes.ValveOpenVR
 {
     [PluginInfo(Name = "TrackedDevices", Category = "OpenVR", Tags = "vr, htc, vive, oculus, rift, controller, gamepad", Author = "tonfilm, herbst")]
-    public class ValveOpenVRTrackedDeviceNode : IPluginEvaluate
+    public class ValveOpenVRTrackedDeviceNode : OpenVRConsumerBaseNode, IPluginEvaluate
     {
-        [Input("System")]
-        IDiffSpread<CVRSystem> FSystemIn;
-
         [Output("Events")]
         ISpread<String> FEventsOut;
 
@@ -43,76 +40,60 @@ namespace VVVV.Nodes.ValveOpenVR
         [Output("Error", IsSingle = true)]
         ISpread<String> FErrorOut;
 
-
-        //the vr system
-        CVRSystem FOpenVRSystem;
         uint FEvtSize = (uint)Marshal.SizeOf(typeof(VREvent_t));
 
-        void SetStatus(object toString)
+        public override void Evaluate(int SpreadMax, CVRSystem system)
         {
-            if(toString is EVRInitError)
-                FErrorOut[0] = OpenVR.GetStringForHmdError((EVRInitError)toString);
-            else
-                FErrorOut[0] = toString.ToString();
-        }
 
-        public void Evaluate(int SpreadMax)
-        {
-            if (FSystemIn.IsChanged)
-                FOpenVRSystem = FSystemIn[0];
+            VREvent_t evt = default(VREvent_t);
+            FEventsOut.SliceCount = 0;
+            FDeviceIndexOut.SliceCount = 0;
 
-            if(FOpenVRSystem != null)
+            while (system.PollNextEvent(ref evt, FEvtSize))
             {
-                VREvent_t evt = default(VREvent_t);
-                FEventsOut.SliceCount = 0;
-                FDeviceIndexOut.SliceCount = 0;
+                var evtType = (EVREventType)evt.eventType;
+                FEventsOut.Add(evtType.ToString());
+                ProcessEvent(evtType, evt);
+            }
 
-                while (FOpenVRSystem.PollNextEvent(ref evt, FEvtSize))
-                {
-                    var evtType = (EVREventType)evt.eventType;
-                    FEventsOut.Add(evtType.ToString());
-                    ProcessEvent(evtType, evt);
-                }
+            //controller states
+            OpenVRController.Update(FFrame++);
 
-                //controller states
-                OpenVRController.Update(FFrame++);
+            FDeviceIndexOut.SliceCount = 0;
+            FDeviceRoleOut.SliceCount = 0;
 
-                FDeviceIndexOut.SliceCount = 0;
-                FDeviceRoleOut.SliceCount = 0;
+            FControllerLeftOut.SliceCount = 0;
+            FControllerRightOut.SliceCount = 0;
+            FControllerLeftRightOut.SliceCount = 0;
+            FDevicesOut.SliceCount = 0;
 
-                FControllerLeftOut.SliceCount = 0;
-                FControllerRightOut.SliceCount = 0;
-                FControllerLeftRightOut.SliceCount = 0;
-                FDevicesOut.SliceCount = 0;
-                
-                var indexLeft = (int)FOpenVRSystem.GetTrackedDeviceIndexForControllerRole(ETrackedControllerRole.LeftHand);
-                var indexRight = (int)FOpenVRSystem.GetTrackedDeviceIndexForControllerRole(ETrackedControllerRole.RightHand);
-                if (indexLeft > 0)
-                {
-                    var c = OpenVRController.Input(indexLeft);
-                    FControllerLeftOut.Add(c);
-                    FControllerLeftRightOut.Add(c);
-                }
+            var indexLeft = (int)system.GetTrackedDeviceIndexForControllerRole(ETrackedControllerRole.LeftHand);
+            var indexRight = (int)system.GetTrackedDeviceIndexForControllerRole(ETrackedControllerRole.RightHand);
+            if (indexLeft > 0)
+            {
+                var c = OpenVRController.Input(indexLeft);
+                FControllerLeftOut.Add(c);
+                FControllerLeftRightOut.Add(c);
+            }
 
-                if (indexRight > 0)
-                {
-                    var c = OpenVRController.Input(indexRight);
-                    FControllerRightOut.Add(c);
-                    FControllerLeftRightOut.Add(c);
-                }
+            if (indexRight > 0)
+            {
+                var c = OpenVRController.Input(indexRight);
+                FControllerRightOut.Add(c);
+                FControllerLeftRightOut.Add(c);
+            }
 
-                //output all in one
-               for(int i = 0; i < OpenVR.k_unMaxTrackedDeviceCount; i++)
-               {
-                    //if(FOpenVRSystem.GetTrackedDeviceClass((uint)i) != ETrackedDeviceClass.Controller) continue;
-                    var c = OpenVRController.Input(i);
-                    if (!c.connected || !c.valid) continue;
-                    FDevicesOut.Add(c);
-                    FDeviceRoleOut.Add(FOpenVRSystem.GetControllerRoleForTrackedDeviceIndex((uint)i));
-               }
+            //output all in one
+            for (int i = 0; i < OpenVR.k_unMaxTrackedDeviceCount; i++)
+            {
+                //if(FOpenVRSystem.GetTrackedDeviceClass((uint)i) != ETrackedDeviceClass.Controller) continue;
+                var c = OpenVRController.Input(i);
+                if (!c.connected || !c.valid) continue;
+                FDevicesOut.Add(c);
+                FDeviceRoleOut.Add(system.GetControllerRoleForTrackedDeviceIndex((uint)i));
             }
         }
-        
+
         int FFrame = 0;
 
         private void ProcessEvent(EVREventType evtType, VREvent_t evt)

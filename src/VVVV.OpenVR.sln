@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VVVV.OpenVR", "VVVV.OpenVR.csproj", "{28CCDAA6-7DB4-43F8-B3A5-A1780923B268}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VVVV.OpenVR.Core", "VVVV.OpenVR.Core\VVVV.OpenVR.Core.csproj", "{16B1CA2C-5FCE-4B6C-B3DE-BAF1F5F8AE8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VVVV.OpenVR.Nodes", "VVVV.OpenVR.Nodes\VVVV.OpenVR.Nodes.csproj", "{28CCDAA6-7DB4-43F8-B3A5-A1780923B268}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16B1CA2C-5FCE-4B6C-B3DE-BAF1F5F8AE8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16B1CA2C-5FCE-4B6C-B3DE-BAF1F5F8AE8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16B1CA2C-5FCE-4B6C-B3DE-BAF1F5F8AE8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16B1CA2C-5FCE-4B6C-B3DE-BAF1F5F8AE8F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{28CCDAA6-7DB4-43F8-B3A5-A1780923B268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{28CCDAA6-7DB4-43F8-B3A5-A1780923B268}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28CCDAA6-7DB4-43F8-B3A5-A1780923B268}.Release|Any CPU.ActiveCfg = Release|Any CPU

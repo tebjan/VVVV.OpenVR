@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{28CCDAA6-7DB4-43F8-B3A5-A1780923B268}</ProjectGuid>
+    <ProjectGuid>{16B1CA2C-5FCE-4B6C-B3DE-BAF1F5F8AE8F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VVVV.OpenVR</RootNamespace>
-    <AssemblyName>VVVV.OpenVR</AssemblyName>
+    <AssemblyName>VVVV.OpenVR.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -20,20 +20,18 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\nodes\plugins\</OutputPath>
+    <OutputPath>..\..\core\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\nodes\plugins\</OutputPath>
+    <OutputPath>..\..\core\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -74,30 +72,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Nodes\OpenVRCameraNode.cs" />
-    <Compile Include="Nodes\OpenVRTrackedDeviceNode.cs" />
-    <Compile Include="Nodes\OpenVRControllerSplitNode.cs" />
-    <Compile Include="Nodes\OpenVRModelsNode.cs" />
-    <Compile Include="Nodes\OpenVROverlayNode.cs" />
-    <Compile Include="Nodes\OpenVRCompositorNode.cs" />
-    <Compile Include="Nodes\OpenVRPoserNode.cs" />
+    <Compile Include="Core\OpenVRBaseNode.cs" />
+    <Compile Include="Core\OpenVRController.cs" />
+    <Compile Include="Core\OpenVRExtensions.cs" />
+    <Compile Include="Core\OpenVRManager.cs" />
     <Compile Include="openvr\headers\openvr_api.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('packages\VVVV.SlimDX.1.0.2\build\net40\VVVV.SlimDX.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\VVVV.SlimDX.1.0.2\build\net40\VVVV.SlimDX.props'))" />
-    <Error Condition="!Exists('packages\VVVV.SlimDX.1.0.2\build\net40\VVVV.SlimDX.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\VVVV.SlimDX.1.0.2\build\net40\VVVV.SlimDX.targets'))" />
-    <Error Condition="!Exists('packages\VVVV.PluginInterfaces.34.103.0-develop-1565\build\net46\VVVV.PluginInterfaces.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\VVVV.PluginInterfaces.34.103.0-develop-1565\build\net46\VVVV.PluginInterfaces.targets'))" />
-  </Target>
-  <Import Project="packages\VVVV.SlimDX.1.0.2\build\net40\VVVV.SlimDX.targets" Condition="Exists('packages\VVVV.SlimDX.1.0.2\build\net40\VVVV.SlimDX.targets')" />
-  <Import Project="packages\VVVV.PluginInterfaces.34.103.0-develop-1565\build\net46\VVVV.PluginInterfaces.targets" Condition="Exists('packages\VVVV.PluginInterfaces.34.103.0-develop-1565\build\net46\VVVV.PluginInterfaces.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

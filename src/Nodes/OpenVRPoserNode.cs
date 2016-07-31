@@ -46,6 +46,12 @@ namespace VVVV.Nodes.ValveOpenVR
         [Output("Recommended Texture Size")]
         ISpread<Vector2D> FTexSizeOut;
 
+        [Output("Remaining Frame Time Pre")]
+        ISpread<float> FRemainingTimePre;
+
+        [Output("Remaining Frame Time Post")]
+        ISpread<float> FRemainingTimePost;
+
         //the vr system
         CVRSystem FOpenVRSystem;
 
@@ -72,9 +78,12 @@ namespace VVVV.Nodes.ValveOpenVR
                 var poseCount = (int)OpenVR.k_unMaxTrackedDeviceCount;
                 var renderPoses = new TrackedDevicePose_t[poseCount];
                 var gamePoses = new TrackedDevicePose_t[poseCount];
+
+                FRemainingTimePre[0] = OpenVR.Compositor.GetFrameTimeRemaining();
                 var error = OpenVR.Compositor.WaitGetPoses(renderPoses, gamePoses);
                 SetStatus(error);
                 if (error != EVRCompositorError.None) return;
+                FRemainingTimePost[0] = OpenVR.Compositor.GetFrameTimeRemaining();
                 FRenderPosesOut.SliceCount = poseCount;
                 FGamePosesOut.SliceCount = poseCount;
                 FDeviceClassOut.SliceCount = poseCount;
@@ -98,7 +107,6 @@ namespace VVVV.Nodes.ValveOpenVR
                 FEyeToHeadOut.SliceCount = 2;
                 FEyeToHeadOut[0] = eyeL;
                 FEyeToHeadOut[1] = eyeR;
-
 
                 //view
                 FViewOut.SliceCount = 2;

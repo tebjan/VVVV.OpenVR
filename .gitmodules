@@ -1,3 +1,4 @@
 [submodule "src/openvr"]
 	path = src/openvr
-	url = https://github.com/tebjan/openvr.git
+	url = https://github.com/ValveSoftware/openvr.git
+	branch = master

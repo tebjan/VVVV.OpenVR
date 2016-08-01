@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Valve.VR;
@@ -26,6 +29,12 @@ namespace VVVV.Nodes.ValveOpenVR
         {
             get;
             private set;
+        }
+
+        static OpenVRManager()
+        {
+            //Load openvr_api.dll
+            LoadDllFile(CoreAssemblyNativeDir, "openvr_api.dll");
         }
 
         /// <summary>
@@ -89,6 +98,49 @@ namespace VVVV.Nodes.ValveOpenVR
         public static void ShutDownOpenVR()
         {
             OpenVR.Shutdown();
+        }
+
+        private class UnsafeNativeMethods
+        {
+            [DllImport("kernel32.dll", SetLastError = true)]
+            public static extern bool SetDllDirectory(string lpPathName);
+
+            [DllImport("kernel32.dll", SetLastError = true)]
+            public static extern int GetDllDirectory(int bufsize, StringBuilder buf);
+
+            [DllImport("kernel32", CharSet = CharSet.Unicode, SetLastError = true)]
+            public static extern IntPtr LoadLibrary(string librayName);
+        }
+
+        public static string CoreAssemblyNativeDir
+        {
+            get
+            {
+                //get the full location of the assembly with DaoTests in it
+                string fullPath = Assembly.GetAssembly(typeof(OpenVRManager)).Location;
+                var subfolder = Environment.Is64BitProcess ? "x64" : "x86";
+
+                //get the folder that's in
+                return Path.Combine(Path.GetDirectoryName(fullPath), subfolder);
+            }
+        }
+
+        public static void LoadDllFile(string dllfolder, string libname)
+        {
+            var currentpath = new StringBuilder(255);
+            var length = UnsafeNativeMethods.GetDllDirectory(currentpath.Length, currentpath);
+
+            // use new path
+            var success = UnsafeNativeMethods.SetDllDirectory(dllfolder);
+
+            if (success)
+            {
+                var handle = UnsafeNativeMethods.LoadLibrary(libname);
+                success = handle.ToInt64() > 0;
+            }
+
+            // restore old path
+            UnsafeNativeMethods.SetDllDirectory(currentpath.ToString());
         }
     }
 }

@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VVVV.OpenVR.Core", "VVVV.OpenVR.Core\VVVV.OpenVR.Core.csproj", "{16B1CA2C-5FCE-4B6C-B3DE-BAF1F5F8AE8F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VVVV.OpenVR.Nodes", "VVVV.OpenVR.Nodes\VVVV.OpenVR.Nodes.csproj", "{28CCDAA6-7DB4-43F8-B3A5-A1780923B268}"
+	ProjectSection(ProjectDependencies) = postProject
+		{16B1CA2C-5FCE-4B6C-B3DE-BAF1F5F8AE8F} = {16B1CA2C-5FCE-4B6C-B3DE-BAF1F5F8AE8F}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

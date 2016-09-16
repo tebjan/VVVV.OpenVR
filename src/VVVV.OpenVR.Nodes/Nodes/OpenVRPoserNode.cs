@@ -16,6 +16,8 @@ namespace VVVV.Nodes.ValveOpenVR
     [PluginInfo(Name = "Poser", Category = "OpenVR", Tags = "vr, htc, vive, oculus, rift", Author = "tonfilm")]
     public class ValveOpenVRInputNode : OpenVRProducerNode, IPluginEvaluate, IDisposable
     {
+        [Input("Wait For Sync", IsSingle = true, DefaultBoolean = true)]
+        ISpread<bool> FWaitForSync;
 
         [Output("HMD Pose", IsSingle = true)]
         ISpread<Matrix> FHMDPoseOut;
@@ -49,7 +51,15 @@ namespace VVVV.Nodes.ValveOpenVR
             var gamePoses = new TrackedDevicePose_t[poseCount];
 
             FRemainingTimePre[0] = OpenVR.Compositor.GetFrameTimeRemaining();
-            var error = OpenVR.Compositor.WaitGetPoses(renderPoses, gamePoses);
+
+
+            var error = default(EVRCompositorError);
+
+            if (FWaitForSync[0])
+                error = OpenVR.Compositor.WaitGetPoses(renderPoses, gamePoses);
+            else
+                error = OpenVR.Compositor.GetLastPoses(renderPoses, gamePoses);
+
             SetStatus(error);
             if (error != EVRCompositorError.None) return;
             FRemainingTimePost[0] = OpenVR.Compositor.GetFrameTimeRemaining();

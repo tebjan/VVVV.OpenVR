@@ -16,6 +16,12 @@ namespace VVVV.Nodes.ValveOpenVR
     [PluginInfo(Name = "Camera", Category = "OpenVR", Tags = "vr, htc, vive, oculus, rift", Author = "tonfilm")]
     public class OpenVRCameraNode : OpenVRProducerNode, IPluginEvaluate
     {
+        [Input("Near Plane", DefaultValue = 0.05, IsSingle = true)]
+        ISpread<float> FNearPlane;
+
+        [Input("Far Plane", DefaultValue = 100, StepSize = 1, IsSingle = true)]
+        ISpread<float> FFarPlane;
+
         [Output("View")]
         ISpread<Matrix> FViewOut;
 
@@ -42,8 +48,8 @@ namespace VVVV.Nodes.ValveOpenVR
             FTexSizeOut[0] = OpenVRManager.RecommendedRenderTargetSize;
 
             //camera properties
-            var projL = system.GetProjectionMatrix(EVREye.Eye_Left, 0.05f, 100, EGraphicsAPIConvention.API_DirectX);
-            var projR = system.GetProjectionMatrix(EVREye.Eye_Right, 0.05f, 100, EGraphicsAPIConvention.API_DirectX);
+            var projL = system.GetProjectionMatrix(EVREye.Eye_Left, FNearPlane[0], FFarPlane[0], EGraphicsAPIConvention.API_DirectX);
+            var projR = system.GetProjectionMatrix(EVREye.Eye_Right, FNearPlane[0], FFarPlane[0], EGraphicsAPIConvention.API_DirectX);
             FProjectionOut.SliceCount = 2;
             FProjectionOut[0] = projL.ToProjectionMatrix();
             FProjectionOut[1] = projR.ToProjectionMatrix();

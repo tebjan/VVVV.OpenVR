@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.2.dtd" >
-   <PATCH nodename="C:\vvvv\vvvv_45beta34.2_x64\packs\VVVV.OpenVR\nodes\modules\Renderer (OpenVR DX11).v4p" scrollx="0" scrolly="-360" systemname="Renderer (OpenVR DX11)" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\nodes\modules\Renderer (OpenVR DX11).v4p">
-   <BOUNDS type="Window" left="5970" top="3330" width="20835" height="12675">
+   <PATCH nodename="C:\vvvv\vvvv_45beta34.2_x64\packs\VVVV.OpenVR\nodes\modules\Renderer (OpenVR DX11).v4p" scrollx="60" scrolly="0" systemname="Renderer (OpenVR DX11)" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\nodes\modules\Renderer (OpenVR DX11).v4p">
+   <BOUNDS type="Window" left="1170" top="2415" width="10050" height="12675">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.1.0">
    </PACK>
@@ -13,7 +13,7 @@
    </PIN>
    <PIN pinname="Texture SizeXY" visible="1" slicecount="2" values="1512,1680">
    </PIN>
-   <PIN pinname="Target Format" slicecount="1" values="R16G16B16A16_Float">
+   <PIN pinname="Target Format" slicecount="1" values="R8G8B8A8_UNorm">
    </PIN>
    <PIN pinname="Crop" visible="1" pintype="Input" slicecount="1" values="||">
    </PIN>
@@ -41,11 +41,11 @@
    </PIN>
    <PIN pinname="Depth Buffer" visible="1">
    </PIN>
-   <PIN pinname="Background Color" slicecount="1" values="|0.01168,0.01168,0.01168,1.00000|">
+   <PIN pinname="Background Color" slicecount="1" values="|0.00000,0.00000,0.00000,1.00000|" visible="1">
    </PIN>
    </NODE>
    <NODE systemname="Info (DX11.Texture 2d)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Info (DX11.Texture 2d)" componentmode="Hidden" id="16">
-   <BOUNDS type="Node" left="4335" top="7620" width="100" height="100">
+   <BOUNDS type="Node" left="4365" top="8190" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Texture In" visible="1" slicecount="1" values="||">
    </PIN>
@@ -55,9 +55,9 @@
    </PIN>
    <PIN pinname="Height" visible="1">
    </PIN>
+   <PIN pinname="Format" visible="1">
+   </PIN>
    </NODE>
-   <LINK srcnodeid="15" srcpinname="Buffers" dstnodeid="16" dstpinname="Texture In">
-   </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="59" systemname="IOBox (String)">
    <BOUNDS type="Box" left="10875" top="11085" width="2445" height="240">
    </BOUNDS>
@@ -199,9 +199,9 @@
    <LINK srcnodeid="157" srcpinname="Transform Out" dstnodeid="15" dstpinname="View">
    </LINK>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="163" systemname="IOBox (Enumerations)">
-   <BOUNDS type="Box" left="5355" top="5370" width="930" height="255">
+   <BOUNDS type="Box" left="5790" top="5430" width="930" height="255">
    </BOUNDS>
-   <BOUNDS type="Node" left="5355" top="5370" width="0" height="0">
+   <BOUNDS type="Node" left="5790" top="5430" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Input Enum" slicecount="1" visible="1" values="2">
    </PIN>
@@ -342,24 +342,6 @@
    </LINK>
    <LINK srcnodeid="176" srcpinname="Output" dstnodeid="15" dstpinname="Texture SizeXY">
    </LINK>
-   <NODE id="58" systemname="Compositor (OpenVR)" filename="..\plugins\VVVV.OpenVR.dll" nodename="Compositor (OpenVR)" componentmode="Hidden">
-   <BOUNDS type="Node" left="4035" top="10125" width="2940" height="270">
-   </BOUNDS>
-   <PIN pinname="Texture Handle" visible="1" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="Is OU" visible="1">
-   </PIN>
-   <PIN pinname="System" visible="1" slicecount="1" values="||">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="58" srcpinname="Error" dstnodeid="59" dstpinname="Input String">
-   </LINK>
-   <LINK srcnodeid="153" srcpinname="Y Output Value" dstnodeid="58" dstpinname="Is OU">
-   <LINKPOINT x="10988" y="7702">
-   </LINKPOINT>
-   </LINK>
-   <LINK srcnodeid="16" srcpinname="Resource Pointer" dstnodeid="58" dstpinname="Texture Handle">
-   </LINK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="180" systemname="IOBox (Node)">
    <BOUNDS type="Box" left="6000" top="1140" width="795" height="240">
    </BOUNDS>
@@ -386,8 +368,6 @@
    </LINK>
    <LINK srcnodeid="181" srcpinname="Recommended Texture SizeXY" dstnodeid="176" dstpinname="Input 1">
    </LINK>
-   <LINK srcnodeid="181" srcpinname="System" dstnodeid="58" dstpinname="System">
-   </LINK>
    <LINK srcnodeid="181" srcpinname="HMD Pose" dstnodeid="180" dstpinname="Input Node">
    </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="182" systemname="IOBox (String)">
@@ -405,5 +385,71 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="181" srcpinname="Error" dstnodeid="182" dstpinname="Input String">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="183" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="3360" top="10980" width="3060" height="870">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3360" top="10980" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Input String" slicecount="1" values="None">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="15" srcpinname="Buffers" dstnodeid="16" dstpinname="Texture In">
+   </LINK>
+   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="184" systemname="IOBox (Enumerations)">
+   <BOUNDS type="Box" left="5460" top="9210" width="1020" height="255">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5460" top="9210" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Enum" slicecount="1" visible="1" values="Gamma">
+   </PIN>
+   </NODE>
+   <NODE id="58" systemname="Compositor (OpenVR)" filename="..\plugins\VVVV.OpenVR.dll" nodename="Compositor (OpenVR)" componentmode="Hidden">
+   <PIN pinname="Color Space" visible="1">
+   </PIN>
+   <BOUNDS type="Node" left="4035" top="10125" width="2940" height="270">
+   </BOUNDS>
+   <PIN pinname="Texture Handle" visible="1" slicecount="1" values="805395088">
+   </PIN>
+   <PIN pinname="Is OU" visible="1">
+   </PIN>
+   <PIN pinname="System" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Post Present Handoff" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Error" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="184" srcpinname="Output Enum" dstnodeid="58" dstpinname="Color Space">
+   </LINK>
+   <LINK srcnodeid="58" srcpinname="Error" dstnodeid="183" dstpinname="Input String">
+   </LINK>
+   <LINK srcnodeid="181" srcpinname="System" dstnodeid="58" dstpinname="System">
+   </LINK>
+   <LINK srcnodeid="153" srcpinname="Y Output Value" dstnodeid="58" dstpinname="Is OU">
+   <LINKPOINT x="10988" y="7702">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="58" srcpinname="Error" dstnodeid="59" dstpinname="Input String">
+   </LINK>
+   <LINK srcnodeid="16" srcpinname="Resource Pointer" dstnodeid="58" dstpinname="Texture Handle">
+   </LINK>
+   <NODE nodename="IOBox (Color)" componentmode="InABox" id="189" systemname="IOBox (Color)">
+   <BOUNDS type="Box" left="4890" top="5880" width="2100" height="390">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4890" top="5880" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Color Input" slicecount="1" visible="1" values="|0.00501,0.00501,0.00501,1.00000|">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Background Color|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="189" srcpinname="Color Output" dstnodeid="15" dstpinname="Background Color">
    </LINK>
    </PATCH>

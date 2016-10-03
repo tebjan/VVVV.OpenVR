@@ -7,7 +7,7 @@
    <NODE systemname="Renderer (OpenVR DX11)" filename="..\nodes\modules\Renderer (OpenVR DX11).v4p" nodename="Renderer (OpenVR DX11)" componentmode="Hidden" id="12">
    <BOUNDS type="Node" left="3060" top="6990" width="3045" height="270">
    </BOUNDS>
-   <BOUNDS type="Window" left="5970" top="3330" width="20835" height="12675">
+   <BOUNDS type="Window" left="1170" top="2415" width="10050" height="12675">
    </BOUNDS>
    <PIN pinname="View" visible="1" slicecount="1" values="||">
    </PIN>
@@ -25,7 +25,7 @@
    </PIN>
    <PIN pinname="Is Over/Under" slicecount="1" visible="1" values="0">
    </PIN>
-   <PIN pinname="AA Samples per Pixel" slicecount="1" values="2" visible="1">
+   <PIN pinname="AA Samples per Pixel" slicecount="1" visible="1" values="2">
    </PIN>
    <PIN pinname="Texture ScaleXY" slicecount="2" visible="1" values="2,2">
    </PIN>
@@ -165,7 +165,7 @@
    <LINK srcnodeid="12" srcpinname="Texture" dstnodeid="32" dstpinname="Texture In">
    </LINK>
    <NODE systemname="ViveController (OpenVR DX11.Layer)" filename="..\nodes\modules\ViveController (OpenVR DX11.Layer).v4p" nodename="nodes\modules\ViveController (OpenVR DX11.Layer).v4p" componentmode="Hidden" id="37">
-   <BOUNDS type="Node" left="4485" top="4440" width="100" height="100">
+   <BOUNDS type="Node" left="4515" top="4395" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Layer" visible="1">
    </PIN>
@@ -176,6 +176,8 @@
    <BOUNDS type="Window" left="480" top="6105" width="17145" height="13200">
    </BOUNDS>
    <PIN pinname="System" visible="1">
+   </PIN>
+   <PIN pinname="Controller" visible="1">
    </PIN>
    </NODE>
    <NODE systemname="Renderer (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11)" componentmode="InAWindow" id="66">
@@ -245,7 +247,7 @@
    <LINK srcnodeid="74" srcpinname="Layer Out" dstnodeid="67" dstpinname="Layer In">
    </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="75" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="5070" top="8445" width="1800" height="570">
+   <BOUNDS type="Box" left="5070" top="8445" width="2850" height="885">
    </BOUNDS>
    <BOUNDS type="Node" left="5070" top="8445" width="0" height="0">
    </BOUNDS>
@@ -399,6 +401,8 @@
    </PIN>
    <PIN pinname="Layer" visible="1">
    </PIN>
+   <PIN pinname="Show Axis" slicecount="1" values="0">
+   </PIN>
    </NODE>
    <NODE id="26" systemname="TrackedDevices (OpenVR)" filename="..\nodes\plugins\VVVV.OpenVR.dll" nodename="TrackedDevices (OpenVR)" componentmode="Hidden" hiddenwhenlocked="0" managers="">
    <BOUNDS type="Node" left="6480" top="960" width="4515" height="270">
@@ -481,6 +485,10 @@
    </PIN>
    <PIN pinname="Remaining Frame Time Post" visible="1">
    </PIN>
+   <PIN pinname="Sync After Frame" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Wait For Sync" slicecount="1" values="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="88" srcpinname="System" dstnodeid="26" dstpinname="System">
    </LINK>
@@ -540,4 +548,6 @@
    <PIN pinname="String Type" slicecount="1" values="MultiLine">
    </PIN>
    </NODE>
+   <LINK srcnodeid="26" srcpinname="Left and Right Controller" dstnodeid="37" dstpinname="Controller">
+   </LINK>
    </PATCH>

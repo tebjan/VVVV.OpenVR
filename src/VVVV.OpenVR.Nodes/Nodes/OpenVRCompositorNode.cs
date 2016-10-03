@@ -14,11 +14,17 @@ namespace VVVV.Nodes.ValveOpenVR
     [PluginInfo(Name = "Compositor", Category = "OpenVR", Tags = "vr, htc, vive, oculus, rift", Author = "tonfilm")]
     public class VOpenVRCompositorNode : OpenVRConsumerBaseNode, IPluginEvaluate
     {
-        [Input("Texture Handle")]
+        [Input("Texture Handle", IsSingle = true)]
         IDiffSpread<int> FHandleIn;
 
-        [Input("Is OU")]
+        [Input("Color Space", IsSingle = true, DefaultEnumEntry = "Gamma")]
+        IDiffSpread<EColorSpace> FColorSpaceIn;
+
+        [Input("Is OU", IsSingle = true)]
         ISpread<bool> FIsOUIn;
+
+        [Input("Post Present Handoff", IsSingle = true, DefaultBoolean = true)]
+        ISpread<bool> FPostPresentHandoff;
 
         Texture_t FTexture;
 
@@ -32,12 +38,12 @@ namespace VVVV.Nodes.ValveOpenVR
 
         public override void Evaluate(int SpreadMax, CVRSystem system)
         {
-            if(FHandleIn.IsChanged && FHandleIn[0] > 0)
+            if((FHandleIn.IsChanged || FColorSpaceIn.IsChanged) && FHandleIn[0] > 0)
             {
                 FTexture = new Texture_t() {
                     handle = new IntPtr(FHandleIn[0]),
                     eType = EGraphicsAPIConvention.API_DirectX,
-                    eColorSpace = EColorSpace.Gamma };
+                    eColorSpace = FColorSpaceIn[0] };
             }
 
             //set tex
@@ -61,6 +67,10 @@ namespace VVVV.Nodes.ValveOpenVR
             error = compositor.Submit(EVREye.Eye_Right, ref FTexture, ref boundsR, EVRSubmitFlags.Submit_Default);
             SetStatus(error);
             if (error != EVRCompositorError.None) return;
+
+            //let OpenVR know we are done for this frame
+            if(FPostPresentHandoff[0])
+                compositor.PostPresentHandoff();
         }
     }
 

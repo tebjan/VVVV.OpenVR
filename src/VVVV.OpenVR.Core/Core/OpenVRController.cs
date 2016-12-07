@@ -13,6 +13,7 @@
 using Valve.VR;
 using SlimDX;
 using VVVV.Utils.VMath;
+using System.Runtime.InteropServices;
 
 namespace VVVV.Nodes.ValveOpenVR
 {
@@ -77,7 +78,7 @@ namespace VVVV.Nodes.ValveOpenVR
                     var system = OpenVR.System;
                     if (system != null)
                     {
-                        valid = system.GetControllerStateWithPose(ETrackingUniverseOrigin.TrackingUniverseSeated, index, ref state, ref pose);
+                        valid = system.GetControllerStateWithPose(ETrackingUniverseOrigin.TrackingUniverseSeated, index, ref state, (uint)Marshal.SizeOf(typeof(VRControllerState_t)), ref pose);
                         UpdateHairTrigger();
                     }
                 }

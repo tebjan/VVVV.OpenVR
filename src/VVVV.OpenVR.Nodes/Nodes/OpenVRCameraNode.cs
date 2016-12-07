@@ -69,8 +69,8 @@ namespace VVVV.Nodes.ValveOpenVR
             FViewOut[1] = Matrix.Invert(eyeR * OpenVRManager.RenderPoses[0].mDeviceToAbsoluteTracking.ToMatrix());
 
             //hidden pixels mesh
-            var meshLeft = system.GetHiddenAreaMesh(EVREye.Eye_Left);
-            var meshRight = system.GetHiddenAreaMesh(EVREye.Eye_Right);
+            var meshLeft = system.GetHiddenAreaMesh(EVREye.Eye_Left, EHiddenAreaMeshType.k_eHiddenAreaMesh_Standard);
+            var meshRight = system.GetHiddenAreaMesh(EVREye.Eye_Right, EHiddenAreaMeshType.k_eHiddenAreaMesh_Standard);
             if (meshLeft.unTriangleCount > 0 && meshRight.unTriangleCount > 0)
             {
                 GetMeshData(meshLeft, FVerticesLeftOut);

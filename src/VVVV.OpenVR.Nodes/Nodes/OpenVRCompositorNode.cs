@@ -11,7 +11,7 @@ using SlimDX;
 
 namespace VVVV.Nodes.ValveOpenVR
 {
-    [PluginInfo(Name = "Compositor", Category = "OpenVR", Tags = "vr, htc, vive, oculus, rift", Author = "tonfilm")]
+    [PluginInfo(Name = "Compositor", Category = "OpenVR", AutoEvaluate = true, Tags = "vr, htc, vive, oculus, rift", Author = "tonfilm")]
     public class VOpenVRCompositorNode : OpenVRConsumerBaseNode, IPluginEvaluate
     {
         [Input("Texture Handle", IsSingle = true)]
@@ -42,7 +42,7 @@ namespace VVVV.Nodes.ValveOpenVR
             {
                 FTexture = new Texture_t() {
                     handle = new IntPtr(FHandleIn[0]),
-                    eType = EGraphicsAPIConvention.API_DirectX,
+                    eType = ETextureType.DirectX,
                     eColorSpace = FColorSpaceIn[0] };
             }
 

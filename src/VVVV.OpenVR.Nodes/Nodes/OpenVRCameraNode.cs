@@ -51,8 +51,8 @@ namespace VVVV.Nodes.ValveOpenVR
                 return;
 
             //camera properties
-            var projL = system.GetProjectionMatrix(EVREye.Eye_Left, FNearPlane[0], FFarPlane[0], EGraphicsAPIConvention.API_DirectX);
-            var projR = system.GetProjectionMatrix(EVREye.Eye_Right, FNearPlane[0], FFarPlane[0], EGraphicsAPIConvention.API_DirectX);
+            var projL = system.GetProjectionMatrix(EVREye.Eye_Left, FNearPlane[0], FFarPlane[0]);
+            var projR = system.GetProjectionMatrix(EVREye.Eye_Right, FNearPlane[0], FFarPlane[0]);
             FProjectionOut.SliceCount = 2;
             FProjectionOut[0] = projL.ToProjectionMatrix();
             FProjectionOut[1] = projR.ToProjectionMatrix();

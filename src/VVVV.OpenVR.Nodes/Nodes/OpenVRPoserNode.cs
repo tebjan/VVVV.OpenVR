@@ -14,7 +14,7 @@ using System.ComponentModel.Composition;
 
 namespace VVVV.Nodes.ValveOpenVR
 {
-    [PluginInfo(Name = "Poser", Category = "OpenVR", Tags = "vr, htc, vive, oculus, rift", Author = "tonfilm")]
+    [PluginInfo(Name = "Poser", Category = "OpenVR", AutoEvaluate = true, Tags = "vr, htc, vive, oculus, rift", Author = "tonfilm")]
     public class ValveOpenVRInputNode : OpenVRProducerNode, IPluginEvaluate, IDisposable, IPartImportsSatisfiedNotification
     {
         [Input("Sync After Frame", IsSingle = true, DefaultBoolean = true)]

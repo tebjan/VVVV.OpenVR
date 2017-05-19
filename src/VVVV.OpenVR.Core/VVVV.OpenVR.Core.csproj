@@ -77,6 +77,7 @@
     <Compile Include="Core\OpenVRExtensions.cs" />
     <Compile Include="Core\OpenVRManager.cs" />
     <Compile Include="..\openvr\headers\openvr_api.cs" />
+    <Compile Include="Core\OpenVRTrackedCamera.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

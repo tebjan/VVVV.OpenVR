@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Nodes\OpenVRCameraNode.cs" />
+    <Compile Include="Nodes\OpenVRTrackedCameraNode.cs" />
     <Compile Include="Nodes\OpenVRHapticPulseNode.cs" />
     <Compile Include="Nodes\OpenVRTrackedDeviceNode.cs" />
     <Compile Include="Nodes\OpenVRControllerSplitNode.cs" />

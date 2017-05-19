@@ -79,7 +79,6 @@
     <Compile Include="Nodes\OpenVRTrackedDeviceNode.cs" />
     <Compile Include="Nodes\OpenVRControllerSplitNode.cs" />
     <Compile Include="Nodes\OpenVRModelsNode.cs" />
-    <Compile Include="Nodes\OpenVROverlayNode.cs" />
     <Compile Include="Nodes\OpenVRCompositorNode.cs" />
     <Compile Include="Nodes\OpenVRPoserNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

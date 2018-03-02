@@ -17,7 +17,7 @@ using System.Collections;
 namespace VVVV.Nodes.ValveOpenVR
 {
     [PluginInfo(Name = "HapticPulse", Category = "OpenVR", Tags = "vr, htc, vive, oculus, rift",
-                Help = "Triggers the Controllers vibration motors", Author = "sebl, tonfilm")]
+                Help = "Triggers the Controllers vibration motors, set it to enabled for as long as pulse should take.", Author = "sebl, tonfilm")]
     public class ValveOpenVRHapticPulseNode : IPluginEvaluate
     {
 #pragma warning disable 0649

@@ -96,6 +96,7 @@ namespace VVVV.Nodes.ValveOpenVR
         private void ProcessEvent(EVREventType evtType, VREvent_t evt)
         {
             FDeviceIndexOut.Add((int)evt.trackedDeviceIndex);
+
             switch (evtType)
             {
                 case EVREventType.VREvent_None:
@@ -118,13 +119,39 @@ namespace VVVV.Nodes.ValveOpenVR
                     break;
                 case EVREventType.VREvent_TrackedDeviceRoleChanged:
                     break;
-                case EVREventType.VREvent_ButtonPress:    
+                case EVREventType.VREvent_WatchdogWakeUpRequested:
+                    break;
+                case EVREventType.VREvent_LensDistortionChanged:
+                    break;
+                case EVREventType.VREvent_PropertyChanged:
+                    break;
+                case EVREventType.VREvent_WirelessDisconnect:
+                    break;
+                case EVREventType.VREvent_WirelessReconnect:
+                    break;
+                case EVREventType.VREvent_ButtonPress:
                     break;
                 case EVREventType.VREvent_ButtonUnpress:
                     break;
                 case EVREventType.VREvent_ButtonTouch:
                     break;
                 case EVREventType.VREvent_ButtonUntouch:
+                    break;
+                case EVREventType.VREvent_DualAnalog_Press:
+                    break;
+                case EVREventType.VREvent_DualAnalog_Unpress:
+                    break;
+                case EVREventType.VREvent_DualAnalog_Touch:
+                    break;
+                case EVREventType.VREvent_DualAnalog_Untouch:
+                    break;
+                case EVREventType.VREvent_DualAnalog_Move:
+                    break;
+                case EVREventType.VREvent_DualAnalog_ModeSwitch1:
+                    break;
+                case EVREventType.VREvent_DualAnalog_ModeSwitch2:
+                    break;
+                case EVREventType.VREvent_DualAnalog_Cancel:
                     break;
                 case EVREventType.VREvent_MouseMove:
                     break;
@@ -140,6 +167,8 @@ namespace VVVV.Nodes.ValveOpenVR
                     break;
                 case EVREventType.VREvent_TouchPadMove:
                     break;
+                case EVREventType.VREvent_OverlayFocusChanged:
+                    break;
                 case EVREventType.VREvent_InputFocusCaptured:
                     break;
                 case EVREventType.VREvent_InputFocusReleased:
@@ -154,9 +183,17 @@ namespace VVVV.Nodes.ValveOpenVR
                     break;
                 case EVREventType.VREvent_InputFocusChanged:
                     break;
+                case EVREventType.VREvent_SceneApplicationSecondaryRenderingStarted:
+                    break;
+                case EVREventType.VREvent_SceneApplicationUsingWrongGraphicsAdapter:
+                    break;
                 case EVREventType.VREvent_HideRenderModels:
                     break;
                 case EVREventType.VREvent_ShowRenderModels:
+                    break;
+                case EVREventType.VREvent_ConsoleOpened:
+                    break;
+                case EVREventType.VREvent_ConsoleClosed:
                     break;
                 case EVREventType.VREvent_OverlayShown:
                     break;
@@ -186,9 +223,29 @@ namespace VVVV.Nodes.ValveOpenVR
                     break;
                 case EVREventType.VREvent_OverlaySharedTextureChanged:
                     break;
-                case EVREventType.VREvent_DashboardGuideButtonDown:
+                case EVREventType.VREvent_ScreenshotTriggered:
                     break;
-                case EVREventType.VREvent_DashboardGuideButtonUp:
+                case EVREventType.VREvent_ImageFailed:
+                    break;
+                case EVREventType.VREvent_DashboardOverlayCreated:
+                    break;
+                case EVREventType.VREvent_SwitchGamepadFocus:
+                    break;
+                case EVREventType.VREvent_RequestScreenshot:
+                    break;
+                case EVREventType.VREvent_ScreenshotTaken:
+                    break;
+                case EVREventType.VREvent_ScreenshotFailed:
+                    break;
+                case EVREventType.VREvent_SubmitScreenshotToDashboard:
+                    break;
+                case EVREventType.VREvent_ScreenshotProgressToDashboard:
+                    break;
+                case EVREventType.VREvent_PrimaryDashboardDeviceChanged:
+                    break;
+                case EVREventType.VREvent_RoomViewShown:
+                    break;
+                case EVREventType.VREvent_RoomViewHidden:
                     break;
                 case EVREventType.VREvent_Notification_Shown:
                     break;
@@ -226,7 +283,35 @@ namespace VVVV.Nodes.ValveOpenVR
                     break;
                 case EVREventType.VREvent_ReprojectionSettingHasChanged:
                     break;
+                case EVREventType.VREvent_ModelSkinSettingsHaveChanged:
+                    break;
+                case EVREventType.VREvent_EnvironmentSettingsHaveChanged:
+                    break;
+                case EVREventType.VREvent_PowerSettingsHaveChanged:
+                    break;
+                case EVREventType.VREvent_EnableHomeAppSettingsHaveChanged:
+                    break;
+                case EVREventType.VREvent_SteamVRSectionSettingChanged:
+                    break;
+                case EVREventType.VREvent_LighthouseSectionSettingChanged:
+                    break;
+                case EVREventType.VREvent_NullSectionSettingChanged:
+                    break;
+                case EVREventType.VREvent_UserInterfaceSectionSettingChanged:
+                    break;
+                case EVREventType.VREvent_NotificationsSectionSettingChanged:
+                    break;
+                case EVREventType.VREvent_KeyboardSectionSettingChanged:
+                    break;
+                case EVREventType.VREvent_PerfSectionSettingChanged:
+                    break;
+                case EVREventType.VREvent_DashboardSectionSettingChanged:
+                    break;
+                case EVREventType.VREvent_WebInterfaceSectionSettingChanged:
+                    break;
                 case EVREventType.VREvent_StatusUpdate:
+                    break;
+                case EVREventType.VREvent_WebInterface_InstallDriverCompleted:
                     break;
                 case EVREventType.VREvent_MCImageUpdated:
                     break;
@@ -246,6 +331,16 @@ namespace VVVV.Nodes.ValveOpenVR
                     break;
                 case EVREventType.VREvent_ApplicationTransitionNewAppStarted:
                     break;
+                case EVREventType.VREvent_ApplicationListUpdated:
+                    break;
+                case EVREventType.VREvent_ApplicationMimeTypeLoad:
+                    break;
+                case EVREventType.VREvent_ApplicationTransitionNewAppLaunchComplete:
+                    break;
+                case EVREventType.VREvent_ProcessConnected:
+                    break;
+                case EVREventType.VREvent_ProcessDisconnected:
+                    break;
                 case EVREventType.VREvent_Compositor_MirrorWindowShown:
                     break;
                 case EVREventType.VREvent_Compositor_MirrorWindowHidden:
@@ -262,11 +357,19 @@ namespace VVVV.Nodes.ValveOpenVR
                     break;
                 case EVREventType.VREvent_TrackedCamera_ResumeVideoStream:
                     break;
+                case EVREventType.VREvent_TrackedCamera_EditingSurface:
+                    break;
                 case EVREventType.VREvent_PerformanceTest_EnableCapture:
                     break;
                 case EVREventType.VREvent_PerformanceTest_DisableCapture:
                     break;
                 case EVREventType.VREvent_PerformanceTest_FidelityLevel:
+                    break;
+                case EVREventType.VREvent_MessageOverlay_Closed:
+                    break;
+                case EVREventType.VREvent_MessageOverlayCloseRequested:
+                    break;
+                case EVREventType.VREvent_Input_HapticVibration:
                     break;
                 case EVREventType.VREvent_VendorSpecific_Reserved_Start:
                     break;

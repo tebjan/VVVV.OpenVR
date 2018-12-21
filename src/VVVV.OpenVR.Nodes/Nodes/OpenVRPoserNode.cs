@@ -23,6 +23,9 @@ namespace VVVV.Nodes.ValveOpenVR
         [Input("Wait For Sync", IsSingle = true, DefaultBoolean = true)]
         ISpread<bool> FWaitForSync;
 
+        [Input("Refresh Serials", IsBang = true, IsSingle = true)]
+        ISpread<bool> FRefreshSerials;
+
         [Input("Get Timing", IsSingle = true)]
         ISpread<bool> FGetTiming;
 
@@ -35,14 +38,23 @@ namespace VVVV.Nodes.ValveOpenVR
         [Output("Controller Poses")]
         ISpread<Matrix> FControllerPosesOut;
 
+        [Output("Tracker Poses")]
+        ISpread<Matrix> FTrackerPosesOut;
+
         [Output("Render Poses")]
         ISpread<Matrix> FRenderPosesOut;
 
         [Output("Game Poses")]
         ISpread<Matrix> FGamePosesOut;
 
+        [Output("Tracker Serial")]
+        ISpread<string> FTrackerSerialOut;
+
         [Output("Device Class")]
         ISpread<string> FDeviceClassOut;
+
+        [Output("Device Serial")]
+        ISpread<string> FDeviceSerialOut;
 
         [Output("Remaining Frame Time Pre")]
         ISpread<float> FRemainingTimePre;
@@ -102,6 +114,8 @@ namespace VVVV.Nodes.ValveOpenVR
             OpenVRManager.GamePoses = gamePoses;
         }
 
+        const int CSerialBuilderSize = 64;
+        StringBuilder FSerialBuilder = new StringBuilder(CSerialBuilderSize);
         CVRSystem FSystem;
         public override void Evaluate(int SpreadMax, CVRSystem system)
         {
@@ -114,12 +128,17 @@ namespace VVVV.Nodes.ValveOpenVR
             var poseCount = (int)OpenVR.k_unMaxTrackedDeviceCount;
             var renderPoses = OpenVRManager.RenderPoses;
             var gamePoses = OpenVRManager.GamePoses;
+            var refreshSerials = FRefreshSerials[0] || FFirstFrame;
 
             FRenderPosesOut.SliceCount = poseCount;
             FGamePosesOut.SliceCount = poseCount;
             FDeviceClassOut.SliceCount = poseCount;
+            FDeviceSerialOut.SliceCount = poseCount;
             FLighthousePosesOut.SliceCount = 0;
             FControllerPosesOut.SliceCount = 0;
+            FTrackerPosesOut.SliceCount = 0;
+            if (refreshSerials)
+                FTrackerSerialOut.SliceCount = 0;
 
             for (int i = 0; i < poseCount; i++)
             {
@@ -127,6 +146,8 @@ namespace VVVV.Nodes.ValveOpenVR
                 FGamePosesOut[i] = gamePoses[i].mDeviceToAbsoluteTracking.ToMatrix();
                 var deviceClass = system.GetTrackedDeviceClass((uint)i);
                 FDeviceClassOut[i] = deviceClass.ToString();
+                if (refreshSerials)
+                    FDeviceSerialOut[i] = GetSerial(i);
 
                 if (deviceClass == ETrackedDeviceClass.TrackingReference)
                 {
@@ -137,9 +158,27 @@ namespace VVVV.Nodes.ValveOpenVR
                 {
                     FControllerPosesOut.Add(FGamePosesOut[i]);
                 }
+
+                if (deviceClass == ETrackedDeviceClass.GenericTracker)
+                {
+                    FTrackerPosesOut.Add(FGamePosesOut[i]);
+                    if (refreshSerials)
+                        FTrackerSerialOut.Add(FDeviceSerialOut[i]);
+                }
             }
 
             FHMDPoseOut[0] = FRenderPosesOut[0];
+        }
+
+        string GetSerial(int i)
+        {
+            var error = ETrackedPropertyError.TrackedProp_Success;
+            FSerialBuilder.Clear();
+            FSystem.GetStringTrackedDeviceProperty((uint)i, ETrackedDeviceProperty.Prop_SerialNumber_String, FSerialBuilder, CSerialBuilderSize, ref error);
+            if (error == ETrackedPropertyError.TrackedProp_Success)
+                return FSerialBuilder.ToString();
+            else
+                return "";
         }
 
         public void Dispose()

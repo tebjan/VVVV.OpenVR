@@ -1,0 +1,359 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.1.dtd" >
+   <PATCH nodename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\girlpower\02_TrackersOnlyDemo.v4p" systemname="02_TrackersOnlyDemo" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\girlpower\02_TrackersOnlyDemo.v4p" scrollx="0" scrolly="0">
+   <BOUNDS type="Window" left="165" top="315" width="11835" height="8715">
+   </BOUNDS>
+   <NODE systemname="Poser (OpenVR)" filename="%VVVV%\packs\VVVV.OpenVR\nodes\plugins\VVVV.OpenVR.dll" nodename="Poser (OpenVR)" componentmode="Hidden" id="0" debug="0">
+   <BOUNDS type="Node" left="675" top="2760" width="9810" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="675" top="2760" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Init" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Render Poses" visible="1">
+   </PIN>
+   <PIN pinname="Device Class" visible="1">
+   </PIN>
+   <PIN pinname="Error" visible="1">
+   </PIN>
+   <PIN pinname="Tracker Poses" visible="1">
+   </PIN>
+   <PIN pinname="Lighthouse Poses" visible="1">
+   </PIN>
+   <PIN pinname="Tracker Serial" visible="1">
+   </PIN>
+   <PIN pinname="Refresh Serials" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Device Serial" visible="1">
+   </PIN>
+   <PIN pinname="Wait For Sync" visible="1">
+   </PIN>
+   <PIN pinname="Controller Poses" visible="1">
+   </PIN>
+   <PIN pinname="System" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Renderer (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11)" componentmode="InAWindow" id="1">
+   <BOUNDS type="Node" left="705" top="7230" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="705" top="7230" width="6000" height="4500">
+   </BOUNDS>
+   <BOUNDS type="Window" left="11895" top="330" width="13620" height="10440">
+   </BOUNDS>
+   <PIN pinname="View" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Projection" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Depth Buffer Mode" slicecount="1" values="Standard">
+   </PIN>
+   <PIN pinname="Depth Buffer Format" slicecount="1" values="D32_Float">
+   </PIN>
+   <PIN pinname="AA Samples per Pixel" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Background Color" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
+   </PIN>
+   <PIN pinname="Aspect Ratio" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Layers" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="Group (DX11.Layer)" id="2" systemname="Group (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll">
+   <BOUNDS type="Node" left="1530" top="6015" width="3315" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1530" top="6015" width="2400" height="1800">
+   </BOUNDS>
+   <PIN pinname="Layer 1" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Layer 2" visible="1">
+   </PIN>
+   <PIN pinname="Input Count" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Layer 3" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Layer 4" visible="1">
+   </PIN>
+   <PIN pinname="Layer Out" visible="1">
+   </PIN>
+   <PIN pinname="Layer 5" visible="1" slicecount="1" values="||">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="8" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="7185" top="3735" width="1440" height="3240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="7185" top="3735" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="16">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Device Class|">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Device Class" dstnodeid="8" dstpinname="Input String">
+   </LINK>
+   <PACK Name="dx11" Version="1.3">
+   </PACK>
+   <PACK Name="dx11.particles" Version="1.0.5">
+   </PACK>
+   <PACK Name="vvvv-Message" Version="2.9.10">
+   </PACK>
+   <PACK Name="vvvv-ZeroMQ" Version="0.5.7">
+   </PACK>
+   <PACK Name="VVVV.Packs.Image" Version="0.2.0">
+   </PACK>
+   <PACK Name="addonpack" Version="38.1.0">
+   </PACK>
+   <NODE systemname="ViveTracker (OpenVR DX11.Layer)" filename="%VVVV%\packs\VVVV.OpenVR\nodes\modules\ViveTracker (OpenVR DX11.Layer).v4p" nodename="ViveTracker (OpenVR DX11.Layer)" componentmode="Hidden" id="9">
+   <BOUNDS type="Node" left="2835" top="4500" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Show Axis" slicecount="1" values="1">
+   </PIN>
+   <BOUNDS type="Window" left="2805" top="9990" width="17145" height="12885">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="9" srcpinname="Layer" dstnodeid="2" dstpinname="Layer 2">
+   </LINK>
+   <NODE id="6" systemname="Camera (Transform Orbit)" filename="%VVVV%\lib\packs\VL.EditingFramework.0.94.50-gf563f1b382\vvvv\nodes\modules\Camera (Transform Orbit).v4p" nodename="Camera (Transform Orbit)" componentmode="Hidden">
+   <BOUNDS type="Node" left="2355" top="6720" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="View" visible="1">
+   </PIN>
+   <PIN pinname="Projection" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="6" srcpinname="Projection" dstnodeid="1" dstpinname="Projection">
+   </LINK>
+   <LINK srcnodeid="6" srcpinname="View" dstnodeid="1" dstpinname="View">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="10">
+   <BOUNDS type="Box" left="10425" top="3180" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="10425" top="3180" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Error">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Error" dstnodeid="10" dstpinname="Input String">
+   </LINK>
+   <NODE systemname="ViveLighthouse (OpenVR DX11.Layer)" filename="%VVVV%\packs\VVVV.OpenVR\nodes\modules\ViveLighthouse (OpenVR DX11.Layer).v4p" nodename="ViveLighthouse (OpenVR DX11.Layer)" componentmode="Hidden" id="11">
+   <BOUNDS type="Node" left="3495" top="5160" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform In" visible="1">
+   </PIN>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   <PIN pinname="Show Axis" slicecount="1" values="1">
+   </PIN>
+   <BOUNDS type="Window" left="5310" top="7755" width="17145" height="12885">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Lighthouse Poses" dstnodeid="11" dstpinname="Transform In">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="12" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="5595" top="3735" width="1380" height="1515">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5595" top="3735" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="8">
+   </PIN>
+   <PIN pinname="Input String" visible="1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Tracker Serial|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Tracker Serial" dstnodeid="12" dstpinname="Input String">
+   </LINK>
+   <NODE id="5" systemname="AxisAndGrid (DX11)" filename="%VVVV%\packs\dx11\nodes\modules\AxisAndGrid\AxisAndGrid (DX11).v4p" nodename="AxisAndGrid (DX11)" componentmode="Hidden">
+   <BOUNDS type="Node" left="1590" top="5190" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="5" srcpinname="Layer" dstnodeid="2" dstpinname="Layer 1">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="13" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="8610" top="3735" width="1440" height="3240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="8610" top="3735" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="16">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Device Serial|">
+   </PIN>
+   <PIN pinname="Input String" visible="1">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Device Serial" dstnodeid="13" dstpinname="Input String">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="15">
+   <BOUNDS type="Box" left="5550" top="2070" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5550" top="2070" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Refresh Serials|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="15" srcpinname="Y Output Value" dstnodeid="0" dstpinname="Refresh Serials">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="16">
+   <BOUNDS type="Box" left="3120" top="2055" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3120" top="2055" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Wait For Sync|">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="16" srcpinname="Y Output Value" dstnodeid="0" dstpinname="Wait For Sync">
+   </LINK>
+   <NODE systemname="PerfMeter (DX11.Debug)" filename="%VVVV%\packs\dx11\nodes\modules\PerfMeter (DX11.Debug).v4p" nodename="PerfMeter (DX11.Debug)" componentmode="Hidden" id="17">
+   <BOUNDS type="Node" left="4155" top="5595" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="17" srcpinname="Layer" dstnodeid="2" dstpinname="Layer 4">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="18">
+   <BOUNDS type="Node" left="300" top="270" width="1830" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="300" top="270" width="3660" height="465">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Vive Tracker Only Demo|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" values="14">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="19">
+   <BOUNDS type="Node" left="300" top="765" width="6660" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="300" top="765" width="3930" height="510">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|You can use the vive trackers without the HMD if you enable the &apos;null&apos; driver. More info here:|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="AspectRatio (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="AspectRatio (DX11.Layer)" componentmode="Hidden" id="21">
+   <BOUNDS type="Node" left="870" top="6690" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="870" top="6690" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Layer In" visible="1">
+   </PIN>
+   <PIN pinname="Layer Out" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="2" srcpinname="Layer Out" dstnodeid="21" dstpinname="Layer In">
+   </LINK>
+   <LINK srcnodeid="21" srcpinname="Layer Out" dstnodeid="1" dstpinname="Layers">
+   </LINK>
+   <LINK srcnodeid="11" srcpinname="Layer" dstnodeid="2" dstpinname="Layer 3">
+   </LINK>
+   <NODE systemname="Rotate (Transform)" nodename="Rotate (Transform)" componentmode="Hidden" id="22">
+   <BOUNDS type="Node" left="2835" top="4020" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform In" visible="1">
+   </PIN>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="X" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Tracker Poses" dstnodeid="22" dstpinname="Transform In">
+   <LINKPOINT x="2865" y="3300">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="22" srcpinname="Transform Out" dstnodeid="9" dstpinname="Transform In">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="23">
+   <BOUNDS type="Box" left="3015" top="3630" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3015" top="3630" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.25">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="23" srcpinname="Y Output Value" dstnodeid="22" dstpinname="X">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="24">
+   <BOUNDS type="Node" left="315" top="3795" width="6825" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="315" top="3795" width="2415" height="735">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|This is ugly but for some reason the tracker pose coming from OpenVR is rotated, this fixes it.|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   </PATCH>

@@ -45,22 +45,15 @@ namespace VVVV.Nodes.ValveOpenVR
         {
             if (System == null)
             {
-                if (OpenVR.IsHmdPresent())
-                {
-                    var initError = EVRInitError.Unknown;
-                    var system = OpenVR.Init(ref initError, EVRApplicationType.VRApplication_Scene);
-                    SetStatus(initError);
 
-                    if (initError != EVRInitError.None)
-                        system = null;
+                var initError = EVRInitError.Unknown;
+                var system = OpenVR.Init(ref initError);
+                SetStatus(initError);
 
-                    System = system;
-                }
-                else
-                {
-                    SetStatus(EVRInitError.Init_HmdNotFound);
-                    System = null;
-                }
+                if (initError != EVRInitError.None)
+                    system = null;
+
+                System = system;
 
                 if (System != null)
                 {

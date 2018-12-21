@@ -43,7 +43,7 @@ namespace VVVV.Nodes.ValveOpenVR
         [Input("Init", IsBang = true, IsSingle = true)]
         ISpread<bool> FInitIn;
 
-        bool FFirstFrame = true;
+        protected bool FFirstFrame = true;
 
         //the vr system
         private CVRSystem FOpenVRSystem;

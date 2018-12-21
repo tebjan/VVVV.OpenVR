@@ -1,0 +1,249 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.1.dtd" >
+   <PATCH nodename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\nodes\modules\ViveTracker (OpenVR DX11.Layer).v4p" systemname="ViveLighthouse (OpenVR DX11.Layer)" filename="C:\vvvv\PROJECTS\2016\07_OpenVR\VVVV.OpenVR\ViveLighthouse (OpenVR DX11.Layer).v4p" scrollx="0" scrolly="4800">
+   <BOUNDS type="Window" left="1635" top="2985" width="13635" height="11145">
+   </BOUNDS>
+   <PACK Name="addonpack" Version="38.1.0">
+   </PACK>
+   <PACK Name="dx11" Version="1.3">
+   </PACK>
+   <NODE systemname="Rasterizer (DX11.RenderState)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Rasterizer (DX11.RenderState)" componentmode="Hidden" id="303">
+   <BOUNDS type="Node" left="4935" top="9315" width="780" height="270">
+   </BOUNDS>
+   <PIN pinname="Render State" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Mode" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="304" systemname="IOBox (Enumerations)">
+   <BOUNDS type="Box" left="5655" top="8700" width="1170" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5655" top="8700" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Enum" slicecount="1" visible="1" values="NoCullSimple">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="304" srcpinname="Output Enum" dstnodeid="303" dstpinname="Mode">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="307" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="8265" top="10170" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="8265" top="10170" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="25">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="312" systemname="IOBox (Node)">
+   <BOUNDS type="Box" left="6615" top="7800" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="6615" top="7800" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Node" slicecount="1" visible="1" values="||">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Transform In|">
+   </PIN>
+   <PIN pinname="Bin Size" visible="1">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="GeometryFile (DX11.Geometry Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.Assimp.dll" nodename="GeometryFile (DX11.Geometry Assimp)" componentmode="Hidden" id="314">
+   <BOUNDS type="Node" left="6180" top="6555" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Filename" visible="1" slicecount="1" values="HTC_Vive_Tracker_2017.obj">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Keep In Memory" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Reload" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="319" systemname="IOBox (Node)">
+   <BOUNDS type="Box" left="4110" top="13275" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4110" top="13275" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Layer">
+   </PIN>
+   <PIN pinname="Input Node" visible="1" slicecount="1" values="||">
+   </PIN>
+   </NODE>
+   <NODE systemname="Count (Node)" nodename="Count (Node)" componentmode="Hidden" id="320">
+   <BOUNDS type="Node" left="7320" top="7260" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Count" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="314" srcpinname="Output" dstnodeid="320" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="320" srcpinname="Count" dstnodeid="312" dstpinname="Bin Size">
+   </LINK>
+   <NODE systemname="Axis (DX11)" filename="%VVVV%\packs\dx11\nodes\modules\Axis (DX11).v4p" nodename="Axis (DX11)" componentmode="Hidden" id="321">
+   <BOUNDS type="Node" left="4320" top="12285" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Layer Out" visible="1">
+   </PIN>
+   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Enabled" slicecount="1" visible="1" values="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Group (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Group (DX11.Layer)" componentmode="Hidden" id="322">
+   <BOUNDS type="Node" left="4125" top="12780" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Layer 2" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Layer 1" visible="1">
+   </PIN>
+   <PIN pinname="Layer Out" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="321" srcpinname="Layer Out" dstnodeid="322" dstpinname="Layer 1">
+   </LINK>
+   <LINK srcnodeid="322" srcpinname="Layer Out" dstnodeid="319" dstpinname="Input Node">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="323" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="4860" top="11505" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4860" top="11505" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Show Axis|">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="323" srcpinname="Y Output Value" dstnodeid="321" dstpinname="Enabled">
+   </LINK>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="369" systemname="IOBox (Node)">
+   <BOUNDS type="Box" left="4695" top="6585" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4695" top="6585" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Node" slicecount="1" visible="1" values="||">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Transform In|">
+   </PIN>
+   <PIN pinname="Bin Size" visible="1" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="369" srcpinname="Output Node" dstnodeid="312" dstpinname="Input Node">
+   </LINK>
+   <NODE systemname="UniformScale (Transform)" nodename="UniformScale (Transform)" componentmode="Hidden" id="370">
+   <BOUNDS type="Node" left="3570" top="11400" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="XYZ" visible="1" slicecount="1" values="0.07">
+   </PIN>
+   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="369" srcpinname="Output Node" dstnodeid="370" dstpinname="Transform In">
+   </LINK>
+   <LINK srcnodeid="370" srcpinname="Transform Out" dstnodeid="321" dstpinname="Transform In">
+   </LINK>
+   <NODE systemname="OpenVRMesh (DX11.Effect)" nodename="OpenVRMesh (DX11.Effect)" componentmode="Hidden" id="295" filename="..\dx11\OpenVRMesh.fx">
+   <BOUNDS type="Node" left="4500" top="10830" width="7620" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4500" top="10830">
+   </BOUNDS>
+   <PIN pinname="Render State" slicecount="1" visible="1" values="||">
+   </PIN>
+   <PIN pinname="Texture" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Diffuse Color" slicecount="1" visible="1" values="|0.00000,0.00000,0.00000,1.00000|">
+   </PIN>
+   <PIN pinname="Ambient Color" slicecount="1" visible="1" values="|0.00000,0.00000,0.00000,1.00000|">
+   </PIN>
+   <PIN pinname="Specular Texture" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Power" slicecount="1" visible="1" values="25">
+   </PIN>
+   <PIN pinname="Specular Color" slicecount="1" visible="1" values="|1.00000,1.00000,1.00000,1.00000|">
+   </PIN>
+   <PIN pinname="Diffuse Texture" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Geometry" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Enabled" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   <PIN pinname="Light DirectionXYZ" visible="1" slicecount="3" values="0,-5,2">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="303" srcpinname="Render State" dstnodeid="295" dstpinname="Render State">
+   </LINK>
+   <LINK srcnodeid="307" srcpinname="Y Output Value" dstnodeid="295" dstpinname="Power">
+   </LINK>
+   <LINK srcnodeid="295" srcpinname="Layer" dstnodeid="322" dstpinname="Layer 2">
+   </LINK>
+   <PACK Name="dx11.particles" Version="1.0.5">
+   </PACK>
+   <PACK Name="vvvv-Message" Version="2.9.10">
+   </PACK>
+   <PACK Name="vvvv-ZeroMQ" Version="0.5.7">
+   </PACK>
+   <PACK Name="VVVV.Packs.Image" Version="0.2.0">
+   </PACK>
+   <LINK srcnodeid="314" srcpinname="Output" dstnodeid="295" dstpinname="Geometry">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="374">
+   <BOUNDS type="Box" left="6180" top="6045" width="1380" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="6180" top="6045" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="ViveTracker.obj">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="|All Files (*.*)||*.*|">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="Filename">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="374" srcpinname="Output String" dstnodeid="314" dstpinname="Filename">
+   </LINK>
+   <NODE systemname="UniformScale (Transform)" nodename="UniformScale (Transform)" componentmode="Hidden" id="335">
+   <BOUNDS type="Node" left="6600" top="9225" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="XYZ" visible="1" slicecount="1" values="0.001">
+   </PIN>
+   <PIN pinname="Transform In" visible="1">
+   </PIN>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="X" slicecount="1" values="0.001">
+   </PIN>
+   <PIN pinname="Y" slicecount="1" values="0.001">
+   </PIN>
+   <PIN pinname="Z" slicecount="1" values="0.001">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="335" srcpinname="Transform Out" dstnodeid="295" dstpinname="Transform In">
+   </LINK>
+   <LINK srcnodeid="312" srcpinname="Output Node" dstnodeid="335" dstpinname="Transform In">
+   </LINK>
+   </PATCH>

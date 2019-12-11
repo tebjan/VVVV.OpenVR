@@ -163,19 +163,19 @@ namespace VVVV.Nodes.ValveOpenVR
                     break;
                 case EVREventType.VREvent_FocusLeave:
                     break;
-                case EVREventType.VREvent_Scroll:
+                case EVREventType.VREvent_ScrollDiscrete:
                     break;
                 case EVREventType.VREvent_TouchPadMove:
                     break;
                 case EVREventType.VREvent_OverlayFocusChanged:
                     break;
+                case EVREventType.VREvent_ReloadOverlays:
+                    break;
+                case EVREventType.VREvent_ScrollSmooth:
+                    break;
                 case EVREventType.VREvent_InputFocusCaptured:
                     break;
                 case EVREventType.VREvent_InputFocusReleased:
-                    break;
-                case EVREventType.VREvent_SceneFocusLost:
-                    break;
-                case EVREventType.VREvent_SceneFocusGained:
                     break;
                 case EVREventType.VREvent_SceneApplicationChanged:
                     break;
@@ -183,13 +183,15 @@ namespace VVVV.Nodes.ValveOpenVR
                     break;
                 case EVREventType.VREvent_InputFocusChanged:
                     break;
-                case EVREventType.VREvent_SceneApplicationSecondaryRenderingStarted:
-                    break;
                 case EVREventType.VREvent_SceneApplicationUsingWrongGraphicsAdapter:
+                    break;
+                case EVREventType.VREvent_ActionBindingReloaded:
                     break;
                 case EVREventType.VREvent_HideRenderModels:
                     break;
                 case EVREventType.VREvent_ShowRenderModels:
+                    break;
+                case EVREventType.VREvent_SceneApplicationStateChanged:
                     break;
                 case EVREventType.VREvent_ConsoleOpened:
                     break;
@@ -202,8 +204,6 @@ namespace VVVV.Nodes.ValveOpenVR
                 case EVREventType.VREvent_DashboardActivated:
                     break;
                 case EVREventType.VREvent_DashboardDeactivated:
-                    break;
-                case EVREventType.VREvent_DashboardThumbSelected:
                     break;
                 case EVREventType.VREvent_DashboardRequested:
                     break;
@@ -247,6 +247,10 @@ namespace VVVV.Nodes.ValveOpenVR
                     break;
                 case EVREventType.VREvent_RoomViewHidden:
                     break;
+                case EVREventType.VREvent_ShowUI:
+                    break;
+                case EVREventType.VREvent_ShowDevTools:
+                    break;
                 case EVREventType.VREvent_Notification_Shown:
                     break;
                 case EVREventType.VREvent_Notification_Hidden:
@@ -259,11 +263,11 @@ namespace VVVV.Nodes.ValveOpenVR
                     break;
                 case EVREventType.VREvent_ProcessQuit:
                     break;
-                case EVREventType.VREvent_QuitAborted_UserPrompt:
-                    break;
                 case EVREventType.VREvent_QuitAcknowledged:
                     break;
                 case EVREventType.VREvent_DriverRequestedQuit:
+                    break;
+                case EVREventType.VREvent_RestartRequested:
                     break;
                 case EVREventType.VREvent_ChaperoneDataHasChanged:
                     break;
@@ -274,6 +278,12 @@ namespace VVVV.Nodes.ValveOpenVR
                 case EVREventType.VREvent_ChaperoneSettingsHaveChanged:
                     break;
                 case EVREventType.VREvent_SeatedZeroPoseReset:
+                    break;
+                case EVREventType.VREvent_ChaperoneFlushCache:
+                    break;
+                case EVREventType.VREvent_ChaperoneRoomSetupStarting:
+                    break;
+                case EVREventType.VREvent_ChaperoneRoomSetupFinished:
                     break;
                 case EVREventType.VREvent_AudioSettingsHaveChanged:
                     break;
@@ -309,6 +319,12 @@ namespace VVVV.Nodes.ValveOpenVR
                     break;
                 case EVREventType.VREvent_WebInterfaceSectionSettingChanged:
                     break;
+                case EVREventType.VREvent_TrackersSectionSettingChanged:
+                    break;
+                case EVREventType.VREvent_LastKnownSectionSettingChanged:
+                    break;
+                case EVREventType.VREvent_DismissedWarningsSectionSettingChanged:
+                    break;
                 case EVREventType.VREvent_StatusUpdate:
                     break;
                 case EVREventType.VREvent_WebInterface_InstallDriverCompleted:
@@ -325,29 +341,31 @@ namespace VVVV.Nodes.ValveOpenVR
                     break;
                 case EVREventType.VREvent_KeyboardDone:
                     break;
-                case EVREventType.VREvent_ApplicationTransitionStarted:
-                    break;
-                case EVREventType.VREvent_ApplicationTransitionAborted:
-                    break;
-                case EVREventType.VREvent_ApplicationTransitionNewAppStarted:
-                    break;
                 case EVREventType.VREvent_ApplicationListUpdated:
                     break;
                 case EVREventType.VREvent_ApplicationMimeTypeLoad:
-                    break;
-                case EVREventType.VREvent_ApplicationTransitionNewAppLaunchComplete:
                     break;
                 case EVREventType.VREvent_ProcessConnected:
                     break;
                 case EVREventType.VREvent_ProcessDisconnected:
                     break;
-                case EVREventType.VREvent_Compositor_MirrorWindowShown:
-                    break;
-                case EVREventType.VREvent_Compositor_MirrorWindowHidden:
-                    break;
                 case EVREventType.VREvent_Compositor_ChaperoneBoundsShown:
                     break;
                 case EVREventType.VREvent_Compositor_ChaperoneBoundsHidden:
+                    break;
+                case EVREventType.VREvent_Compositor_DisplayDisconnected:
+                    break;
+                case EVREventType.VREvent_Compositor_DisplayReconnected:
+                    break;
+                case EVREventType.VREvent_Compositor_HDCPError:
+                    break;
+                case EVREventType.VREvent_Compositor_ApplicationNotResponding:
+                    break;
+                case EVREventType.VREvent_Compositor_ApplicationResumed:
+                    break;
+                case EVREventType.VREvent_Compositor_OutOfVideoMemory:
+                    break;
+                case EVREventType.VREvent_Compositor_DisplayModeNotSupported:
                     break;
                 case EVREventType.VREvent_TrackedCamera_StartVideoStream:
                     break;
@@ -370,6 +388,34 @@ namespace VVVV.Nodes.ValveOpenVR
                 case EVREventType.VREvent_MessageOverlayCloseRequested:
                     break;
                 case EVREventType.VREvent_Input_HapticVibration:
+                    break;
+                case EVREventType.VREvent_Input_BindingLoadFailed:
+                    break;
+                case EVREventType.VREvent_Input_BindingLoadSuccessful:
+                    break;
+                case EVREventType.VREvent_Input_ActionManifestReloaded:
+                    break;
+                case EVREventType.VREvent_Input_ActionManifestLoadFailed:
+                    break;
+                case EVREventType.VREvent_Input_ProgressUpdate:
+                    break;
+                case EVREventType.VREvent_Input_TrackerActivated:
+                    break;
+                case EVREventType.VREvent_Input_BindingsUpdated:
+                    break;
+                case EVREventType.VREvent_SpatialAnchors_PoseUpdated:
+                    break;
+                case EVREventType.VREvent_SpatialAnchors_DescriptorUpdated:
+                    break;
+                case EVREventType.VREvent_SpatialAnchors_RequestPoseUpdate:
+                    break;
+                case EVREventType.VREvent_SpatialAnchors_RequestDescriptorUpdate:
+                    break;
+                case EVREventType.VREvent_SystemReport_Started:
+                    break;
+                case EVREventType.VREvent_Monitor_ShowHeadsetView:
+                    break;
+                case EVREventType.VREvent_Monitor_HideHeadsetView:
                     break;
                 case EVREventType.VREvent_VendorSpecific_Reserved_Start:
                     break;
